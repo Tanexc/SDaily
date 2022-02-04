@@ -22,26 +22,34 @@ public class MTimePicker extends androidx.appcompat.widget.AppCompatTextView {
     }
 
     public void plusMinute() {
-        int minute = Integer.parseInt((String) this.getText());
+        int minute = getMinute();
         if (minute == 55) {
             minute = 0;
         } else {
             minute += 5;
         }
-        this.setText((CharSequence) ("" + minute));
+        setMinute(minute);
     }
 
     public void minusMinute() {
-        int minute = Integer.parseInt((String) this.getText());
+        int minute = getMinute();
         if (minute == 0) {
             minute = 55;
         } else {
             minute -= 5;
         }
-        this.setText((CharSequence) ("" + minute));
+        setMinute(minute);
     }
 
     public void setMinute(Integer minute) {
-        this.setText((CharSequence) ("" + minute));
+        if (minute < 10) {
+            this.setText((CharSequence) ("0" + minute));
+        } else {
+            this.setText((CharSequence) ("" + minute));
+        }
+    }
+
+    public int getMinute() {
+        return Integer.parseInt((String) this.getText());
     }
 }

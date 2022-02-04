@@ -1,12 +1,12 @@
 package ru.tanec.sdaily;
 
 public class DialogItem extends ItemList {
-    Integer start_hour;
-    Integer start_minute;
-    Integer end_minute;
-    Integer end_hour;
+    int start_hour = 0;
+    int start_minute = 0;
+    int end_minute = 0;
+    int end_hour = 0;
 
-    public void setStartTime(Integer hour, Integer minute) {
+    public void setStartTime(int hour, int minute) {
         start_hour = hour;
         start_minute = minute;
         if (end_hour < start_hour) {
@@ -14,17 +14,17 @@ public class DialogItem extends ItemList {
         }
     }
 
-    public void setEndTime(Integer hour, Integer minute) {
+    public void setEndTime(int hour, int minute) {
         if (hour > start_hour) end_hour = hour;
         end_minute = minute;
     }
 
-    public Integer[] getStartTime() {
-        return new Integer[]{start_hour, start_minute};
+    public int[] getStartTime() {
+        return new int[]{start_hour, start_minute};
     }
 
-    public Integer[] getEndTime() {
-        return new Integer[]{end_hour, end_minute};
+    public int[] getEndTime() {
+        return new int[]{end_hour, end_minute};
     }
 
     public int[] getDuration() {
