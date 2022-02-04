@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/goal"
+        android:enabled="true"
+        android:icon="@drawable/calendar"
+        android:iconTint="@color/main_color"
+        android:title="" />
+    <item
+        android:id="@+id/task"
+        android:enabled="true"
+        android:icon="@drawable/check"
+        android:iconTint="@color/main_color"
+        android:title="" />
+    <item
+        android:id="@+id/timetable"
+        android:enabled="true"
+        android:icon="@drawable/time"
+        android:iconTint="@color/main_color"
+        android:title="" />
+
+</menu>

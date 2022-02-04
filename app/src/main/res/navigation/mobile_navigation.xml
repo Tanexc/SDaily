@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/goal">
+
+    <fragment
+        android:id="@+id/task"
+        android:label="frg1"
+        android:name="ru.tanec.sdaily.Task"
+        tools:layout="@layout/fragment_task"/>
+
+    <fragment
+        android:id="@+id/goal"
+        android:label="frg2"
+        android:name="ru.tanec.sdaily.Goal"
+        tools:layout="@layout/fragment_goal"/>
+
+    <fragment
+        android:id="@+id/timetable"
+        android:label="frg3"
+        android:name="ru.tanec.sdaily.TimeTable"
+        tools:layout="@layout/fragment_timetable"/>
+</navigation>
