@@ -80,8 +80,6 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
             minus_s_minute.setOnClickListener(v -> {
                 start_minute.minusMinute();
             });
-
-
         }
 
         void bind(DialogItem item) {
