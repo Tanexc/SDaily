@@ -17,6 +17,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogViewHolder> {
 
     DialogItem[] list;
@@ -50,16 +52,33 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
 
     static class DialogViewHolder extends RecyclerView.ViewHolder {
 
-        MTimePicker timePicker;
-        Button plus_btn;
+        TextInputEditText title;
+        MTimePicker start_minute;
+        MTimePicker end_minute;
+        Button plus_s_minute;
+        Button plus_e_minute;
+        Button minus_s_minute;
+        Button minus_e_minute;
+        Button plus_s_hour;
+        Button plus_e_hour;
+        Button minus_s_hour;
+        Button minus_e_hour;
 
         public DialogViewHolder(@NonNull View itemView, DialogItem[] list, int id) {
             super(itemView);
-            this.timePicker = itemView.findViewById(R.id.timePicker);
-            this.plus_btn = itemView.findViewById(R.id.plus_btn);
-            timePicker.setMinute(10);
-            plus_btn.setOnClickListener(v -> {
-                timePicker.plusMinute();
+            this.start_minute = itemView.findViewById(R.id.start_minute);
+            this.plus_s_minute = itemView.findViewById(R.id.plus_s_minute);
+            this.minus_s_minute = itemView.findViewById(R.id.minus_s_minute);
+            /*Integer[] s_hm;
+            Integer[] e_hm;
+            s_hm = list[id].getStartTime();
+            e_hm = list[id].getStartTime();*/
+            start_minute.setMinute(10);
+            plus_s_minute.setOnClickListener(v -> {
+                start_minute.plusMinute();
+            });
+            minus_s_minute.setOnClickListener(v -> {
+                start_minute.minusMinute();
             });
 
 
