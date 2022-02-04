@@ -21,8 +21,8 @@ public class HTimePicker extends androidx.appcompat.widget.AppCompatTextView {
     }
 
     public void plusHour() {
-        int hour = Integer.parseInt((String) this.getText());
-        if (hour ==23) {
+        int hour = getHour();
+        if (hour == 23) {
             hour = 0;
         } else {
             hour += 1;
@@ -31,7 +31,7 @@ public class HTimePicker extends androidx.appcompat.widget.AppCompatTextView {
     }
 
     public void minusHour() {
-        int hour = Integer.parseInt((String) this.getText());
+        int hour = getHour();
         if (hour == 0) {
             hour = 23;
         } else {
@@ -41,7 +41,15 @@ public class HTimePicker extends androidx.appcompat.widget.AppCompatTextView {
     }
 
     public void setHour(int hour) {
-        this.setText((CharSequence) ("" + hour));
+        if (hour < 10) {
+            this.setText((CharSequence) ("0" + hour));
+        } else {
+            this.setText((CharSequence) ("" + hour));
+        }
+    }
+
+    public int getHour() {
+        return Integer.parseInt((String) this.getText());
     }
 
 }
