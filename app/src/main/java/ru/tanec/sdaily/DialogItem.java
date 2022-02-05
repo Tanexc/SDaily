@@ -5,6 +5,9 @@ public class DialogItem extends ItemList {
     int start_minute = 0;
     int end_minute = 0;
     int end_hour = 0;
+    int id;
+    int deleted = 1;
+    String title = "Untitled";
 
     public void setStartTime(int hour, int minute) {
         start_hour = hour;
@@ -33,4 +36,15 @@ public class DialogItem extends ItemList {
         return new int[]{d_hour, d_minute};
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void delete() {
+        this.deleted *= -1;
+    }
 }

@@ -1,7 +1,7 @@
 package ru.tanec.sdaily;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 
 public class DataBaseApl extends Application {
 

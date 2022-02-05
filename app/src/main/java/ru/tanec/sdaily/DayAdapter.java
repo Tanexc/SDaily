@@ -54,6 +54,9 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         public DayViewHolder(@NonNull View itemView, Boolean[] dl, int id) {
             super(itemView);
             this.dayimage = itemView.findViewById(R.id.day_image_rec);
+            if (dl[id] == null) {
+                dl[id] = false;
+            }
             if (dl[id]) {
                 this.dayimage.setBackgroundResource(R.drawable.square);
             } else {

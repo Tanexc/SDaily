@@ -8,17 +8,34 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class RangeFragment extends DialogFragment {
 
+    TimeTableItem obj;
     RecyclerView dialog_recycler;
+    DialogAdapter recycler_adapter;
+    ImageButton add_btn;
+    TimeTableDao td;
+    DataBase db;
+    DialogItem[] data;
 
     public RangeFragment() {
         super(R.layout.fragment_range);
+    }
+
+    public RangeFragment(TimeTableItem obj) {
+        super(R.layout.fragment_range);
+        this.obj = obj;
     }
 
     @Override
@@ -37,10 +54,48 @@ public class RangeFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         dialog_recycler = view.findViewById(R.id.time_dialog_recycler);
-        DialogItem[] data = new DialogItem[5];
-        for (int i = 0; i < 5; i++) {
-            data[i] = new DialogItem();
-        }
-        dialog_recycler.setAdapter(new DialogAdapter(requireContext(), data));
+        add_btn = view.findViewById(R.id.dialog_add_btn);
+        new Thread(() -> {
+            db = DataBaseApl.getInstance().getDatabase();
+            td = db.timeTableDao();
+            TimeTableEntity a;
+            try {
+                a = td.getById(obj.id);
+            } catch (Exception e) {
+                a = new TimeTableEntity();
+                a.title = obj.title;
+                a.id = obj.id;
+                a.timerange = new DialogItem[1];
+                a.timerange[0].id = 0;
+                td.insert(a);
+            }
+            data = a.timerange;
+            new Handler(Looper.getMainLooper()).post(() -> {
+                add_btn.setOnClickListener(v -> addRange());
+                recycler_adapter = new DialogAdapter(requireContext(), data);
+                dialog_recycler.setAdapter(recycler_adapter);
+            });
+        }).start();
+    }
+
+    public void addRange() {
+        DialogItem ndi = new DialogItem();
+        recycler_adapter.addItem(ndi);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        data = recycler_adapter.list;
+        int id = obj.id;
+        new Thread(() -> {
+            db = DataBaseApl.getInstance().getDatabase();
+            td = db.timeTableDao();
+            TimeTableEntity ne = new TimeTableEntity();
+            ne.timerange = data;
+            ne.id = id;
+            ne.title = obj.title;
+            td.update(ne);
+        }).start();
     }
 }
