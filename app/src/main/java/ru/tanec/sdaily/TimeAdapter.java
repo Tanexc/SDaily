@@ -20,16 +20,22 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Map;
+
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder> {
 
     TimeTableItem[] list;
     public Context context;
     FragmentActivity activity;
+    String[] id_title;
+    int cnt;
 
-    public TimeAdapter(Context context, FragmentActivity activity, TimeTableItem[] list) {
+    public TimeAdapter(Context context, FragmentActivity activity, TimeTableItem[] list, String[] id_title) {
         this.context = context;
         this.list = list;
         this.activity = activity;
+        this.id_title = id_title;
+        cnt = -1;
     }
 
     @NonNull
@@ -41,9 +47,9 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
         View view = inflater.inflate(layoutIdForListItem, parent, false);
 
-        Boolean[] fill = {true, true, true, true, false, false, false, true, true, false, false, false, true, true, true, true, false, false, false, true, true, false, false, false, true};
+        cnt++;
 
-        return new TimeViewHolder(view, fill);
+        return new TimeViewHolder(view, list[cnt]);
 
     }
 
@@ -54,31 +60,28 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     static class TimeViewHolder extends RecyclerView.ViewHolder {
 
+        TimeTableItem obj;
         TextView title;
-        Boolean[] fill;
-        ImageButton open_btn;
-        ConstraintLayout expandable;
         RecyclerView recycler;
 
-        public TimeViewHolder(@NonNull View itemView, Boolean[] fill) {
+        public TimeViewHolder(@NonNull View itemView, TimeTableItem it) {
             super(itemView);
-            this.open_btn = itemView.findViewById(R.id.timetable_item_btn);
             this.title = itemView.findViewById(R.id.title);
-            this.fill = fill;
-            this.expandable = itemView.findViewById(R.id.expandable_card);
+            this.obj = it;
+            this.title.setText(it.title);
         }
 
         public void dayFill() {
             recycler = itemView.findViewById(R.id.day_recycler);
-            recycler.setAdapter(new DayAdapter(itemView.getContext(), fill));
+            recycler.setAdapter(new DayAdapter(itemView.getContext(), obj.fill));
         }
 
-        void bind(TimeTableItem item, FragmentActivity activity) {
+        void bind(TimeTableItem item, FragmentActivity activity, int position) {
             title.setText(item.title);
-            fill = item.fill;
+            obj = item;
             dayFill();
             itemView.setOnClickListener(v -> {
-                DialogFragment fragment = new RangeFragment();
+                RangeFragment fragment = new RangeFragment(obj);
                 fragment.show(activity.getSupportFragmentManager(), "asd");
             });
         }
@@ -86,7 +89,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TimeViewHolder holder, int position) {
-        holder.bind(list[position], activity);
+        holder.bind(list[position], activity, position);
     }
 
 }
