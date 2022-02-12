@@ -13,8 +13,7 @@ public class DataBaseApl extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        database = Room.databaseBuilder(this, DataBase.class, "database")
-                .build();
+        database = Room.databaseBuilder(this, DataBase.class, "database").build();
     }
 
     public static DataBaseApl getInstance() {

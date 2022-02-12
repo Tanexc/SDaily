@@ -4,18 +4,25 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/white_square.xml" value="0.1325" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/close.xml" value="0.1135" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/open.xml" value="0.1135" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dayitem.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.5" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.1" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_timetable.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/note_item.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/test.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/red_btn.xml" value="0.241" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/yellow_btn.xml" value="0.241" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/button_shape_circle_1.xml" value="0.258" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.33" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_task.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_timetable.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/note_item.xml" value="0.5" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
