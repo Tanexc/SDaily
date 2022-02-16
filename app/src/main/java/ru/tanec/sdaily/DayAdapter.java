@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.utils.LogcatLogger;
-
 public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
     Context context;
     Boolean[] list;
@@ -25,7 +23,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
     @NonNull
     @Override
     public DayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutIdForListItem = R.layout.dayitem;
+        int layoutIdForListItem = R.layout.fragment_goal;
 
         LayoutInflater inflater = LayoutInflater.from(context);
 
