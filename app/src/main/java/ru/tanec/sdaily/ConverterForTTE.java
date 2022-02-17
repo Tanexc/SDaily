@@ -4,7 +4,7 @@ import androidx.room.TypeConverter;
 
 public class ConverterForTTE {
     @TypeConverter
-    public String fromDialogItem(DialogItem[] timerange) {
+    public String fromDialogItem(RangeItem[] timerange) {
         String data = "";
         int tl;
         try {
@@ -13,13 +13,15 @@ public class ConverterForTTE {
             tl = 0;
         }
         for (int i = 0; i < tl; i++) {
-            int id = timerange[i].id;
-            int sh = timerange[i].start_hour;
-            int sm = timerange[i].start_minute;
-            int eh = timerange[i].end_hour;
-            int em = timerange[i].end_minute;
-            String title = timerange[i].title;
-            data += id + ";" + sh + ";" + sm + ";" + eh + ";" + em + ";" + title + "]";
+            if (timerange[i].deleted != -1) {
+                int id = timerange[i].id;
+                int sh = timerange[i].start_hour;
+                int sm = timerange[i].start_minute;
+                int eh = timerange[i].end_hour;
+                int em = timerange[i].end_minute;
+                String title = timerange[i].title;
+                data += id + ";" + sh + ";" + sm + ";" + eh + ";" + em + ";" + title + "]";
+            }
         }
         if (!data.equals("")) {
             data = data.substring(0, data.length() - 1);
@@ -29,8 +31,8 @@ public class ConverterForTTE {
 
 
     @TypeConverter
-    public DialogItem[] toDialogItem(String dt) {
-        DialogItem[] data;
+    public RangeItem[] toDialogItem(String dt) {
+        RangeItem[] data;
         String[] stringData = dt.split("]");
        int sl;
         try {
@@ -39,7 +41,7 @@ public class ConverterForTTE {
             sl = 0;
         }
 
-        data = new DialogItem[sl];
+        data = new RangeItem[sl];
         if (sl != 1) {
             for (int i = 0; i < sl; i++) {
                 String[] timerange = stringData[i].split(";");
@@ -49,7 +51,7 @@ public class ConverterForTTE {
                 int eh = Integer.parseInt(timerange[3]);
                 int em = Integer.parseInt(timerange[4]);
                 String title = timerange[5];
-                data[i] = new DialogItem();
+                data[i] = new RangeItem();
                 data[i].setStartTime(sh, sm);
                 data[i].setEndTime(eh, em);
                 data[i].setId(id);

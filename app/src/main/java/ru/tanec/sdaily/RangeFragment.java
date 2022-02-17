@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,7 +28,7 @@ public class RangeFragment extends DialogFragment {
     ImageButton add_btn;
     TimeTableDao td;
     DataBase db;
-    DialogItem[] data;
+    RangeItem[] data;
 
     public RangeFragment() {
         super(R.layout.fragment_range);
@@ -65,7 +66,7 @@ public class RangeFragment extends DialogFragment {
                 a = new TimeTableEntity();
                 a.title = obj.title;
                 a.id = obj.id;
-                a.timerange = new DialogItem[1];
+                a.timerange = new RangeItem[1];
                 a.timerange[0].id = 0;
                 td.insert(a);
             }
@@ -79,8 +80,8 @@ public class RangeFragment extends DialogFragment {
     }
 
     public void addRange() {
-        DialogItem ndi = new DialogItem();
-        recycler_adapter.addItem(ndi);
+        RangeItem nri = new RangeItem();
+        recycler_adapter.addItem(nri);
     }
 
     @Override

@@ -2,7 +2,6 @@ package ru.tanec.sdaily;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -10,30 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogViewHolder> {
 
-    DialogItem[] list;
+    RangeItem[] list;
     Context context;
     int id;
 
-    public DialogAdapter(Context context, DialogItem[] list) {
+    public DialogAdapter(Context context, RangeItem[] list) {
         this.context = context;
         this.list = list;
         this.id = -1;
         if (list[0] == null) {
-            list[0] = new DialogItem();
+            list[0] = new RangeItem();
         }
     }
 
@@ -62,9 +55,9 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
         return lg;
     }
 
-    public void addItem(DialogItem ndi) {
+    public void addItem(RangeItem ndi) {
         int d = getItemCount() + 1;
-        DialogItem[] list1 = new DialogItem[d];
+        RangeItem[] list1 = new RangeItem[d];
         if (d != 1) {
             System.arraycopy(list, 0, list1, 0, d - 1);
         }
@@ -91,7 +84,7 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
         Button minus_s_hour;
         Button minus_e_hour;
 
-        public DialogViewHolder(@NonNull View itemView, DialogItem[] list, int id, DialogAdapter adpt) {
+        public DialogViewHolder(@NonNull View itemView, RangeItem[] list, int id, DialogAdapter adpt) {
             super(itemView);
             this.start_minute = itemView.findViewById(R.id.start_minute);
             this.plus_s_minute = itemView.findViewById(R.id.plus_s_minute);
@@ -127,8 +120,9 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
             delete_btn.setOnClickListener(v -> {
                 list[id].delete();
                 int k = 0;
-                if (list[id].deleted == 1) {
-                    k = 1;delete_btn.setImageResource(R.drawable.open);
+                if (list[id].deleted == -1) {
+                    k = 1;
+                    delete_btn.setImageResource(R.drawable.open);
                 } else {
                     delete_btn.setImageResource(R.drawable.close);
                 }
@@ -197,7 +191,7 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
             });
         }
 
-        void bind(DialogItem item) {
+        void bind(RangeItem item) {
             int[] s_hm;
             int[] e_hm;
             if (item != null) {

@@ -1,6 +1,6 @@
 package ru.tanec.sdaily;
 
-public class DialogItem extends ItemList {
+public class RangeItem extends ItemList {
     int start_hour = 0;
     int start_minute = 0;
     int end_minute = 0;

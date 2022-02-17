@@ -13,7 +13,7 @@ public class TimeTableEntity {
     public long id;
     public String title;
     @TypeConverters({ConverterForTTE.class})
-    public DialogItem[] timerange;
+    public RangeItem[] timerange;
 
 }
 

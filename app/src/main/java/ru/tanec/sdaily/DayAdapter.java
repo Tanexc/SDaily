@@ -57,10 +57,12 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             if (dl[id] == null) {
                 dl[id] = false;
             }
-            if (dl[id]) {
+            if (dl[id] == true) {
                 this.dayimage.setBackgroundResource(R.drawable.square);
-            } else {
+            } else if (dl[id] == false) {
                 this.dayimage.setBackgroundResource(R.drawable.white_square);
+            } else {
+                this.dayimage.setBackgroundResource(R.drawable.half_square);
             }
         }
     }

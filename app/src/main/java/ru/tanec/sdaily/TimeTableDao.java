@@ -1,5 +1,6 @@
 package ru.tanec.sdaily;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface TimeTableDao {
 
     @Query("SELECT * FROM timetableentity")
-    List<TimeTableEntity> getAll();
+    LiveData<List<TimeTableEntity>> getAll();
     @Query("SELECT * FROM timetableentity WHERE id = :id")
     TimeTableEntity getById(long id);
 
