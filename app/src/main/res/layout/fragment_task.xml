@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CAF7E3"
+    android:background="@color/fragment_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Task">
 
@@ -19,6 +19,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
-        tools:listitem="@layout/task_item" />
+        tools:listitem="@layout/note_item" />
 
 </FrameLayout>

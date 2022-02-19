@@ -30,8 +30,6 @@ public class Task extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         taskrecycler = view.findViewById(R.id.task_recycler);
 
-        NoteDataItem[] data = {null, null, null, null, null, null, null, null, null};
-        taskrecycler.setAdapter(new TaskAdapter(context, activity, data));
 
         /*noteRecycler = view.findViewById(R.id.task_recycler);
         NoteDataItem[] data = null;

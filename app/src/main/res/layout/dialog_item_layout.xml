@@ -58,6 +58,7 @@
         android:id="@+id/plus_s_hour"
         android:layout_width="20dp"
         android:layout_height="30dp"
+        android:backgroundTint="@color/range_button"
         app:layout_constraintBottom_toTopOf="@+id/start_hour"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,6 +67,7 @@
         android:id="@+id/minus_s_hour"
         android:layout_width="20dp"
         android:layout_height="30dp"
+        android:backgroundTint="@color/range_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView" />
 
@@ -84,6 +86,7 @@
         android:id="@+id/plus_s_minute"
         android:layout_width="20dp"
         android:layout_height="30dp"
+        android:backgroundTint="@color/range_button"
         android:layout_margin="0dp"
         android:layout_marginStart="11dp"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -93,6 +96,7 @@
         android:id="@+id/minus_s_minute"
         android:layout_width="20dp"
         android:layout_height="30dp"
+        android:backgroundTint="@color/range_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView" />
 
@@ -126,6 +130,7 @@
     <Button
         android:id="@+id/plus_e_minute"
         android:layout_width="20dp"
+        android:backgroundTint="@color/range_button"
         android:layout_height="30dp"
         app:layout_constraintBottom_toTopOf="@+id/end_hour"
         app:layout_constraintStart_toEndOf="@+id/del2"
@@ -136,6 +141,7 @@
         android:id="@+id/minus_e_hour"
         android:layout_width="20dp"
         android:layout_height="30dp"
+        android:backgroundTint="@color/range_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/end_hour"
@@ -153,6 +159,7 @@
     <Button
         android:id="@+id/plus_e_hour"
         android:layout_width="20dp"
+        android:backgroundTint="@color/range_button"
         android:layout_height="30dp"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -161,8 +168,16 @@
         android:id="@+id/minus_e_minute"
         android:layout_width="20dp"
         android:layout_height="30dp"
+        android:backgroundTint="@color/range_button"
         app:layout_constraintStart_toEndOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/end_minute" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

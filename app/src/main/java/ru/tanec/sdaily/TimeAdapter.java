@@ -64,7 +64,6 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
         TimeTableItem obj;
         TextView title;
         RecyclerView recycler;
-        GridLayout day_fill_container;
 
         public TimeViewHolder(@NonNull View itemView, TimeTableItem it) {
             super(itemView);

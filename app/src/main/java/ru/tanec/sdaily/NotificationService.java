@@ -87,7 +87,7 @@ public class NotificationService extends Service {
     }
 
     public String[] getDayNote() {
-        String[] note  = new String[];
+        String[] note  = new String[]{};
         return note;
     }
 

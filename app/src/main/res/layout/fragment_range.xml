@@ -10,15 +10,35 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
+
         <ImageButton
             android:id="@+id/dialog_add_btn"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:background="@color/main_color"
-            android:src="@drawable/add"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_rounded_corners"
+            android:scaleType="fitCenter"
+            android:src="@drawable/plus"
+            android:padding="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time_dialog_recycler" />
+
+        <ImageButton
+            android:id="@+id/dialog_accept_btn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:padding="3dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_rounded_corners"
+            android:scaleType="fitCenter"
+            android:src="@drawable/accept_circular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_dialog_recycler" />
 
         <TextView
@@ -26,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
             android:text="@string/dialog_title_column"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

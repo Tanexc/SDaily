@@ -26,6 +26,7 @@ public class RangeFragment extends DialogFragment {
     RecyclerView dialog_recycler;
     DialogAdapter recycler_adapter;
     ImageButton add_btn;
+    ImageButton accept_btn;
     TimeTableDao td;
     DataBase db;
     RangeItem[] data;
@@ -56,6 +57,8 @@ public class RangeFragment extends DialogFragment {
 
         dialog_recycler = view.findViewById(R.id.time_dialog_recycler);
         add_btn = view.findViewById(R.id.dialog_add_btn);
+        accept_btn = view.findViewById(R.id.dialog_accept_btn);
+
         new Thread(() -> {
             db = DataBaseApl.getInstance().getDatabase();
             td = db.timeTableDao();
@@ -77,6 +80,10 @@ public class RangeFragment extends DialogFragment {
                 dialog_recycler.setAdapter(recycler_adapter);
             });
         }).start();
+
+        accept_btn.setOnClickListener(e -> {
+            this.onDestroy();
+        });
     }
 
     public void addRange() {

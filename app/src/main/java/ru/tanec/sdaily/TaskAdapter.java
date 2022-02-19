@@ -26,7 +26,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @NonNull
     @Override
     public TaskAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutIdForListItem = R.layout.task_item;
+        int layoutIdForListItem = R.layout.note_item;
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 

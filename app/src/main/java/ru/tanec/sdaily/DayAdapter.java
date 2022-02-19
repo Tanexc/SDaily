@@ -23,7 +23,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
     @NonNull
     @Override
     public DayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutIdForListItem = R.layout.fragment_goal;
+        int layoutIdForListItem = R.layout.day_item;
 
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -56,9 +56,9 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
                 dl[id] = false;
             }
             if (dl[id] == true) {
-                this.dayimage.setBackgroundResource(R.drawable.square);
-            } else if (dl[id] == false) {
                 this.dayimage.setBackgroundResource(R.drawable.white_square);
+            } else if (dl[id] == false) {
+                this.dayimage.setBackgroundResource(R.drawable.square);
             } else {
                 this.dayimage.setBackgroundResource(R.drawable.half_square);
             }
