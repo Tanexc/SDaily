@@ -28,4 +28,6 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
     }
 
+
+
 }
