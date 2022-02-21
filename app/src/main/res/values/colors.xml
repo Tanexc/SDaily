@@ -7,7 +7,7 @@
     <color name="rose">#F6DFEB</color>
     <color name="s_rose">#E4BAD4</color>
     <color name="app_color_1">#90F2FF</color>
-    <color name="app_color_statusbar">#3d9eff</color>
+    <color name="app_color_statusbar">#0a85ff</color>
     <color name="fragment_background">#6EB6FF</color>
     <color name="day_fill">#4099ed</color>
     <color name="day_fill_1">#bfccde</color>
@@ -16,5 +16,6 @@
     <color name="app_color_3">#333F44</color>
     <color name="app_color_button">#7accf0</color>
     <color name="app_color_2">#B9D7EA</color>
+    <color name="app_color_gray">#434345</color>
 
 </resources>

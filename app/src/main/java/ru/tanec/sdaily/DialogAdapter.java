@@ -119,15 +119,16 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
 
             delete_btn.setOnClickListener(v -> {
                 list[id].delete();
-                int k = 0;
+                int k;
                 if (list[id].deleted == -1) {
                     k = 1;
                     delete_btn.setImageResource(R.drawable.open);
                 } else {
                     delete_btn.setImageResource(R.drawable.close);
+                    k = -1;
                 }
 
-                ObjectAnimator.ofFloat(delete_btn, "rotation", 0, k * 45).start();
+                delete_btn.animate().rotation((float) (k * 45)).start();
             });
 
             title.addTextChangedListener(new TextWatcher() {
