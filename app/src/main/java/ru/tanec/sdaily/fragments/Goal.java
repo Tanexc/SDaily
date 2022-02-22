@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ru.tanec.sdaily.NoteDataItem;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.GoalAdapter;
 

@@ -9,7 +9,7 @@ public class TimeTableItem extends ItemList {
     public String title;
     public Boolean[] fill;
 
-    void setFill(Boolean[] fill) {
+    public void setFill(Boolean[] fill) {
         this.fill = fill;
     }
 }

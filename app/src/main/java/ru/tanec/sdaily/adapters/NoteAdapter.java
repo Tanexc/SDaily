@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ru.tanec.sdaily.NoteDataItem;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.R;
 
 public class NoteAdapter extends BaseAdapter {

@@ -2,7 +2,7 @@ package ru.tanec.sdaily.adapters.items;
 
 import java.sql.Time;
 
-class NoteDataItem extends ItemList {
+public class NoteDataItem extends ItemList {
     String title;
     String description;
     boolean finished;

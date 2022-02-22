@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ru.tanec.sdaily.NoteDataItem;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.R;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
