@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/task"
         android:label="frg1"
-        android:name="ru.tanec.sdaily.Task"
+        android:name="ru.tanec.sdaily.fragments.Task"
         tools:layout="@layout/fragment_task"/>
 
     <fragment
         android:id="@+id/goal"
         android:label="frg2"
-        android:name="ru.tanec.sdaily.Goal"
+        android:name="ru.tanec.sdaily.fragments.Goal"
         tools:layout="@layout/fragment_goal"/>
 
     <fragment
         android:id="@+id/timetable"
         android:label="frg3"
-        android:name="ru.tanec.sdaily.TimeTable"
+        android:name="ru.tanec.sdaily.fragments.TimeTable"
         tools:layout="@layout/fragment_timetable"/>
 </navigation>

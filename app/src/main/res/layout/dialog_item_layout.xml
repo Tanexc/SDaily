@@ -30,7 +30,7 @@
         app:layout_constraintStart_toEndOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ru.tanec.sdaily.HTimePicker
+    <ru.tanec.sdaily.custom.HTimePicker
         android:id="@+id/start_hour"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView" />
 
 
-    <ru.tanec.sdaily.MTimePicker
+    <ru.tanec.sdaily.custom.MTimePicker
         android:id="@+id/start_minute"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -100,7 +100,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView" />
 
-    <ru.tanec.sdaily.HTimePicker
+    <ru.tanec.sdaily.custom.HTimePicker
         android:id="@+id/end_hour"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/end_hour"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ru.tanec.sdaily.MTimePicker
+    <ru.tanec.sdaily.custom.MTimePicker
         android:id="@+id/end_minute"
         android:layout_width="20dp"
         android:layout_height="20dp"

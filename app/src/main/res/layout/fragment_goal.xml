@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_background"
-    tools:context="Goal">
+    tools:context=".fragments.Goal">
 
-    <ru.tanec.sdaily.CollapsibleCalendar
+    <ru.tanec.sdaily.custom.CollapsibleCalendar
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
