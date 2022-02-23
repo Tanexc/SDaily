@@ -41,6 +41,20 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/test.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/calendar1.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/calendar2.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/chevron_left.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/chevron_right.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/half_square.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/ic_baseline_nights_stay_24.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/ic_launcher_background.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/open.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/selected_date.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/day_item.xml" value="0.1707193515704154" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.33" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_task.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/note_item.xml" value="0.21157894736842106" />
       </map>
     </option>
   </component>

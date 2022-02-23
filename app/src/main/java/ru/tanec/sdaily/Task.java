@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class Task extends Fragment {
     FragmentActivity activity;
-    RecyclerView taskrecycler;
+    RecyclerView goalrecycler;
     Context context;
 
     public Task() {
@@ -28,11 +28,15 @@ public class Task extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        taskrecycler = view.findViewById(R.id.task_recycler);
+        goalrecycler = view.findViewById(R.id.goal_recycler);
 
+        NoteDataItem[] data = {null, null, null, null, null, null, null, null, null};
+        goalrecycler.setAdapter(new TaskAdapter(context, activity, data));
 
-        /*noteRecycler = view.findViewById(R.id.task_recycler);
-        NoteDataItem[] data = null;
-        noteRecycler.setAdapter(new NoteAdapter(getActivity().getApplicationContext(), data));*/
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 }

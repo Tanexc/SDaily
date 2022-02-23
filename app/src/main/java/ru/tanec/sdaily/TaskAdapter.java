@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
+class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
     NoteDataItem[] list;
     public Context context;
     FragmentActivity activity;

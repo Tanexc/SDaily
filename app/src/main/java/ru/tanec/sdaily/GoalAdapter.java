@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
+class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
 
     NoteDataItem[] list;
     public Context context;

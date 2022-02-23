@@ -44,5 +44,8 @@ public class Goal extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
+
+
 }
