@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class Goal extends Fragment {
 
     FragmentActivity activity;
@@ -38,6 +40,11 @@ public class Goal extends Fragment {
 
         NoteDataItem[] data = {null, null, null, null, null, null, null, null, null};
         goalrecycler.setAdapter(new GoalAdapter(context, activity, data));
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(v -> {
+            MakeGoals fragment = new MakeGoals();
+            fragment.show(requireActivity().getSupportFragmentManager(), "makeGoal");
+        });
 
     }
     @Override
