@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <ImageButton
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/red_btn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="113dp">
+
+    </ImageButton>
+
+    <ImageButton
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/yellow_btn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="113dp">
+
+    </ImageButton>
+
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/new_moon"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="119dp">
+
+    </ImageButton>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="303dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="Описание"
+        app:drawableTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="191dp" />
+
+    <EditText
+        android:id="@+id/Date"
+        android:layout_width="134dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Дата"
+        android:textColor="#808080"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="561dp" />
+
+
+    <EditText
+        android:id="@+id/Time"
+        android:layout_width="87dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="time"
+        android:text="Время"
+        android:textColor="#808080"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="258dp"
+        tools:layout_editor_absoluteY="561dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="29dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="454dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="29dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteY="454dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

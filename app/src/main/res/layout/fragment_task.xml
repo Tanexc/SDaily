@@ -8,7 +8,7 @@
     tools:context=".fragments.Task">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/task_recycler"
+        android:id="@+id/goal_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -19,6 +19,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
-        tools:listitem="@layout/note_item" />
+        tools:listitem="@layout/note_item"
+        tools:ignore="InvalidId" />
 
 </FrameLayout>
