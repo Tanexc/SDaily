@@ -7,7 +7,6 @@ import androidx.room.TypeConverters;
 
 
 @Entity
-@TypeConverters({ConverterForNE.class})
 public class NoteEntity {
 
     @PrimaryKey
@@ -20,6 +19,7 @@ public class NoteEntity {
     public int type;
     public String date;
     public String time;
+    public long beginDateMls;
     public int dayOfWeek;
     public int startHour;
     public int startMinute;

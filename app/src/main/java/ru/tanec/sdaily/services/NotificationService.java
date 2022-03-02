@@ -18,6 +18,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
@@ -42,21 +45,25 @@ import ru.tanec.sdaily.database.TimeTableEntity;
 import ru.tanec.sdaily.services.recivers.NotificationReceiver;
 
 
-public class NotificationService extends Service {
+public class NotificationService extends LifecycleService {
 
     NotificationCompat.Builder mainNotification;
     DataBase db = DataBaseApl.getInstance().getDatabase();
+    List<NoteEntity> notes;
+
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     String[] daysOfWeek = new String[]{"", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        super.onStartCommand(intent, flags, startId);
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             NotificationChannel ch = new NotificationChannel("101", "channel", NotificationManager.IMPORTANCE_HIGH);
             ch.enableVibration(true);
@@ -76,20 +83,25 @@ public class NotificationService extends Service {
 
         startForeground(101, mainNotification.build());
 
+        lifeDataNotes();
         new Thread(() -> {
+            Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            Calendar calendar = Calendar.getInstance();
+            long t;
+
             while (true) {
-                ArrayList<NoteEntity> notes = getDayNotes();
-                for (NoteEntity note : notes) {
-                    String[] timeNow = getTimeNow().split("-");
-                    int d = Integer.parseInt(note.time.split("-")[1]) - Integer.parseInt(timeNow[1]);
-                    if (note.time.split("-")[0].equals(timeNow[0]) && d < 5 && d > 0) {
-                        String s;
-                        try {
-                            s = note.description.substring(0, 20) + "...";
-                        } catch (Exception e) {
-                            s = note.description.substring(0, 20);
+                if (notes != null) {
+                    for (NoteEntity note : notes) {
+                        t = calendar.getTime().getTime();
+                        if (note.beginDateMls >= t & note.beginDateMls - 600000 <= t) {
+                            sendNotification(note.title, note.description, note.id, note.time);
+                            vibrator.vibrate(VibrationEffect.createWaveform(new long[]{100, 200, 100, 200}, new int[]{VibrationEffect.EFFECT_TICK, 0, VibrationEffect.EFFECT_TICK, 0}, 1));
+                            try {
+                                Thread.sleep(note.duration - 1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        sendNotification(note.title, s, note.id);
                     }
                 }
             }
@@ -123,7 +135,7 @@ public class NotificationService extends Service {
         return START_NOT_STICKY;
     }
 
-    void sendNotification(String title, String text, long id) {
+    void sendNotification(String title, String text, long id, @Nullable String startTime) {
         Intent okIntent = new Intent(this, NotificationReceiver.class);
         okIntent.putExtra("action", 1);
         okIntent.putExtra("notification", id);
@@ -134,7 +146,9 @@ public class NotificationService extends Service {
         PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
+        if (startTime != null) {
+            text = "At " + startTime + ". " + text;
+        }
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this, "101")
                         .setContentTitle(title)
@@ -145,31 +159,9 @@ public class NotificationService extends Service {
                         .setPriority(NotificationCompat.PRIORITY_HIGH);
         Notification notification = builder.build();
 
-        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(new long[]{200, 600, 200, 600}, -1);
-
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(1, notification);
 
-    }
-
-    public ArrayList<NoteEntity> getDayNotes() {
-
-        String date = getDateNow();
-
-        NoteDao noteDao = db.noteDao();
-        LiveData<List<NoteEntity>> data = noteDao.getAll();
-        List<NoteEntity> notes = data.getValue();
-
-        ArrayList<NoteEntity> dayNotes = new ArrayList<NoteEntity>();
-
-        assert notes != null;
-        for (NoteEntity note : notes) {
-            if (note.date.equals(date)) {
-                dayNotes.add(note);
-            }
-        }
-        return dayNotes;
     }
 
     public RangeItem[] getRanges() {
@@ -184,20 +176,17 @@ public class NotificationService extends Service {
         return d;
     }
 
+    public void lifeDataNotes() {
+        NoteDao nd = db.noteDao();
+        LiveData<List<NoteEntity>> ld = nd.getAll();
+        ld.observe(this, noteEntities -> notes = noteEntities);
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        super.onBind(intent);
         return null;
     }
 
-    public String getTimeNow() {
-        Calendar calendar = Calendar.getInstance();
-        return timeFormat.format(calendar.getTime());
-    }
-
-    public String getDateNow() {
-        Calendar calendar = Calendar.getInstance();
-        return dateFormat.format(calendar.getTime());
-
-    }
 }

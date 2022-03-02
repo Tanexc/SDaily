@@ -15,6 +15,10 @@ public interface NoteDao {
 
     @Query("SELECT * FROM noteentity")
     LiveData<List<NoteEntity>> getAll();
+
+    @Query("SELECT * FROM noteentity")
+    NoteEntity[] getAllNotes();
+
     @Query("SELECT * FROM noteentity WHERE id = :id")
     NoteEntity getById(long id);
 

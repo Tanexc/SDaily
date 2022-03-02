@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import java.util.logging.Logger;
+
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.items.RangeItem;
 import ru.tanec.sdaily.adapters.items.TimeTableItem;
@@ -86,7 +88,7 @@ public class RangeFragment extends DialogFragment {
         }).start();
 
         accept_btn.setOnClickListener(e -> {
-            this.onDestroy();
+            this.getParentFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
         });
     }
 

@@ -3,12 +3,16 @@ package ru.tanec.sdaily.services.recivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.number.Scale;
 import android.os.Vibrator;
 import android.util.Range;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
@@ -32,129 +36,70 @@ public class NotificationReceiver extends BroadcastReceiver {
             case 2:
                 noteReplace(intent.getIntExtra("notification", 0));
         }
-
+        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.cancel();
     }
 
     public void noteReplace(long id) {
         DataBase db = DataBaseApl.getInstance().getDatabase();
         NoteDao nd = db.noteDao();
-
         TimeTableDao td = db.timeTableDao();
+        Calendar calendar = Calendar.getInstance();
+        long t = calendar.getTime().getTime();
 
         NoteDataItem newNote = new NoteDataItem();
-
         NoteEntity noteToReplase = nd.getById(id);
-
         newNote.setFromEntity(noteToReplase);
-
         nd.delete(noteToReplase);
 
         NoteEntity[] notesLow = nd.getByType(0);
         NoteEntity[] notesMedium = nd.getByType(1);
         NoteEntity[] notesHigh = nd.getByType(2);
 
-        List<TimeTableEntity> timeTable = td.getAll().getValue();
-
-        int nH = Integer.parseInt(newNote.time.split("-")[0]);
-        String nM = newNote.time.split("-")[1];
-        String[] date = newNote.date.split("-");
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
-        float duration = (float) newNote.duration / 3600000;
-
-
-        switch (newNote.type) {
-            case 0:
-                while (true) {
-                    String dt = dateFormat.format(calendar.getTime());
-                    int day = calendar.get(Calendar.DAY_OF_WEEK) - 2;
-                    if (day < 0) {
-                        day = 6;
-                    }
-                    Boolean[] dayfill = getDayFill(td.getById(day).timerange);
-                    for (NoteEntity n: notesHigh) {
-                        if (n.date.equals(dt)) {
-                            if (0 < n.startMinute && n.startMinute < 40) {
-                                dayfill[n.startHour] = null;
-                            }
-                            for (int i = n.startHour + 1; i < n.endHour; i++) {
-                                dayfill[i] = true;
-                            }
-                            if (20 >= n.endMinute) {
-                                dayfill[n.endHour] = null;
-                            }
-                        }
-                    }
-                    for (NoteEntity n: notesMedium) {
-                        if (n.date.equals(dt)) {
-                            if (0 < n.startMinute && n.startMinute < 40) {
-                                dayfill[n.startHour] = null;
-                            }
-                            for (int i = n.startHour + 1; i < n.endHour; i++) {
-                                dayfill[i] = true;
-                            }
-                            if (20 >= n.endMinute) {
-                                dayfill[n.endHour] = null;
-                            }
-                        }
-                    }
-                    for (NoteEntity n: notesLow) {
-                        if (n.date.equals(dt)) {
-                            if (0 < n.startMinute && n.startMinute < 40) {
-                                dayfill[n.startHour] = null;
-                            }
-                            for (int i = n.startHour + 1; i < n.endHour; i++) {
-                                dayfill[i] = true;
-                            }
-                            if (20 >= n.endMinute) {
-                                dayfill[n.endHour] = null;
-                            }
-                        }
-                    }
-                    int h = 0;
-                    while (h < 23) {
-                        float dr = 0;
-                        int d = 0;
-                        while (!dayfill[h + d]) {
-                            d += 1;
-                            if (dayfill[h + d] == null) {
-                                if (dr == 0) {
-                                    dr += 0.33;
-                                } else {
-                                    dr += 0.67;
-                                }
-                            } else {
-                                dr += 1;
-                            }
-                            if (dr >= duration) {
-                                newNote.startHour = h;
-                                if (dayfill[h] == null) {
-                                    newNote.startMinute = 40;
-                                }
-                                newNote.endHour = h + d;
-                                if (dayfill[h + d] == null) {
-                                    newNote.endHour -= 1;
-                                    newNote.endMinute = 20;
-                                }
-                                newNote.duration = (long) dr * 3600000;
-                                h = 100;
-                                break;
-                            }
-                        }
-                        h += d + 1;
-                    }
-                    if (h == 100) {
-                        break;
-                    }
-                    calendar.add(Calendar.DAY_OF_MONTH, 1);
-                }
-                newNote.setTime();
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
+        ArrayList<Long> d = new ArrayList<Long>();
+        HashMap<Long, NoteEntity> typesTable = new HashMap<Long, NoteEntity>();
+        for (NoteEntity note: notesLow) {
+            d.add(note.beginDateMls);
+            typesTable.put(note.beginDateMls, note);
         }
+        for (NoteEntity note: notesMedium) {
+            d.add(note.beginDateMls);
+            typesTable.put(note.beginDateMls, note);
+        }
+        for (NoteEntity note: notesHigh) {
+            d.add(note.beginDateMls);
+            typesTable.put(note.beginDateMls, note);
+        }
+        Collections.sort(d);
+
+        boolean changed = false;
+        int i = 1;
+        while (i < d.size()) {
+            long d1 = d.get(i);
+            long d0 = d.get(i - 1);
+
+            if (d0 > t) {
+                if (d1 - d0 - typesTable.get(d0).duration >= newNote.duration) {
+                    newNote.beginDateMls = d1 - newNote.duration;
+                    changed = true;
+                    break;
+                } else if (newNote.type > typesTable.get(d0).type & d1 - d0 >= newNote.duration) {
+                    newNote.beginDateMls = d0;
+                    NoteEntity noteD0 = typesTable.get(d0);
+                    noteReplace(noteD0.id);
+                    nd.update(noteD0);
+                    changed = true;
+                    break;
+                }
+            }
+            i++;
+        }
+        if (!changed) {
+            long dl = d.get(d.size() - 1);
+            NoteEntity newNoteEntity = newNote.getEntity();
+            newNoteEntity.beginDateMls = dl + typesTable.get(dl).duration;
+        }
+        nd.insert(newNote.getEntity());
     }
 
     public Boolean[] getDayFill(RangeItem[] ranges) {

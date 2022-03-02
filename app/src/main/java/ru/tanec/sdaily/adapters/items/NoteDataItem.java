@@ -8,6 +8,7 @@ public class NoteDataItem extends ItemList {
     public boolean finished;
     public boolean todoin;
     public long duration;
+    public long beginDateMls;
     public int type;
     public String date;
     public int dayOfWeek;
@@ -67,5 +68,24 @@ public class NoteDataItem extends ItemList {
         }
         this.time = sh + "-" + sm;
 
+    }
+
+    public NoteEntity getEntity() {
+        NoteEntity entity = new NoteEntity();
+        entity.duration = duration;
+        entity.type = type;
+        entity.date = date;
+        entity.endHour = endHour;
+        entity.startHour = startHour;
+        entity.startMinute = startMinute;
+        entity.endMinute = endMinute;
+        entity.beginDateMls = beginDateMls;
+        entity.finished = finished;
+        entity.description = description;
+        entity.id = id;
+        entity.dayOfWeek = dayOfWeek;
+        entity.title = title;
+        entity.time = time;
+        return entity;
     }
 }
