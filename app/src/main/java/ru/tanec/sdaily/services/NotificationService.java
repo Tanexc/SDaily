@@ -68,6 +68,12 @@ public class NotificationService extends LifecycleService {
             NotificationChannel ch = new NotificationChannel("101", "channel", NotificationManager.IMPORTANCE_HIGH);
             ch.enableVibration(true);
             ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(ch);
+            NotificationChannel ch2 = new NotificationChannel("102", "channel2", NotificationManager.IMPORTANCE_HIGH);
+            ch2.enableVibration(true);
+            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(ch2);
+            NotificationChannel ch3 = new NotificationChannel("103", "channel3", NotificationManager.IMPORTANCE_HIGH);
+            ch3.enableVibration(true);
+            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(ch3);
         }
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
@@ -83,6 +89,7 @@ public class NotificationService extends LifecycleService {
 
         startForeground(101, mainNotification.build());
 
+        NoteDao nd = db.noteDao();
         lifeDataNotes();
         new Thread(() -> {
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -93,14 +100,24 @@ public class NotificationService extends LifecycleService {
                 if (notes != null) {
                     for (NoteEntity note : notes) {
                         t = calendar.getTime().getTime();
-                        if (note.beginDateMls >= t & note.beginDateMls - 600000 <= t) {
-                            sendNotification(note.title, note.description, note.id, note.time);
+                        if (note.beginDateMls >= t & note.beginDateMls - 600000 <= t & !note.notified) {
+                            note.notified = true;
+                            sendNotification(note.title, note.description, note.id, note.time, 0);
                             vibrator.vibrate(VibrationEffect.createWaveform(new long[]{100, 200, 100, 200}, new int[]{VibrationEffect.EFFECT_TICK, 0, VibrationEffect.EFFECT_TICK, 0}, 1));
                             try {
                                 Thread.sleep(note.duration - 1000);
+                                vibrator.cancel();
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+                        }
+                        else if (note.beginDateMls + note.duration <= t & note.beginDateMls + note.duration >= t - 60000 & !note.postNotified) {
+                            note.postNotified = true;
+                            sendNotification(note.title, note.description, note.id, note.time, 1);
+                        }
+                        if (t > note.beginDateMls + note.duration) {
+                            note.missed = true;
+                            nd.update(note);
                         }
                     }
                 }
@@ -108,6 +125,7 @@ public class NotificationService extends LifecycleService {
         }).start();
 
         new Thread(() -> {
+
             SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             while (true) {
@@ -119,7 +137,7 @@ public class NotificationService extends LifecycleService {
                         if (Integer.parseInt(timeNow[0]) == range.start_hour && (range.start_minute - Integer.parseInt(timeNow[1]) <= 5) && (range.start_minute - Integer.parseInt(timeNow[1]) >= 0)) {
                             long mls = range.getDuration();
                             String duration = range.getStringDuration();
-                            startForeground(101, mainNotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).setContentTitle(range.title + ". Remember that").setContentText(range.title + " " + duration).build());
+                            startForeground(101, mainNotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).setContentTitle("Remember that").setContentText(range.title + " " + duration).build());
                             vibrator.vibrate(VibrationEffect.createWaveform(new long[]{100, 200, 100, 200}, new int[]{VibrationEffect.EFFECT_TICK, 0, VibrationEffect.EFFECT_TICK, 0}, -1));
                             try {
                                 Thread.sleep(mls);
@@ -135,28 +153,51 @@ public class NotificationService extends LifecycleService {
         return START_NOT_STICKY;
     }
 
-    void sendNotification(String title, String text, long id, @Nullable String startTime) {
+    void sendNotification(String title, String text, long id, @Nullable String startTime, Integer notificationFun) {
         Intent okIntent = new Intent(this, NotificationReceiver.class);
         okIntent.putExtra("action", 1);
         okIntent.putExtra("notification", id);
         Intent dismissIntent = new Intent(this, NotificationReceiver.class);
         dismissIntent.putExtra("action", 2);
         dismissIntent.putExtra("notification", id);
+        Intent yesIntent = new Intent(this, NotificationReceiver.class);
+        yesIntent.putExtra("executed", 1);
+        yesIntent.putExtra("action", 3);
+        yesIntent.putExtra("notification", id);
+        Intent noIntent = new Intent(this, NotificationReceiver.class);
+        noIntent.putExtra("executed", 0);
+        noIntent.putExtra("action", 3);
+        noIntent.putExtra("notification", id);
 
         PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
         PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+
         if (startTime != null) {
             text = "At " + startTime + ". " + text;
         }
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this, "101")
-                        .setContentTitle(title)
-                        .setSmallIcon(R.drawable.new_moon)
-                        .setContentText(text)
-                        .addAction(R.drawable.ic_baseline_nights_stay_24, "Ok", okPendingIntent)
-                        .addAction(R.drawable.ic_baseline_wb_sunny_24, "Dismiss", dismissPendingIntent)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH);
+        NotificationCompat.Builder builder;
+        if (notificationFun == 0) {
+            builder =
+                    new NotificationCompat.Builder(this, "102")
+                            .setContentTitle(title)
+                            .setSmallIcon(R.drawable.new_moon)
+                            .setContentText(text)
+                            .addAction(R.drawable.ic_baseline_nights_stay_24, "Ok", okPendingIntent)
+                            .addAction(R.drawable.ic_baseline_wb_sunny_24, "Dismiss", dismissPendingIntent)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH);
+        } else {
+            builder =
+                    new NotificationCompat.Builder(this, "103")
+                            .setContentTitle(title)
+                            .setSmallIcon(R.drawable.new_moon)
+                            .setContentText(text)
+                            .addAction(R.drawable.ic_baseline_nights_stay_24, "Yes", yesPendingIntent)
+                            .addAction(R.drawable.ic_baseline_wb_sunny_24, "No", noPendingIntent)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH);
+        }
         Notification notification = builder.build();
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
@@ -172,8 +213,7 @@ public class NotificationService extends LifecycleService {
         }
         TimeTableDao td = db.timeTableDao();
         TimeTableEntity deal = td.getById(day);
-        RangeItem[] d = deal.timerange;
-        return d;
+        return deal.timerange;
     }
 
     public void lifeDataNotes() {

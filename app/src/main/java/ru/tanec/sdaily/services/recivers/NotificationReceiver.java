@@ -25,25 +25,26 @@ import ru.tanec.sdaily.database.TimeTableDao;
 import ru.tanec.sdaily.database.TimeTableEntity;
 
 public class NotificationReceiver extends BroadcastReceiver {
-
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    DataBase db = DataBaseApl.getInstance().getDatabase();
 
     @Override
     public void onReceive(Context context, Intent intent) {
         switch(intent.getIntExtra("action", 0)){
             case 1:
-
+                break;
             case 2:
                 noteReplace(intent.getIntExtra("notification", 0));
+                break;
+            case 3:
+                noteExecute(intent.getIntExtra("notification", 0),
+                            intent.getIntExtra("executed", 0));
         }
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         vibrator.cancel();
     }
 
     public void noteReplace(long id) {
-        DataBase db = DataBaseApl.getInstance().getDatabase();
         NoteDao nd = db.noteDao();
-        TimeTableDao td = db.timeTableDao();
         Calendar calendar = Calendar.getInstance();
         long t = calendar.getTime().getTime();
 
@@ -97,6 +98,8 @@ public class NotificationReceiver extends BroadcastReceiver {
         if (!changed) {
             long dl = d.get(d.size() - 1);
             NoteEntity newNoteEntity = newNote.getEntity();
+            newNoteEntity.notified = false;
+            newNoteEntity.postNotified = false;
             newNoteEntity.beginDateMls = dl + typesTable.get(dl).duration;
         }
         nd.insert(newNote.getEntity());
@@ -120,5 +123,13 @@ public class NotificationReceiver extends BroadcastReceiver {
             }
         }
         return fill;
+    }
+
+    public void noteExecute(int id, int state) {
+        NoteDao nd = db.noteDao();
+        NoteEntity note = nd.getById(id);
+         if (state == 1) {
+             note.finished = true;
+         }
     }
 }

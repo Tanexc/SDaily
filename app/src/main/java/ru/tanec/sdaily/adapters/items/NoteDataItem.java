@@ -4,6 +4,7 @@ import ru.tanec.sdaily.database.NoteEntity;
 
 public class NoteDataItem extends ItemList {
     public String title;
+    public long id;
     public String description;
     public boolean finished;
     public boolean todoin;
@@ -13,12 +14,15 @@ public class NoteDataItem extends ItemList {
     public String date;
     public int dayOfWeek;
     public String time;
+    public boolean missed = false;
     public int startHour;
     public int startMinute;
     public int endHour;
     public int endMinute;
+    public boolean notified = false;
+    public boolean postNotified = false;
 
-    public NoteDataItem(String title, String description, boolean finished, boolean todoin, int type, String date, long duration, int dayOfWeek, String time) {
+    public NoteDataItem(long id, String title, String description, boolean finished, boolean todoin, int type, String date, long duration, int dayOfWeek, String time) {
         this.title = title;
         this.description = description;
         this.finished = finished;
@@ -28,13 +32,13 @@ public class NoteDataItem extends ItemList {
         this.duration = duration;
         this.dayOfWeek = dayOfWeek;
         this.time = time;
+        this.id = id;
     }
 
-    public NoteDataItem() {
-
-    }
+    public NoteDataItem(){}
 
     public void setFromEntity(NoteEntity entity) {
+        id = entity.id;
         title = entity.title;
         description = entity.description;
         finished = entity.finished;
@@ -48,6 +52,8 @@ public class NoteDataItem extends ItemList {
         startMinute = entity.startMinute;
         endHour = entity.endHour;
         endMinute = entity.endMinute;
+        notified = entity.notified;
+        postNotified = entity.postNotified;
     }
 
     public void setTimeBoarders(int startHour, int startMinute, int endHour, int endMinute) {
@@ -86,6 +92,8 @@ public class NoteDataItem extends ItemList {
         entity.dayOfWeek = dayOfWeek;
         entity.title = title;
         entity.time = time;
+        entity.notified = notified;
+        entity.postNotified = postNotified;
         return entity;
     }
 }

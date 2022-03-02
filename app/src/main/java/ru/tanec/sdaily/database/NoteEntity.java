@@ -17,8 +17,11 @@ public class NoteEntity {
     public boolean finished;
     public boolean todoin;
     public int type;
+    public boolean missed;
     public String date;
     public String time;
+    public boolean notified;
+    public boolean postNotified;
     public long beginDateMls;
     public int dayOfWeek;
     public int startHour;
