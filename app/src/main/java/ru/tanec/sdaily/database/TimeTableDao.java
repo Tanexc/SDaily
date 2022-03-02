@@ -19,12 +19,12 @@ public interface TimeTableDao {
     TimeTableEntity getById(long id);
 
     @Insert
-    void insert(TimeTableEntity employee);
+    void insert(TimeTableEntity tdi);
 
     @Update
-    void update(TimeTableEntity employee);
+    void update(TimeTableEntity tdi);
 
     @Delete
-    void delete(TimeTableEntity employee);
+    void delete(TimeTableEntity tdi);
 
 }

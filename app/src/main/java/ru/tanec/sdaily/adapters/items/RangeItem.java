@@ -1,10 +1,10 @@
 package ru.tanec.sdaily.adapters.items;
 
 public class RangeItem extends ItemList {
-    public int start_hour = 0;
-    public int start_minute = 0;
-    public int end_minute = 0;
-    public int end_hour = 0;
+    public Integer start_hour = 0;
+    public Integer start_minute = 0;
+    public Integer end_minute = 0;
+    public Integer end_hour = 0;
     public int id;
     public int deleted = 1;
     public String title = "Untitled";
@@ -30,10 +30,34 @@ public class RangeItem extends ItemList {
         return new int[]{end_hour, end_minute};
     }
 
-    public int[] getDuration() {
+    public long getDuration() {
         int d_hour = end_hour - start_hour;
-        int d_minute = Math.abs(end_minute - start_minute);
-        return new int[]{d_hour, d_minute};
+        int d_minute = end_minute - start_minute;
+        if (d_minute < 0) {
+            d_minute = 60 + d_minute;
+            d_hour -= 1;
+        }
+        return d_hour * 3600000L + d_minute * 60000L;
+    }
+
+    public String getStringDuration() {
+        String s_h = start_hour.toString();
+        String s_m = start_minute.toString();
+        String e_h = end_hour.toString();
+        String e_m = end_minute.toString();
+        if (s_h.length() < 2) {
+            s_h = "0" + s_h;
+        }
+        if (s_m.length() < 2) {
+            s_m = "0" + s_m;
+        }
+        if (e_h.length() < 2) {
+            e_h = "0" + e_h;
+        }
+        if (e_m.length() < 2) {
+            e_m = "0" + e_m;
+        }
+        return s_h + ":" + s_m + " - " + e_h + ":" + e_m;
     }
 
     public void setId(int id) {

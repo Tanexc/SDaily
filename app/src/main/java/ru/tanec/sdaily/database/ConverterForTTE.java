@@ -44,20 +44,22 @@ public class ConverterForTTE {
         }
 
         data = new RangeItem[sl];
-        if (sl != 1) {
+        if (sl != 0) {
             for (int i = 0; i < sl; i++) {
-                String[] timerange = stringData[i].split(";");
-                int id = Integer.parseInt(timerange[0]);
-                int sh = Integer.parseInt(timerange[1]);
-                int sm = Integer.parseInt(timerange[2]);
-                int eh = Integer.parseInt(timerange[3]);
-                int em = Integer.parseInt(timerange[4]);
-                String title = timerange[5];
-                data[i] = new RangeItem();
-                data[i].setStartTime(sh, sm);
-                data[i].setEndTime(eh, em);
-                data[i].setId(id);
-                data[i].setTitle(title);
+                if (stringData[i].length() > 0) {
+                    String[] timerange = stringData[i].split(";");
+                    int id = Integer.parseInt(timerange[0]);
+                    int sh = Integer.parseInt(timerange[1]);
+                    int sm = Integer.parseInt(timerange[2]);
+                    int eh = Integer.parseInt(timerange[3]);
+                    int em = Integer.parseInt(timerange[4]);
+                    String title = timerange[5];
+                    data[i] = new RangeItem();
+                    data[i].setStartTime(sh, sm);
+                    data[i].setEndTime(eh, em);
+                    data[i].setId(id);
+                    data[i].setTitle(title);
+                }
             }
         }
         return data;
