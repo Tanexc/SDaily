@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ru.tanec.sdaily.R;
+import ru.tanec.sdaily.adapters.TaskAdapter;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 
 public class Task extends Fragment {
     FragmentActivity activity;

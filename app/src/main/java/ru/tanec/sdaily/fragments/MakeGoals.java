@@ -3,6 +3,7 @@ package ru.tanec.sdaily.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import ru.tanec.sdaily.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
