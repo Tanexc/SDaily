@@ -1,11 +1,13 @@
-package ru.tanec.sdaily.fragments;
+package ru.tanec.sdaily;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.GoalAdapter;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Goal extends Fragment {
 
