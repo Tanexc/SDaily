@@ -55,15 +55,31 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
     static class GoalViewHolder extends RecyclerView.ViewHolder {
 
+        boolean opened;
         NoteDataItem obj;
         TextView title;
+        TextView description;
+
 
 
         public GoalViewHolder(@NonNull View itemView, NoteDataItem it) {
             super(itemView);
-            /*this.title = itemView.findViewById(R.id.title);
-            this.obj = it;
-            this.title.setText(it.title);*/
+
+            /*opened = false;
+            description = itemView.findViewById(R.id.description);
+            obj = it;
+            title = itemView.findViewById(R.id.title);
+            title.setText(obj.title);
+            description.setOnClickListener(l -> {
+                if (opened) {
+                    description.setText(obj.getDescriptionSmall());
+                    opened = false;
+                } else {
+                    description.setText(obj.description);
+                    opened = true;
+                }
+            });*/
+
         }
 
     }

@@ -4,21 +4,21 @@ import ru.tanec.sdaily.database.NoteEntity;
 
 public class NoteDataItem extends ItemList {
     public String title;
-    public long id;
     public String description;
-    public boolean finished;
-    public boolean todoin;
+    public String time;
+    public String date;
+    public long id;
     public long duration;
     public long beginDateMls;
-    public int type;
-    public String date;
-    public int dayOfWeek;
-    public String time;
-    public boolean missed = false;
     public int startHour;
     public int startMinute;
     public int endHour;
     public int endMinute;
+    public int type;
+    public int dayOfWeek;
+    public boolean finished;
+    public boolean todoin;
+    public boolean missed = false;
     public boolean notified = false;
     public boolean postNotified = false;
 
@@ -95,5 +95,13 @@ public class NoteDataItem extends ItemList {
         entity.notified = notified;
         entity.postNotified = postNotified;
         return entity;
+    }
+
+    public String getDescriptionSmall() {
+        if (description.length() > 20) {
+            return description.substring(0, 20);
+        } else {
+            return description;
+        }
     }
 }

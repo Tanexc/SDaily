@@ -9,47 +9,26 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_margin="10dp"
-        android:layout_marginEnd="218dp"
+        android:layout_marginTop="25dp"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/red_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165">
-
-    </ImageButton>
-
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_margin="10dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/yellow_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165">
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
 
     </ImageButton>
 
@@ -57,84 +36,338 @@
         android:id="@+id/imageButton3"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="218dp"
+        android:layout_marginTop="25dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/yellow_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="25dp"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/new_moon"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.755"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163">
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
 
     </ImageButton>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="303dp"
+        android:id="@+id/description"
+        android:layout_width="match_parent"
         android:layout_height="239dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
         android:text="Описание"
         app:drawableTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
-    <EditText
-        android:id="@+id/Date"
-        android:layout_width="134dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="date"
-        android:text="Дата"
-        android:textColor="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/text_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/Ru_complete"
+        android:textColor="@color/app_color_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
-    <EditText
-        android:id="@+id/Time"
-        android:layout_width="87dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="time"
-        android:text="Время"
-        android:textColor="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/text_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/Ru_duration"
+        android:textColor="@color/app_color_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
+        app:layout_constraintTop_toBottomOf="@+id/collapsibleCalendar" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Ru_before"
+        android:textColor="@color/app_color_dark"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Ru_at"
+        android:textColor="@color/app_color_dark"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <RadioButton
         android:id="@+id/radioButton"
         android:layout_width="29dp"
         android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="-10dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <RadioButton
         android:id="@+id/radioButton2"
         android:layout_width="29dp"
         android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ru.tanec.sdaily.custom.HTimePicker
+        android:id="@+id/start_hour"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="4dp"
+        android:text="12"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text=":"
+        android:textColor="@color/black"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+
+    <Button
+        android:id="@+id/plus_s_hour"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_hour"
+        app:layout_constraintEnd_toStartOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/minus_s_hour"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/start_hour" />
+
+
+    <ru.tanec.sdaily.custom.MTimePicker
+        android:id="@+id/start_minute"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="00"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.657" />
+
+    <Button
+        android:id="@+id/plus_s_minute"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_minute"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/minus_s_minute"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/start_minute" />
+
+    <ru.tanec.sdaily.custom.CollapsibleCalendar
+        android:id="@+id/collapsibleCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+
+    <ru.tanec.sdaily.custom.HTimePicker
+        android:id="@+id/hour_d"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="4dp"
+        android:text="00"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_d"
+        app:layout_constraintEnd_toStartOf="@+id/textView_d"
+        app:layout_constraintTop_toTopOf="@+id/textView_d" />
+
+    <TextView
+        android:id="@+id/textView_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text=":"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_duration" />
+
+    <Button
+        android:id="@+id/plus_hour"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/hour_d"
+        app:layout_constraintEnd_toStartOf="@+id/textView_d" />
+
+    <Button
+        android:id="@+id/minus_hour"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_d"
+        app:layout_constraintTop_toBottomOf="@+id/hour_d" />
+
+
+    <ru.tanec.sdaily.custom.MTimePicker
+        android:id="@+id/minute_d"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="00"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_d"
+        app:layout_constraintStart_toEndOf="@+id/textView_d"
+        app:layout_constraintTop_toTopOf="@+id/textView_d"
+        app:layout_constraintVertical_bias="0.657" />
+
+    <Button
+        android:id="@+id/plus_minute"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/minute_d"
+        app:layout_constraintStart_toEndOf="@+id/textView_d" />
+
+    <Button
+        android:id="@+id/minus_minute"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/range_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_d"
+        app:layout_constraintTop_toBottomOf="@+id/minute_d" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/ru_cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView_d" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:text="@string/Ru_apply"
+        app:layout_constraintTop_toBottomOf="@+id/textView_d" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

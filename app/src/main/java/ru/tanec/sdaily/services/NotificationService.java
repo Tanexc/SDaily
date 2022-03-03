@@ -1,5 +1,6 @@
 package ru.tanec.sdaily.services;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -24,6 +25,7 @@ import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
+import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -134,7 +136,7 @@ public class NotificationService extends LifecycleService {
                     if (range != null) {
                         Calendar calendar = Calendar.getInstance();
                         String[] timeNow = sdf.format(calendar.getTime()).split("-");
-                        if (Integer.parseInt(timeNow[0]) == range.start_hour && (range.start_minute - Integer.parseInt(timeNow[1]) <= 5) && (range.start_minute - Integer.parseInt(timeNow[1]) >= 0)) {
+                        if (Integer.parseInt(timeNow[0]) >= range.start_hour) {
                             long mls = range.getDuration();
                             String duration = range.getStringDuration();
                             startForeground(101, mainNotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).setContentTitle("Remember that").setContentText(range.title + " " + duration).build());
@@ -213,7 +215,12 @@ public class NotificationService extends LifecycleService {
         }
         TimeTableDao td = db.timeTableDao();
         TimeTableEntity deal = td.getById(day);
-        return deal.timerange;
+        RangeItem[] ranges = new RangeItem[]{};
+
+        if (deal != null) {
+            ranges = deal.timerange;
+        }
+        return ranges;
     }
 
     public void lifeDataNotes() {

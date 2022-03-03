@@ -5,4 +5,14 @@
     <string name="dialog_title_column">Название</string>
     <string name="dialog_item_begin">Начало</string>
     <string name="dialog_item_finish">Конец</string>
+    <string name="Ru_before">До</string>
+    <string name="Ru_at">В</string>
+    <string name="Ru_complete">Выполнить</string>
+    <string name="test_description">Описание ytj,[jlbvj cltkfnm nj xnj ye;yj? jlyjfrj \'nj yt d yfib[ ckf[ b \'nj elhexftn; jhlyfrj? z dth. xnj dct gjkexbncz d crjhjv ,eeleotv</string>
+    <string name="En_timetable">timetable</string>
+    <string name="En_task">task</string>
+    <string name="En_goal">goal</string>
+    <string name="Ru_duration">Продолжительность</string>
+    <string name="ru_cancel">закрыть</string>
+    <string name="Ru_apply">готово</string>
 </resources>
