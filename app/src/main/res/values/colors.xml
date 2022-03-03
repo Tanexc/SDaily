@@ -18,5 +18,7 @@
     <color name="app_color_button">#7accf0</color>
     <color name="app_color_2">#B9D7EA</color>
     <color name="app_color_gray">#434345</color>
+    <color name="green">#98fb98</color>
+    <color name="red">#ff6161</color>
 
 </resources>

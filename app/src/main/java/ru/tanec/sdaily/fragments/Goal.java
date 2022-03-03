@@ -1,4 +1,4 @@
-package ru.tanec.sdaily;
+package ru.tanec.sdaily.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -44,6 +44,11 @@ public class Goal extends Fragment {
 
         NoteDataItem[] data = {null, null, null, null, null, null, null, null, null};
         goalrecycler.setAdapter(new GoalAdapter(context, activity, data));
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(v -> {
+            MakeGoals fragment = new MakeGoals();
+            fragment.show(requireActivity().getSupportFragmentManager(), "makeGoal");
+        });
 
     }
     @Override
