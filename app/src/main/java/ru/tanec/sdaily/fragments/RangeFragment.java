@@ -66,7 +66,7 @@ public class RangeFragment extends DialogFragment {
         accept_btn = view.findViewById(R.id.dialog_accept_btn);
 
         new Thread(() -> {
-            db = DataBaseApl.getInstance().getDatabase();
+            db = DataBaseApl.instance.getDatabase();
             td = db.timeTableDao();
             TimeTableEntity a;
             try {
@@ -103,7 +103,7 @@ public class RangeFragment extends DialogFragment {
         data = recycler_adapter.getList();
         int id = obj.id;
         new Thread(() -> {
-            db = DataBaseApl.getInstance().getDatabase();
+            db = DataBaseApl.instance.getDatabase();
             td = db.timeTableDao();
             TimeTableEntity ne = new TimeTableEntity();
             ne.timerange = data;

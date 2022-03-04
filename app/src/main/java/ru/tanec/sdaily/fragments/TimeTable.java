@@ -47,7 +47,7 @@ public class TimeTable extends Fragment {
 
         timetableRecycler = view.findViewById(R.id.timetable_recycler);
         TimeTableItem[] data = new TimeTableItem[7];
-        db = DataBaseApl.getInstance().getDatabase();
+        db = DataBaseApl.instance.getDatabase();
         td = db.timeTableDao();
         td.getAll().observe(requireActivity(), timeTableEntities -> {
             for (TimeTableEntity item: timeTableEntities) {

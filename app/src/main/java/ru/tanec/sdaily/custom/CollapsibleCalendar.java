@@ -2,6 +2,8 @@ package ru.tanec.sdaily.custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -9,7 +11,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -20,6 +21,10 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import ru.tanec.sdaily.database.DataBase;
+import ru.tanec.sdaily.database.DataBaseApl;
+import ru.tanec.sdaily.database.NoteDao;
+import ru.tanec.sdaily.database.NoteEntity;
 import ru.tanec.sdaily.helpers.GestureHelper;
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.CalendarAdapter;
@@ -48,6 +53,8 @@ public class CollapsibleCalendar extends LinearLayout {
     Float HEIGHT_HIDDEN = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48,  getResources().getDisplayMetrics());
     Float currentHeight = HEIGHT_VISIBLE;
 
+    DataBase db = DataBaseApl.instance.getDatabase();
+
     @SuppressLint("ClickableViewAccessibility")
     public CollapsibleCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -64,16 +71,12 @@ public class CollapsibleCalendar extends LinearLayout {
                 selectedDate.add(DIVIDER, -1);
                 updateCalendar(new HashSet<>());
             }
-            @Override
-            public void onSwipeTop(){
-                Toast.makeText(context, "CUM", Toast.LENGTH_LONG).show();
-            }
         };
-
 
         heightCollapse.put(HEIGHT_HIDDEN, HEIGHT_VISIBLE);
         heightCollapse.put(HEIGHT_VISIBLE, HEIGHT_HIDDEN);
         today = new Date();
+        StaticValues.setViewDate(today);
         currentDate.setTime(today);
         initControl(context, attrs);
         gridView.setOnTouchListener(gestureHelper);
@@ -139,7 +142,10 @@ public class CollapsibleCalendar extends LinearLayout {
     }
 
     public void updateCalendar(HashSet<Date> events) {
+        ArrayList<Boolean> notes = new ArrayList<>();
         ArrayList<Date> cells = new ArrayList<>();
+
+        NoteDao nd = db.noteDao();
 
         int divider = Calendar.DAY_OF_MONTH;
 
@@ -163,14 +169,23 @@ public class CollapsibleCalendar extends LinearLayout {
 
         calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell);
 
-        while (cells.size() < DAY_COUNT)
-        {
-            cells.add(calendar.getTime());
-            calendar.add(divider, 1);
-        }
-
-        gridView.setAdapter(new CalendarAdapter(getContext(), cells, events, selectedDate));
-
+        int finalDivider = divider;
+        new Thread(() -> {
+            while (cells.size() < DAY_COUNT)
+            {
+                calendar.set(Calendar.HOUR, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+                NoteEntity[] ne = nd.getByDate(calendar.getTime().getTime());
+                notes.add((ne.length != 0));
+                cells.add(calendar.getTime());
+                calendar.add(finalDivider, 1);
+            }
+            new Handler(Looper.getMainLooper()).post(() -> {
+                gridView.setAdapter(new CalendarAdapter(getContext(), cells, selectedDate, notes));
+            });
+        }).start();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String[] dateToday = sdf.format(selectedDate.getTime()).split("-");
         month.setText(month_name[Integer.parseInt(dateToday[1])]);
@@ -178,3 +193,5 @@ public class CollapsibleCalendar extends LinearLayout {
         dayOfMonth = dateToday[2];
     }
 }
+
+

@@ -16,10 +16,6 @@ public class DataBaseApl extends Application {
         database = Room.databaseBuilder(this, DataBase.class, "database").build();
     }
 
-    public static DataBaseApl getInstance() {
-        return instance;
-    }
-
     public DataBase getDatabase() {
         return database;
     }

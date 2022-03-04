@@ -25,7 +25,7 @@ import ru.tanec.sdaily.database.TimeTableDao;
 import ru.tanec.sdaily.database.TimeTableEntity;
 
 public class NotificationReceiver extends BroadcastReceiver {
-    DataBase db = DataBaseApl.getInstance().getDatabase();
+    DataBase db = DataBaseApl.instance.getDatabase();
 
     @Override
     public void onReceive(Context context, Intent intent) {

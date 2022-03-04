@@ -25,6 +25,10 @@ public interface NoteDao {
     @Query("SELECT * FROM noteentity WHERE type = :type")
     NoteEntity[] getByType(int type);
 
+    @Query("SELECT * FROM noteentity WHERE beginDateMls = :date")
+    NoteEntity[] getByDate(long date);
+
+
     @Insert
     void insert(NoteEntity note);
 

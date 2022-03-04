@@ -65,11 +65,13 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         public GoalViewHolder(@NonNull View itemView, NoteDataItem it) {
             super(itemView);
 
-            /*opened = false;
+            opened = false;
             description = itemView.findViewById(R.id.description);
             obj = it;
             title = itemView.findViewById(R.id.title);
             title.setText(obj.title);
+
+
             description.setOnClickListener(l -> {
                 if (opened) {
                     description.setText(obj.getDescriptionSmall());
@@ -78,7 +80,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
                     description.setText(obj.description);
                     opened = true;
                 }
-            });*/
+            });
 
         }
 

@@ -42,8 +42,11 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu-v26/bottom_nav.xml" value="0.10885416666666667" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.20416666666666666" />
+        <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/drawable-v24/day_with_notes.xml" value="0.1495" />
+        <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/drawable-v24/selected_calendar_day.xml" value="0.1495" />
+        <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/drawable/current_date.xml" value="10.0" />
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/collapsible_calendar.xml" value="0.36770833333333336" />
-        <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/custom_calendar_day.xml" value="0.36770833333333336" />
+        <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/custom_calendar_day.xml" value="5.0" />
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/day_item.xml" value="0.1890625" />
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.67" />
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.36770833333333336" />

@@ -63,6 +63,11 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
         return lg;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     public void addItem(RangeItem ndi) {
         int d = getItemCount() + 1;
         RangeItem[] list1 = new RangeItem[d];

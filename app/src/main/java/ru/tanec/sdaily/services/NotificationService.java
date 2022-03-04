@@ -50,7 +50,7 @@ import ru.tanec.sdaily.services.recivers.NotificationReceiver;
 public class NotificationService extends LifecycleService {
 
     NotificationCompat.Builder mainNotification;
-    DataBase db = DataBaseApl.getInstance().getDatabase();
+    DataBase db = DataBaseApl.instance.getDatabase();
     List<NoteEntity> notes;
 
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
