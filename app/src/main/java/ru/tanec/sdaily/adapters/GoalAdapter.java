@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import ru.tanec.sdaily.R;
 
@@ -26,6 +27,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         this.list = data;
         this.activity = activity;
         cnt = -1;
+    }
+
+    public void setList(NoteDataItem[] list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -59,6 +65,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         NoteDataItem obj;
         TextView title;
         TextView description;
+        ImageView type;
 
 
 
@@ -70,7 +77,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             obj = it;
             title = itemView.findViewById(R.id.title);
             title.setText(obj.title);
-
+            type = itemView.findViewById(R.id.type);
 
             description.setOnClickListener(l -> {
                 if (opened) {

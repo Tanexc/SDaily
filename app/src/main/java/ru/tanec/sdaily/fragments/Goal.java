@@ -60,7 +60,6 @@ public class Goal extends Fragment {
                 new Handler(Looper.getMainLooper()).post(() -> {
                     goalrecycler.setAdapter(new GoalAdapter(context, activity, data));
                 });
-
             }).start();
         });
 

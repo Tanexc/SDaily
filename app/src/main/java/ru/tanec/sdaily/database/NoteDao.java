@@ -25,8 +25,11 @@ public interface NoteDao {
     @Query("SELECT * FROM noteentity WHERE type = :type")
     NoteEntity[] getByType(int type);
 
-    @Query("SELECT * FROM noteentity WHERE beginDateMls = :date")
+    @Query("SELECT * FROM noteentity WHERE beginDayMls = :date")
     NoteEntity[] getByDate(long date);
+
+    @Query("SELECT * FROM noteentity WHERE beginDayMls = :date")
+    LiveData<List<NoteEntity>> getLiveByDate(long date);
 
 
     @Insert

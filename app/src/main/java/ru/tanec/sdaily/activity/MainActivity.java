@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
             cal.set(Calendar.SECOND, 0);
             cal.set(Calendar.HOUR, 0);
             cal.set(Calendar.MILLISECOND, 0);
-            Date time = cal.getTime();
+
+
+
 
                 for (int i = 0; i < 7; i++) {
                     if (td.getById(i) == null) {

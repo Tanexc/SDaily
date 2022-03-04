@@ -44,7 +44,7 @@ public abstract class GestureHelper implements OnTouchListener {
             if (e1 != null && e2 != null) {
                 float diffY = e2.getY() - e1.getY();
                 float diffX = e2.getX() - e1.getX();
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > (float) 100 && Math.abs(velocityX) > (float) 100) {
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > (float) 80 && Math.abs(velocityX) > (float) 100) {
                     if (diffX > (float) 0) {
                         GestureHelper.this.onSwipeRight();
                     } else {
