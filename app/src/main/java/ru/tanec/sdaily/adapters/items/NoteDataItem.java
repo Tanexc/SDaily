@@ -1,5 +1,7 @@
 package ru.tanec.sdaily.adapters.items;
 
+import java.util.Date;
+
 import ru.tanec.sdaily.database.NoteEntity;
 
 public class NoteDataItem extends ItemList {
@@ -21,19 +23,6 @@ public class NoteDataItem extends ItemList {
     public boolean missed = false;
     public boolean notified = false;
     public boolean postNotified = false;
-
-    public NoteDataItem(long id, String title, String description, boolean finished, boolean todoin, int type, String date, long duration, int dayOfWeek, String time) {
-        this.title = title;
-        this.description = description;
-        this.finished = finished;
-        this.todoin = todoin;
-        this.type = type;
-        this.date = date;
-        this.duration = duration;
-        this.dayOfWeek = dayOfWeek;
-        this.time = time;
-        this.id = id;
-    }
 
     public NoteDataItem(){}
 
@@ -74,6 +63,16 @@ public class NoteDataItem extends ItemList {
         }
         this.time = sh + "-" + sm;
 
+    }
+
+    public long getDuration() {
+        int d_hour = endHour - startHour;
+        int d_minute = endMinute - startMinute;
+        if (d_minute < 0) {
+            d_minute = 60 + d_minute;
+            d_hour -= 1;
+        }
+        return d_hour * 3600000L + d_minute * 60000L;
     }
 
     public NoteEntity getEntity() {

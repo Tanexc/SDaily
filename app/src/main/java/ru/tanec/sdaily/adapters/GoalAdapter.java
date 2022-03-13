@@ -10,8 +10,11 @@ import ru.tanec.sdaily.R;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 
@@ -31,6 +34,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
     public void setList(NoteDataItem[] list) {
         this.list = list;
+        cnt = -1;
         notifyDataSetChanged();
     }
 
@@ -66,6 +70,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         TextView title;
         TextView description;
         ImageView type;
+        CardView card;
 
 
 
@@ -79,10 +84,25 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             title.setText(obj.title);
             type = itemView.findViewById(R.id.type);
 
+            description.setText(obj.getDescriptionSmall());
+
+            if (it.type == 0) {
+                type.setImageResource(R.drawable.new_moon);
+            } else if (it.type == 1) {
+                type.setImageResource(R.drawable.yellow_btn);
+            } else {
+                type.setImageResource(R.drawable.red_btn);
+            }
+
+            type.setOnClickListener(l -> {
+
+            });
+
             description.setOnClickListener(l -> {
                 if (opened) {
                     description.setText(obj.getDescriptionSmall());
                     opened = false;
+
                 } else {
                     description.setText(obj.description);
                     opened = true;

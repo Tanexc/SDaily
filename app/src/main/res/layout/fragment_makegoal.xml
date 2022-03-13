@@ -14,7 +14,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="15dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/description" />
+        app:layout_constraintTop_toBottomOf="@id/description_layout" />
 
     <View
         android:id="@+id/d2"
@@ -22,7 +22,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="15dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/collapsibleCalendar" />
+        app:layout_constraintTop_toBottomOf="@id/calendar" />
 
 
     <View
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView_d" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -47,59 +47,69 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/red"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="32dp"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/red_btn"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
     </ImageButton>
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/yellow"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="32dp"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/yellow_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
     </ImageButton>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/green"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="36dp"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/new_moon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
     </ImageButton>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/description"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/description_layout"
         android:layout_width="match_parent"
-        android:layout_height="239dp"
+        android:layout_height="240dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="15dp"
-        android:text="Описание"
-        app:drawableTint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/yellow">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description"
+            android:hint="Описание"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/text_complete"
@@ -154,23 +164,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="29dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="-10dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView4" />
+        <RadioButton
+            android:id="@+id/todoin_do"
+            android:layout_width="29dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="-10dp"
+            android:checked="false"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView4" />
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="29dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="-10dp"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
     <ru.tanec.sdaily.custom.HTimePicker
         android:id="@+id/start_hour"
@@ -272,7 +276,7 @@
         app:layout_constraintTop_toBottomOf="@+id/start_minute" />
 
     <ru.tanec.sdaily.custom.CollapsibleCalendar
-        android:id="@+id/collapsibleCalendar"
+        android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
@@ -382,6 +386,7 @@
         app:layout_constraintTop_toBottomOf="@+id/minute_d" />
 
     <Button
+        android:id="@+id/close"
         android:layout_width="110dp"
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
@@ -392,6 +397,7 @@
         app:layout_constraintTop_toBottomOf="@+id/d3" />
 
     <Button
+        android:id="@+id/apply"
         android:layout_width="110dp"
         android:layout_height="70dp"
         android:layout_marginTop="15dp"
@@ -400,6 +406,16 @@
         android:backgroundTint="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/d3" />
+
+    <RadioButton
+        android:id="@+id/todoin_v"
+        android:layout_width="29dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="-10dp"
+        android:checked="false"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

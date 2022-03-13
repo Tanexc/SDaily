@@ -10,15 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Calendar;
-import java.util.List;
 
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.GoalAdapter;
-import ru.tanec.sdaily.adapters.TaskAdapter;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.custom.StaticValues;
 import ru.tanec.sdaily.database.DataBase;
@@ -69,15 +66,7 @@ public class Task extends Fragment {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.HOUR, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        
-        db.noteDao().getLiveByDate(cal.getTime().getTime()).observe(getViewLifecycleOwner(), noteEntities -> {
-            NoteDataItem[] data1 = new NoteDataItem[noteEntities.size()];
-            for (int i = 0; i < data1.length; i++) {
-                data1[i] = new NoteDataItem();
-                data1[i].setFromEntity(noteEntities.get(i));
-            }
-            adapter.setList(data1);
-        });
+
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {

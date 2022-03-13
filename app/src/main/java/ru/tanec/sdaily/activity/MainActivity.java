@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
             cal.set(Calendar.HOUR, 0);
             cal.set(Calendar.MILLISECOND, 0);
 
-
-
-
                 for (int i = 0; i < 7; i++) {
                     if (td.getById(i) == null) {
                         TimeTableEntity te = new TimeTableEntity();

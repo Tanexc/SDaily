@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ public class Goal extends Fragment {
     Context context;
     RecyclerView goalrecycler;
     DataBase db = DataBaseApl.instance.getDatabase();
+    ImageButton type;
 
     public Goal() {
         super(R.layout.fragment_goal);
@@ -62,6 +64,8 @@ public class Goal extends Fragment {
                 });
             }).start();
         });
+
+
 
 
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
