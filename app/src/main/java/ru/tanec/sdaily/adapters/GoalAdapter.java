@@ -16,23 +16,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
+import ru.tanec.sdaily.adapters.items.RangeItem;
+import ru.tanec.sdaily.database.NoteEntity;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
 
-    NoteDataItem[] list;
+    List<NoteDataItem> list;
     public Context context;
     FragmentActivity activity;
     int cnt;
 
-    public GoalAdapter(Context context, FragmentActivity activity, NoteDataItem[] data) {
+    public GoalAdapter(Context context, FragmentActivity activity, List<NoteDataItem> data) {
         this.context = context;
         this.list = data;
         this.activity = activity;
         cnt = -1;
     }
 
-    public void setList(NoteDataItem[] list) {
+    public void setList(List<NoteDataItem> list) {
         this.list = list;
         cnt = -1;
         notifyDataSetChanged();
@@ -49,18 +56,17 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         cnt++;
 
-        return new GoalViewHolder(view, list[cnt]);
+        return new GoalViewHolder(view, list.get(cnt));
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull GoalViewHolder holder, int position) {
-
     }
 
     @Override
     public int getItemCount() {
-        return list.length;
+        return list.size();
     }
 
     static class GoalViewHolder extends RecyclerView.ViewHolder {
@@ -71,6 +77,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         TextView description;
         ImageView type;
         CardView card;
+        TextView time;
 
 
 
@@ -78,11 +85,14 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             super(itemView);
 
             opened = false;
+
             description = itemView.findViewById(R.id.description);
+            time = itemView.findViewById(R.id.time);
             obj = it;
             title = itemView.findViewById(R.id.title);
             title.setText(obj.title);
             type = itemView.findViewById(R.id.type);
+
 
             description.setText(obj.getDescriptionSmall());
 
@@ -108,8 +118,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
                     opened = true;
                 }
             });
+            time.setText(obj.getTime());
+
 
         }
+
 
     }
 }

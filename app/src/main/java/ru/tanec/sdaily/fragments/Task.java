@@ -12,7 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.GoalAdapter;
@@ -27,7 +33,7 @@ public class Task extends Fragment {
     FragmentActivity activity;
     RecyclerView goalrecycler;
     Context context;
-    GoalAdapter adapter = new GoalAdapter(context, activity, new NoteDataItem[0]);;
+    GoalAdapter adapter = new GoalAdapter(context, activity, Arrays.asList(new NoteDataItem[0]));;
     DataBase db = DataBaseApl.instance.getDatabase();
 
     public Task() {
@@ -48,11 +54,35 @@ public class Task extends Fragment {
         new Thread(() -> {
             NoteDao nd = db.noteDao();
             NoteEntity[] primaryData = nd.getByDate(StaticValues.viewDate.getTime());
-            NoteDataItem[] data = new NoteDataItem[primaryData.length];
+            List<NoteDataItem> data = new ArrayList<>(primaryData.length);
             for (int i = 0; i < primaryData.length; i++) {
-                data[i] = new NoteDataItem();
-                data[i].setFromEntity(primaryData[i]);
+                data.add(new NoteDataItem());
+                data.get(i).setFromEntity(primaryData[i]);
             }
+            Collections.sort(data, (t1, t2) -> {
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
+                    Date date1 = sdf.parse(t1.getTime());
+                    Date date2 = sdf.parse(t2.getTime());
+                    return date1 != null ? date1.compareTo(date2) : 0;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return 0;
+                }
+            });
+
+//            Collections.sort(data, (type1, type2) -> {
+//                try {
+//                    SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
+//                    Date date1 = sdf.parse(type1.gettu());
+//                    Date date2 = sdf.parse(type2.getTime());
+//                    return date1 != null ? date1.compareTo(date2) : 0;
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    return 0;
+//                }
+//            });
+
             new Handler(Looper.getMainLooper()).post(() -> {
                 adapter = new GoalAdapter(context, activity, data);
                 goalrecycler.setAdapter(adapter);

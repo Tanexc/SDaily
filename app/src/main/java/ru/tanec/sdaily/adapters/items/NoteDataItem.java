@@ -1,5 +1,15 @@
 package ru.tanec.sdaily.adapters.items;
 
+import android.service.autofill.DateTransformation;
+import android.service.autofill.DateValueSanitizer;
+import android.text.format.DateFormat;
+import android.text.format.DateUtils;
+
+import com.google.gson.internal.bind.DateTypeAdapter;
+
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeParseException;
+import java.util.Comparator;
 import java.util.Date;
 
 import ru.tanec.sdaily.database.NoteEntity;
@@ -102,5 +112,8 @@ public class NoteDataItem extends ItemList {
         } else {
             return description;
         }
+    }
+    public String getTime(){
+        return time;
     }
 }

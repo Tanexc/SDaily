@@ -1,11 +1,14 @@
 package ru.tanec.sdaily.fragments;
 
 import android.content.Context;
+import android.icu.util.LocaleData;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +27,17 @@ import ru.tanec.sdaily.database.NoteEntity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 public class Goal extends Fragment {
 
@@ -33,6 +46,7 @@ public class Goal extends Fragment {
     RecyclerView goalrecycler;
     DataBase db = DataBaseApl.instance.getDatabase();
     ImageButton type;
+    TextView time;
 
     public Goal() {
         super(R.layout.fragment_goal);
@@ -42,6 +56,7 @@ public class Goal extends Fragment {
         super(R.layout.fragment_goal);
         this.context = requireContext();
         this.activity = requireActivity();
+
     }
 
 
@@ -54,16 +69,31 @@ public class Goal extends Fragment {
             new Thread(() -> {
                 NoteDao nd = db.noteDao();
                 NoteEntity[] primaryData = nd.getByDate(StaticValues.viewDate.getTime());
-                NoteDataItem[] data = new NoteDataItem[primaryData.length];
+                List<NoteDataItem> data = new ArrayList<>(primaryData.length);
                 for (int i = 0; i < primaryData.length; i++) {
-                    data[i] = new NoteDataItem();
-                    data[i].setFromEntity(primaryData[i]);
+                    data.add(new NoteDataItem());
+                    data.get(i).setFromEntity(primaryData[i]);
+//                    System.out.println("Bulya: " + primaryData[i].time);
                 }
+
+                Collections.sort(data, (t1, t2) -> {
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
+                        Date date1 = sdf.parse(t1.getTime());
+                        Date date2 = sdf.parse(t2.getTime());
+                        return date1 != null ? date1.compareTo(date2) : 0;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return 0;
+                    }
+                });
+
                 new Handler(Looper.getMainLooper()).post(() -> {
                     goalrecycler.setAdapter(new GoalAdapter(context, activity, data));
                 });
             }).start();
         });
+
 
 
 
@@ -74,5 +104,6 @@ public class Goal extends Fragment {
             fragment.show(requireActivity().getSupportFragmentManager(), "makeGoal");
         });
     }
+
 }
 

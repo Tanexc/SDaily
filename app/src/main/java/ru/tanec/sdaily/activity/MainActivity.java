@@ -4,16 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Locale;
 
-import ru.tanec.sdaily.database.NoteDao;
-import ru.tanec.sdaily.database.NoteEntity;
 import ru.tanec.sdaily.services.NotificationService;
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.items.RangeItem;
@@ -61,5 +62,34 @@ public class MainActivity extends AppCompatActivity {
                     }
             }
         }).start();
-    }
+
+//        class LocaleManager {
+//
+//            public void setLocale(Context c) {
+//                setNewLocale(c, getLanguage(c));
+//            }
+//
+//            public void setNewLocale(Context c, String language) {
+//                persistLanguage(c, language);
+//                updateResources(c, language);
+//            }
+//
+//            public String getLanguage(Context c){
+//
+//                return null;
+//            }
+//
+////            private void persistLanguage(Context c, String language) { ... }
+//
+//            private void updateResources(Context context, String language) {
+//                Locale locale = new Locale(language);
+//                Locale.setDefault(locale);
+//
+//                Resources res = context.getResources();
+//                Configuration config = new Configuration(res.getConfiguration());
+//                config.locale = locale;
+//                res.updateConfiguration(config, res.getDisplayMetrics());
+//            }
+//        }
+   }
 }
