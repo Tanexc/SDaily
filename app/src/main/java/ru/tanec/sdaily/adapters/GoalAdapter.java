@@ -23,6 +23,9 @@ import java.util.List;
 
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.adapters.items.RangeItem;
+import ru.tanec.sdaily.database.DataBase;
+import ru.tanec.sdaily.database.DataBaseApl;
+import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
@@ -56,8 +59,18 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         cnt++;
 
-        return new GoalViewHolder(view, list.get(cnt));
+        return new GoalViewHolder(view, list.get(cnt), this);
 
+    }
+
+    public void removeItem(NoteDataItem item) {
+        list.remove(item);
+        notifyDataSetChanged();
+        new Thread(() -> {
+            DataBase db = DataBaseApl.instance.getDatabase();
+            NoteDao dao = db.noteDao();
+            dao.delete(dao.getById(item.id));
+        }).start();
     }
 
     @Override
@@ -81,7 +94,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
 
 
-        public GoalViewHolder(@NonNull View itemView, NoteDataItem it) {
+        public GoalViewHolder(@NonNull View itemView, NoteDataItem it, GoalAdapter adapter) {
             super(itemView);
 
             opened = false;
@@ -105,7 +118,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             }
 
             type.setOnClickListener(l -> {
-
+                adapter.removeItem(obj);
             });
 
             description.setOnClickListener(l -> {

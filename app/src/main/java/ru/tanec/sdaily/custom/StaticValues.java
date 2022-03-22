@@ -5,8 +5,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 
 public class StaticValues {
 
@@ -16,6 +20,7 @@ public class StaticValues {
     public static String stringDate;
     public static MutableLiveData<Date> liveDate = new MutableLiveData<>();
     public static int dayOfWeek;
+    public static List<NoteDataItem> data = new ArrayList<>();
 
     public static void setViewDate(Date viewDate) {
         Calendar cal = Calendar.getInstance();

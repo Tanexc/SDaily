@@ -50,45 +50,7 @@ public class Task extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         goalrecycler = view.findViewById(R.id.goal_recycler);
-
-        new Thread(() -> {
-            NoteDao nd = db.noteDao();
-            NoteEntity[] primaryData = nd.getByDate(StaticValues.viewDate.getTime());
-            List<NoteDataItem> data = new ArrayList<>(primaryData.length);
-            for (int i = 0; i < primaryData.length; i++) {
-                data.add(new NoteDataItem());
-                data.get(i).setFromEntity(primaryData[i]);
-            }
-            Collections.sort(data, (t1, t2) -> {
-                try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
-                    Date date1 = sdf.parse(t1.getTime());
-                    Date date2 = sdf.parse(t2.getTime());
-                    return date1 != null ? date1.compareTo(date2) : 0;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return 0;
-                }
-            });
-
-//            Collections.sort(data, (type1, type2) -> {
-//                try {
-//                    SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
-//                    Date date1 = sdf.parse(type1.gettu());
-//                    Date date2 = sdf.parse(type2.getTime());
-//                    return date1 != null ? date1.compareTo(date2) : 0;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    return 0;
-//                }
-//            });
-
-            new Handler(Looper.getMainLooper()).post(() -> {
-                adapter = new GoalAdapter(context, activity, data);
-                goalrecycler.setAdapter(adapter);
-            });
-
-        }).start();
+        goalrecycler.setAdapter(new GoalAdapter(context, activity, StaticValues.data));
 
 
         Calendar cal = Calendar.getInstance();
