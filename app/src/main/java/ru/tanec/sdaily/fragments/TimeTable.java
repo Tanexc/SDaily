@@ -29,7 +29,7 @@ public class TimeTable extends Fragment {
     RecyclerView timetableRecycler;
     TimeTableDao td;
     DataBase db;
-    String[] id_title = new String[]{"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
+    String[] id_title = new String[]{"Дүшәмбе", "Сишәмбе", "Чәршәмбе", "Пәнҗешәмбе", "Җомга", "Шимбә", "Якшәмбе"};
 
     public TimeTable() {
         super(R.layout.fragment_timetable);

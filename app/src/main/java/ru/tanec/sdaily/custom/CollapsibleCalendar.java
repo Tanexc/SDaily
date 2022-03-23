@@ -46,7 +46,7 @@ public class CollapsibleCalendar extends LinearLayout {
     Calendar selectedDate = Calendar.getInstance();
     int DAY_COUNT = 35;
     int DIVIDER = Calendar.MONTH;
-    String[] month_name = new String[] {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    String[] month_name = new String[] {"", "Гыйнвар", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
 
     HashMap<Float, Float> heightCollapse = new HashMap<Float, Float>();
     Float HEIGHT_VISIBLE = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 192,  getResources().getDisplayMetrics());

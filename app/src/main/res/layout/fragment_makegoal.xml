@@ -40,7 +40,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Исем"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +104,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description"
-            android:hint="Описание"
+            android:hint="Тасвирлама"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -116,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="@string/Ru_complete"
+        android:text="Башкарырга"
         android:textColor="@color/app_color_dark"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -129,7 +129,7 @@
         android:id="@+id/text_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Ru_duration"
+        android:text="Дәвамы"
         android:textColor="@color/app_color_dark"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -140,39 +140,39 @@
         android:layout_marginTop="15dp"
         tools:layout_editor_absoluteY="873dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/Ru_before"
-        android:textColor="@color/app_color_dark"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:text="@string/Ru_before"-->
+<!--        android:textColor="@color/app_color_dark"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/text_complete" />-->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/Ru_at"
-        android:textColor="@color/app_color_dark"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:text="@string/Ru_at"-->
+<!--        android:textColor="@color/app_color_dark"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
 
-        <RadioButton
-            android:id="@+id/todoin_do"
-            android:layout_width="29dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="-10dp"
-            android:checked="false"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintStart_toEndOf="@+id/textView4" />
+<!--        <RadioButton-->
+<!--            android:id="@+id/todoin_do"-->
+<!--            android:layout_width="29dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_marginStart="30dp"-->
+<!--            android:layout_marginBottom="-10dp"-->
+<!--            android:checked="false"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/textView"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/textView4" />-->
 
 
 
@@ -391,7 +391,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:text="@string/ru_cancel"
+        android:text="Ябырга"
         android:backgroundTint="@color/red"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/d3" />
@@ -402,20 +402,20 @@
         android:layout_height="70dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
-        android:text="@string/Ru_apply"
+        android:text="Әзер"
         android:backgroundTint="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/d3" />
 
-    <RadioButton
-        android:id="@+id/todoin_v"
-        android:layout_width="29dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="-10dp"
-        android:checked="false"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+<!--    <RadioButton-->
+<!--        android:id="@+id/todoin_v"-->
+<!--        android:layout_width="29dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginStart="28dp"-->
+<!--        android:layout_marginTop="-10dp"-->
+<!--        android:checked="false"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textView4"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

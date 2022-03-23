@@ -66,8 +66,8 @@ public class MakeGoals extends DialogFragment {
     public Button minusDurationhours;
     public Button minusDurationminuts;
     public Button plusDurationminuts;
-    public RadioButton dotodoin;
-    public RadioButton vtodoin;
+//    public RadioButton dotodoin;
+//    public RadioButton vtodoin;
     public ImageButton redTypeBtn;
     public ImageButton greenTypeBtn;
     public ImageButton yellowTypeBtn;
@@ -91,14 +91,14 @@ public class MakeGoals extends DialogFragment {
         greenTypeBtn = view.findViewById(R.id.green);
         greenTypeBtn.setOnClickListener(v -> type = 0);
 
-        dotodoin= view.findViewById(R.id.todoin_do);
-        dotodoin.setOnClickListener(view1 -> {
-            vtodoin.setChecked(false);
-            todoin = vtodoin.isChecked();
-        });
-
-        vtodoin= view.findViewById(R.id.todoin_v);
-        vtodoin.setOnClickListener(view1 -> dotodoin.setChecked(false));
+//        dotodoin= view.findViewById(R.id.todoin_do);
+//        dotodoin.setOnClickListener(view1 -> {
+//            vtodoin.setChecked(false);
+//            todoin = vtodoin.isChecked();
+//        });
+//
+//        vtodoin= view.findViewById(R.id.todoin_v);
+//        vtodoin.setOnClickListener(view1 -> dotodoin.setChecked(false));
 
         calendar = view.findViewById(R.id.calendar);
 

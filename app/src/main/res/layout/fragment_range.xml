@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginStart="10dp"
-            android:text="@string/dialog_title_column"
+            android:text="Исем"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="94dp"
-            android:text="@string/dialog_item_begin"
+            android:text="Башлана"
             app:layout_constraintBottom_toTopOf="@+id/time_dialog_recycler"
             app:layout_constraintStart_toEndOf="@+id/dialog_title" />
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="27dp"
-            android:text="@string/dialog_item_finish"
+            android:text="Тәмамлана"
             app:layout_constraintBottom_toTopOf="@+id/time_dialog_recycler"
             app:layout_constraintStart_toEndOf="@+id/dialog_begin" />
 

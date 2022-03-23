@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, NotificationService.class);
         startService(serviceIntent);
 
-        String[] id_title = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        String[] id_title = new String[]{"Дүшәмбе", "Сишәмбе", "Чәршәмбе", "Пәнҗешәмбе", "Җомга", "Шимбә", "Якшәмбе"};
         new Thread(() -> {
             DataBase db = DataBaseApl.instance.getDatabase();
             TimeTableDao td = db.timeTableDao();

@@ -56,7 +56,7 @@ public class NotificationService extends LifecycleService {
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    String[] daysOfWeek = new String[]{"", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    String[] daysOfWeek = new String[]{"", "Якшәмбе", "Дүшәмбе", "Сишәмбе", "Чәршәмбе", "Пәнҗешәмбе", "Җомга", "Шимбә"};
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
