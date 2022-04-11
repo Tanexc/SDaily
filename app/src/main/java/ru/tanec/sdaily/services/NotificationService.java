@@ -185,7 +185,7 @@ public class NotificationService extends LifecycleService {
             builder =
                     new NotificationCompat.Builder(this, "102")
                             .setContentTitle(title)
-                            .setSmallIcon(R.drawable.new_moon)
+                            .setSmallIcon(R.mipmap.icon3)
                             .setContentText(text)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Ok", okPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "Dismiss", dismissPendingIntent)
@@ -194,7 +194,7 @@ public class NotificationService extends LifecycleService {
             builder =
                     new NotificationCompat.Builder(this, "103")
                             .setContentTitle(title)
-                            .setSmallIcon(R.drawable.new_moon)
+                            .setSmallIcon(R.mipmap.icon3)
                             .setContentText(text)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Yes", yesPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "No", noPendingIntent)
