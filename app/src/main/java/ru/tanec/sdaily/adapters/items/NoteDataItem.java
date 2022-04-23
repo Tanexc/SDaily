@@ -112,7 +112,7 @@ public class NoteDataItem extends ItemList {
 
     public String getDescriptionSmall() {
         if (description.length() > 20) {
-            return description.substring(0, 20);
+            return description.substring(0, 20) + "...";
         } else {
             return description;
         }
