@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.goal);
         NavController navController = Navigation.findNavController(this, R.id.nav_host);
         navigation.setOnItemSelectedListener(item -> {
+            navController.popBackStack();
             navController.navigate(item.getItemId());
             return true;
         });

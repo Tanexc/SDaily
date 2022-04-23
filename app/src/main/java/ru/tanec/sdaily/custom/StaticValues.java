@@ -46,4 +46,6 @@ public class StaticValues {
     private static void setDayOfWeek(int day) {
         dayOfWeek = day;
     }
+
+    public static long getDayMls() { return viewDate.getTime(); }
 }

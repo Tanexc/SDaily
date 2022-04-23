@@ -10,10 +10,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -29,11 +32,14 @@ import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.activity.MainActivity;
+import ru.tanec.sdaily.adapters.DialogAdapter;
 import ru.tanec.sdaily.adapters.TimeAdapter;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.adapters.items.RangeItem;
@@ -48,10 +54,11 @@ import ru.tanec.sdaily.services.recivers.NotificationReceiver;
 
 
 public class NotificationService extends LifecycleService {
-
+    int cnt = 0;
     NotificationCompat.Builder mainNotification;
     DataBase db = DataBaseApl.instance.getDatabase();
     List<NoteEntity> notes;
+    Thread notesThread = new Thread();
 
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,17 +90,18 @@ public class NotificationService extends LifecycleService {
 
         mainNotification =
                 new NotificationCompat.Builder(this, "101")
-                        .setContentTitle("Notification")
+                        .setContentTitle("Smart Daily")
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(false)
-                        .setSmallIcon(R.drawable.calendar)
+                        .setSmallIcon(R.mipmap.icon5)
                         .setPriority(NotificationCompat.PRIORITY_MIN);
 
         startForeground(101, mainNotification.build());
 
-        NoteDao nd = db.noteDao();
         lifeDataNotes();
-        new Thread(() -> {
+
+
+        /*new Thread(() -> {
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             Calendar calendar = Calendar.getInstance();
             long t;
@@ -150,12 +158,12 @@ public class NotificationService extends LifecycleService {
                     }
                 }
             }
-        }).start();
+        }).start();*/
 
         return START_NOT_STICKY;
     }
 
-    void sendNotification(String title, String text, long id, @Nullable String startTime, Integer notificationFun) {
+    void sendNotification(String title, String text, long id, Integer notificationFun, @Nullable Integer type, @Nullable String startTime) {
         Intent okIntent = new Intent(this, NotificationReceiver.class);
         okIntent.putExtra("action", 1);
         okIntent.putExtra("notification", id);
@@ -176,6 +184,15 @@ public class NotificationService extends LifecycleService {
         PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
+        int ic;
+        if (type == 0) {
+            ic = R.drawable.type0;
+        } else if (type == 1) {
+            ic = R.drawable.type1;
+        } else {
+            ic = R.drawable.type2;
+        }
+
 
         if (startTime != null) {
             text = "At " + startTime + ". " + text;
@@ -185,7 +202,7 @@ public class NotificationService extends LifecycleService {
             builder =
                     new NotificationCompat.Builder(this, "102")
                             .setContentTitle(title)
-                            .setSmallIcon(R.drawable.new_moon)
+                            .setSmallIcon(ic)
                             .setContentText(text)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Ok", okPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "Dismiss", dismissPendingIntent)
@@ -194,7 +211,7 @@ public class NotificationService extends LifecycleService {
             builder =
                     new NotificationCompat.Builder(this, "103")
                             .setContentTitle(title)
-                            .setSmallIcon(R.drawable.new_moon)
+                            .setSmallIcon(ic)
                             .setContentText(text)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Yes", yesPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "No", noPendingIntent)
@@ -223,10 +240,46 @@ public class NotificationService extends LifecycleService {
         return ranges;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void lifeDataNotes() {
         NoteDao nd = db.noteDao();
         LiveData<List<NoteEntity>> ld = nd.getAll();
-        ld.observe(this, noteEntities -> notes = noteEntities);
+        notes = new ArrayList<>();
+        ld.observe(this, noteEntities -> {
+           if (notes.size() != noteEntities.size() | noteEntities.size() != 0) {
+                notesThread.interrupt();
+                cnt += 1;
+                notes = noteEntities;
+                notes.sort((Comparator<NoteEntity>) (noteEntity, t1) -> Long.compare(noteEntity.beginDateMls, t1.beginDateMls));
+                notesThread = new Thread(() -> {
+
+                    for (NoteEntity note : notes) {
+                        note.title = "" + cnt;
+                        long t = Calendar.getInstance().getTime().getTime();
+                        if (note.beginDateMls - t > 0) {
+                            try {
+                                Thread.sleep(note.beginDateMls - t);
+                                sendNotification(note.title, note.description, note.id, 0, note.type, null);
+                                note.notified = true;
+                                nd.update(note);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                        } else {
+                            if (!note.postNotified && note.beginDateMls + note.duration < t) {
+                                sendNotification(note.title, "Выполнили ли вы задачу? Если нет, то мы ее перенесем.", note.id, 1, note.type, null);
+                                note.postNotified = true;
+                                nd.update(note);
+                            }
+
+                        }
+
+                    }
+                });
+                notesThread.start();
+            }
+        });
     }
 
     @Nullable

@@ -22,6 +22,7 @@ public class NoteDataItem extends ItemList {
     public long id;
     public long duration;
     public long beginDateMls;
+    public long beginDayMls;
     public int startHour;
     public int startMinute;
     public int endHour;
@@ -30,9 +31,9 @@ public class NoteDataItem extends ItemList {
     public int dayOfWeek;
     public boolean finished;
     public boolean todoin;
-    public boolean missed = false;
-    public boolean notified = false;
-    public boolean postNotified = false;
+    public boolean missed;
+    public boolean notified;
+    public boolean postNotified;
 
     public NoteDataItem(){}
 
@@ -53,6 +54,9 @@ public class NoteDataItem extends ItemList {
         endMinute = entity.endMinute;
         notified = entity.notified;
         postNotified = entity.postNotified;
+        missed = entity.missed;
+        beginDayMls = entity.beginDayMls;
+        beginDateMls = entity.beginDateMls;
     }
 
     public void setTimeBoarders(int startHour, int startMinute, int endHour, int endMinute) {

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.tanec.sdaily.R;
@@ -44,21 +45,25 @@ public class TimeTable extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        ArrayList<TimeTableItem> data = new ArrayList<TimeTableItem>();
         timetableRecycler = view.findViewById(R.id.timetable_recycler);
-        TimeTableItem[] data = new TimeTableItem[7];
+        TimeAdapter adapter = new TimeAdapter(requireContext(), requireActivity(), data, id_title);
+        timetableRecycler.setAdapter(adapter);
+        adapter.setData(data);
         db = DataBaseApl.instance.getDatabase();
         td = db.timeTableDao();
         td.getAll().observe(requireActivity(), timeTableEntities -> {
             for (TimeTableEntity item: timeTableEntities) {
                 int id = Integer.parseInt("" + item.id);
-                data[id] = new TimeTableItem(item.title);
-                data[id].id = id;
-                data[id].setFill(getFillFromTm(item.timerange));
-                timetableRecycler.setAdapter(new TimeAdapter(requireContext(), requireActivity(), data, id_title));
+                TimeTableItem it = new TimeTableItem(item.title);
+                it.id = id;
+                it.setFill(getFillFromTm(item.timerange));
+                adapter.changeDataItem(it, id);
+
             }
         });
     }
+
 
     public Boolean[] getFillFromTm(RangeItem[] dt) {
         Boolean[] fill = new Boolean[24];

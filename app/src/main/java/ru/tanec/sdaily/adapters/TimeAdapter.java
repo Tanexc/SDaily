@@ -10,24 +10,47 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.fragments.RangeFragment;
 import ru.tanec.sdaily.adapters.items.TimeTableItem;
 
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder> {
 
-    TimeTableItem[] list;
+    ArrayList<TimeTableItem> list;
     public Context context;
     FragmentActivity activity;
     String[] id_title;
     int cnt;
 
-    public TimeAdapter(Context context, FragmentActivity activity, TimeTableItem[] list, String[] id_title) {
+    public TimeAdapter(Context context, FragmentActivity activity, ArrayList<TimeTableItem> list, String[] id_title) {
         this.context = context;
         this.list = list;
         this.activity = activity;
         this.id_title = id_title;
         cnt = -1;
+    }
+
+    public void setData(ArrayList<TimeTableItem> data) {
+        list = data;
+        notifyDataSetChanged();
+    }
+
+    public void addDataItem(TimeTableItem item) {
+        list.add(item);
+        notifyItemInserted(list.size() - 1);
+    }
+
+    public void changeDataItem(TimeTableItem item, int id) {
+        if (id > list.size() - 1) {
+            list.add(item);
+            notifyItemInserted(list.size() - 1);
+        } else {
+            list.remove(id);
+            list.add(id, item);
+            notifyItemChanged(id);
+        }
     }
 
     @NonNull
@@ -41,7 +64,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
         cnt++;
 
-        return new TimeViewHolder(view, list[cnt]);
+        return new TimeViewHolder(view, list.get(cnt));
 
     }
    // abcc
@@ -50,7 +73,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     @Override
     public int getItemCount() {
-        return list.length;
+        return list.size();
     }
 
     static class TimeViewHolder extends RecyclerView.ViewHolder {
@@ -84,7 +107,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TimeViewHolder holder, int position) {
-        holder.bind(list[position], activity, position);
+        holder.bind(list.get(position), activity, position);
     }
 
 }
