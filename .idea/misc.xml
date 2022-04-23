@@ -6,6 +6,7 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/accept.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/new_moon.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/red_btn.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/sort_square.xml" value="0.156" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/square.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/type0.xml" value="0.169" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/type0dark.xml" value="0.169" />
@@ -39,7 +40,7 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/day_item.xml" value="0.12708333333333333" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dayitem.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.5" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.42015005359056806" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.2023696682464455" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="3.0" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoals.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.5" />

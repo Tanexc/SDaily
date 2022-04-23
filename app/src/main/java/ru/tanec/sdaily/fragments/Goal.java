@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -52,9 +53,9 @@ public class Goal extends Fragment {
     GoalAdapter adapter;
 
     ImageView filterButton;
-    ImageView sortByTime;
-    ImageView sortByTitle;
-    ImageView sortByType;
+    ImageButton sortByTime;
+    ImageButton sortByTitle;
+    ImageButton sortByType;
 
     int state = View.VISIBLE;
 
@@ -108,6 +109,9 @@ public class Goal extends Fragment {
                 n.setFromEntity(note);
                 nd.add(n);
             }
+            Collections.sort(nd, (t1, t2) -> {
+                return Boolean.compare(t1.finished, t2.finished);
+            });
             synchronized (adapter) {
                 adapter.setList(nd);
             }
@@ -118,7 +122,7 @@ public class Goal extends Fragment {
             sortByTime.setVisibility(state);
             sortByType.setVisibility(state);
             sortByTitle.setVisibility(state);
-            sortByType.setBackgroundColor(R.color.fragment_background);
+
             if (state == View.GONE) {
                 state = View.VISIBLE;
                 filterButton.setImageResource(R.drawable.filter_out);
@@ -129,31 +133,31 @@ public class Goal extends Fragment {
         });
 
         sortByType.setOnClickListener(l -> {
-            sortByType.setBackgroundColor(R.color.day_fill);
-            sortByTime.setBackgroundColor(R.color.fragment_background);
-            sortByTitle.setBackgroundColor(R.color.fragment_background);
+            sortByType.setBackgroundResource(R.drawable.sort_square);
+            sortByTime.setBackgroundResource(R.drawable.square);
+            sortByTitle.setBackgroundResource(R.drawable.square);
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
-                return Integer.compare(t1.type, t2.type);
+                return Integer.compare(t2.type, t1.type);
             });
             adapter.setList(list);
         });
 
         sortByTime.setOnClickListener(l -> {
-            sortByType.setBackgroundColor(R.color.fragment_background);
-            sortByTime.setBackgroundColor(R.color.day_fill);
-            sortByTitle.setBackgroundColor(R.color.fragment_background);
+            sortByType.setBackgroundResource(R.drawable.square);
+            sortByTime.setBackgroundResource(R.drawable.sort_square);
+            sortByTitle.setBackgroundResource(R.drawable.square);
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
-                return Long.compare(t1.beginDateMls, t2.beginDateMls);
+                return Long.compare(t2.beginDateMls, t1.beginDateMls);
             });
             adapter.setList(list);
         });
 
         sortByTitle.setOnClickListener(l -> {
-            sortByType.setBackgroundColor(R.color.fragment_background);
-            sortByTitle.setBackgroundColor(R.color.day_fill);
-            sortByTime.setBackgroundColor(R.color.fragment_background);
+            sortByType.setBackgroundResource(R.drawable.square);
+            sortByTitle.setBackgroundResource(R.drawable.sort_square);
+            sortByTime.setBackgroundResource(R.drawable.square);
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
                 return (t1.title.compareTo(t2.title));

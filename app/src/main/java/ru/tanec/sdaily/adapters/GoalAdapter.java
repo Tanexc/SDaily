@@ -1,6 +1,8 @@
 package ru.tanec.sdaily.adapters;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import ru.tanec.sdaily.R;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +22,7 @@ import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
+import ru.tanec.sdaily.database.NoteEntity;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
 
@@ -51,7 +55,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         cnt++;
 
-        return new GoalViewHolder(view, list.get(cnt), this);
+        return new GoalViewHolder(view, list.get(cnt));
 
     }
 
@@ -86,12 +90,14 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         TextView title;
         TextView description;
         ImageView type;
-        CardView card;
         TextView time;
+        ConstraintLayout layout;
+
+        DataBase db = DataBaseApl.instance.getDatabase();
 
 
 
-        public GoalViewHolder(@NonNull View itemView, NoteDataItem it, GoalAdapter adapter) {
+        public GoalViewHolder(@NonNull View itemView, NoteDataItem it) {
             super(itemView);
 
             opened = false;
@@ -102,20 +108,39 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             title = itemView.findViewById(R.id.title);
             title.setText(obj.title);
             type = itemView.findViewById(R.id.type);
+            layout = itemView.findViewById(R.id.cardLayout);
 
+            if (obj.finished) {
+                layout.setBackgroundResource(R.color.light_gray);
+            }
 
             description.setText(obj.getDescriptionSmall());
 
-            if (it.type == 0) {
+            if (obj.type == 0) {
                 type.setImageResource(R.drawable.type0);
-            } else if (it.type == 1) {
+            } else if (obj.type == 1) {
                 type.setImageResource(R.drawable.type1);
             } else {
                 type.setImageResource(R.drawable.type2);
             }
 
             type.setOnClickListener(l -> {
-                adapter.removeItem(obj);
+                if (!obj.finished) {
+                    layout.setBackgroundResource(R.color.light_gray);
+                    obj.finished = true;
+                } else {
+                    layout.setBackgroundResource(R.color.white);
+                    obj.finished = false;
+                }
+                NoteDao nd = db.noteDao();
+
+                new Thread(() -> {
+                    NoteEntity noteEntity = nd.getById(obj.id);
+                    noteEntity.finished = obj.finished;
+                    nd.update(noteEntity);
+                }).start();
+
+
             });
 
             description.setOnClickListener(l -> {
@@ -134,6 +159,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         }
 
         public void bind(NoteDataItem a) {
+            obj = a;
             description.setText(a.description);
             if (a.type == 0) {
                 type.setImageResource(R.drawable.type0);
@@ -144,6 +170,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             }
             title.setText(a.title);
             time.setText(a.getTime());
+            if (obj.finished) {
+                layout.setBackgroundResource(R.color.light_gray);
+            } else {
+                layout.setBackgroundResource(R.color.white);
+            }
 
         }
 
