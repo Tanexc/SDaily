@@ -27,6 +27,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MakeGoals extends DialogFragment {
@@ -167,14 +168,14 @@ public class MakeGoals extends DialogFragment {
     }
 
     public void saveNote() {
-
+        beginDayMls = StaticValues.getDayMls();
+        long t = Calendar.getInstance().getTime().getTime();
         duration = startHourD.getHour() * 3600000L + startMinuteD.getMinute() * 60000L;
         long startTime = startHour.getHour() * 3600000L + startMinute.getMinute() * 60000L;
         beginDateMls = beginDayMls + startTime;
         time  = timeFormat.format(new Date(beginDateMls));
 
         nd = db.noteDao();
-        beginDayMls = StaticValues.getViewDate().getTime();
         String date = StaticValues.getStringDate();
 
         newNote = new NoteEntity();

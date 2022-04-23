@@ -40,11 +40,24 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="@string/En_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/circle_red"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/type2dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
 
     <ImageButton
         android:id="@+id/red"
@@ -53,13 +66,24 @@
         android:layout_marginTop="32dp"
         android:padding="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/red_btn"
+        android:src="@drawable/type2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
 
-    </ImageButton>
+    <ImageButton
+        android:id="@+id/yellow_dark"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/type1dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <ImageButton
         android:id="@+id/yellow"
@@ -68,13 +92,24 @@
         android:layout_marginTop="32dp"
         android:padding="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/yellow_btn"
+        android:src="@drawable/type1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
 
-    </ImageButton>
+    <ImageButton
+        android:id="@+id/green_dark"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="32dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/type0dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
 
     <ImageButton
         android:id="@+id/green"
@@ -83,7 +118,7 @@
         android:layout_marginTop="36dp"
         android:padding="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/new_moon"
+        android:src="@drawable/type0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +128,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/description_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:layout_marginStart="15dp"
@@ -104,10 +140,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description"
-            android:hint="Описание"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:gravity="top"
+            android:hint="Описание" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -9,12 +9,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,9 +49,14 @@ public class Goal extends Fragment {
     Context context;
     RecyclerView goalrecycler;
     DataBase db = DataBaseApl.instance.getDatabase();
-    ImageButton sort;
-    ImageButton type;
-    int cnt = 1;
+    GoalAdapter adapter;
+
+    ImageView filterButton;
+    ImageView sortByTime;
+    ImageView sortByTitle;
+    ImageView sortByType;
+
+    int state = View.VISIBLE;
 
     public Goal() {
         super(R.layout.fragment_goal);
@@ -67,56 +74,91 @@ public class Goal extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         goalrecycler = view.findViewById(R.id.goal_recycler);
+        adapter = new GoalAdapter(context, activity, new ArrayList<NoteDataItem>());
+        goalrecycler.setAdapter(adapter);
 
+        filterButton = view.findViewById(R.id.filterButton);
+        sortByTime = view.findViewById(R.id.sortByTime);
+        sortByTitle = view.findViewById(R.id.sortByTitle);
+        sortByType = view.findViewById(R.id.sortByType);
 
-        StaticValues.liveDate.observe(getViewLifecycleOwner(), date -> {
-            new Thread(() -> {
-                NoteDao nd = db.noteDao();
-                NoteEntity[] primaryData = nd.getByDate(StaticValues.viewDate.getTime());
-                StaticValues.data = new ArrayList<>(primaryData.length);
-                for (int i = 0; i < primaryData.length; i++) {
-                    StaticValues.data.add(new NoteDataItem());
-                    StaticValues.data.get(i).setFromEntity(primaryData[i]);
+        new Thread(() -> {
+            NoteEntity[] f = db.noteDao().getByDate(StaticValues.getDayMls());
+            List<NoteDataItem> nd = new ArrayList<NoteDataItem>();
+            for (NoteEntity note : f) {
+                NoteDataItem n = new NoteDataItem();
+                n.setFromEntity(note);
+                nd.add(n);
+            }
+            new Handler(Looper.getMainLooper()).post(() -> {
+                synchronized (adapter) {
+                    adapter.setList(nd);
+                    adapter.notifyDataSetChanged();
                 }
 
+            });
 
-                sort = view.findViewById(R.id.sorting_button);
-                sort.setOnClickListener(view1 -> {
-                    cnt++;
-                    if (cnt % 2 == 1) {
-                        sort.setImageResource(R.drawable.prioritize);
-                        Collections.sort(StaticValues.data, (t1, t2) -> {
-                            try {
-                                SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
-                                Date date1 = sdf.parse(t1.getTime());
-                                Date date2 = sdf.parse(t2.getTime());
-                                return date1 != null ? date1.compareTo(date2) : 0;
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                return 0;
-                            }
-                        });
-                    }
-                    else{
-                        sort.setImageResource(R.drawable.time);
-                        Collections.sort(StaticValues.data, (o1, o2) -> {
-                            try {
-                                return Integer.compare(o2.type, o1.type);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            return 0;
-                        });
-                        // adapter.notifyItemsChanged()
-                    }
-                    if(cnt > 1) cnt = 0;
-                    goalrecycler.setAdapter(new GoalAdapter(context, activity, StaticValues.data));
-                });
+        }).start();
 
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    goalrecycler.setAdapter(new GoalAdapter(context, activity, StaticValues.data));
-                });
-            }).start();
+        LiveData<List<NoteEntity>> nt = db.noteDao().getLiveByDate(StaticValues.getDayMls());
+        nt.observe(this.getActivity(), noteEntities -> {
+            List<NoteDataItem> nd = new ArrayList<NoteDataItem>();
+            for (NoteEntity note: noteEntities) {
+                NoteDataItem n = new NoteDataItem();
+                n.setFromEntity(note);
+                nd.add(n);
+            }
+            synchronized (adapter) {
+                adapter.setList(nd);
+            }
+        });
+
+
+        filterButton.setOnClickListener(l -> {
+            sortByTime.setVisibility(state);
+            sortByType.setVisibility(state);
+            sortByTitle.setVisibility(state);
+            sortByType.setBackgroundColor(R.color.fragment_background);
+            if (state == View.GONE) {
+                state = View.VISIBLE;
+                filterButton.setImageResource(R.drawable.filter_out);
+            } else {
+                state = View.GONE;
+                filterButton.setImageResource(R.drawable.filter);
+            }
+        });
+
+        sortByType.setOnClickListener(l -> {
+            sortByType.setBackgroundColor(R.color.day_fill);
+            sortByTime.setBackgroundColor(R.color.fragment_background);
+            sortByTitle.setBackgroundColor(R.color.fragment_background);
+            List<NoteDataItem> list = adapter.getList();
+            Collections.sort(list, (t1, t2) -> {
+                return Integer.compare(t1.type, t2.type);
+            });
+            adapter.setList(list);
+        });
+
+        sortByTime.setOnClickListener(l -> {
+            sortByType.setBackgroundColor(R.color.fragment_background);
+            sortByTime.setBackgroundColor(R.color.day_fill);
+            sortByTitle.setBackgroundColor(R.color.fragment_background);
+            List<NoteDataItem> list = adapter.getList();
+            Collections.sort(list, (t1, t2) -> {
+                return Long.compare(t1.beginDateMls, t2.beginDateMls);
+            });
+            adapter.setList(list);
+        });
+
+        sortByTitle.setOnClickListener(l -> {
+            sortByType.setBackgroundColor(R.color.fragment_background);
+            sortByTitle.setBackgroundColor(R.color.day_fill);
+            sortByTime.setBackgroundColor(R.color.fragment_background);
+            List<NoteDataItem> list = adapter.getList();
+            Collections.sort(list, (t1, t2) -> {
+                return (t1.title.compareTo(t2.title));
+            });
+            adapter.setList(list);
         });
 
 
@@ -125,6 +167,8 @@ public class Goal extends Fragment {
             MakeGoals fragment = new MakeGoals();
             fragment.show(requireActivity().getSupportFragmentManager(), "makeGoal");
         });
-    }
 
+
+
+    }
 }

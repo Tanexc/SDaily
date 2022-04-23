@@ -17,7 +17,7 @@
             android:layout_margin="10dp"
             android:padding="0dp"
             android:scaleType="fitXY"
-            android:src="@drawable/red_btn"
+            android:src="@drawable/type2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

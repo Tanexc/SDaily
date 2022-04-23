@@ -10,6 +10,7 @@
     <color name="app_color_statusbar">#0a85ff</color>
     <color name="app_color_statusbar_night">#063360</color>
     <color name="fragment_background">#6EB6FF</color>
+    <color name="filter_select">#813D9EFF</color>
     <color name="day_fill">#4099ed</color>
     <color name="day_fill_1">#bfccde</color>
     <color name="range_button">#a6ddf5</color>

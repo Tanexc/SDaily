@@ -18,6 +18,70 @@
         tools:ignore="MissingClass" />
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filterPanel"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/goal_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp">
+
+        <ImageView
+            android:id="@+id/sortByTitle"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/sortaz"
+            app:layout_constraintBottom_toBottomOf="@+id/filterButton"
+            app:layout_constraintEnd_toStartOf="@id/sortByType"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/app_color_statusbar"
+            android:visibility="gone"
+            android:layout_marginStart="5dp"/>
+
+        <ImageView
+            android:id="@+id/sortByType"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/sort_ascending"
+            app:layout_constraintBottom_toBottomOf="@+id/filterButton"
+            app:layout_constraintEnd_toStartOf="@id/sortByTime"
+            app:layout_constraintStart_toEndOf="@id/sortByTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/app_color_statusbar"
+            android:visibility="gone"
+            android:layout_marginStart="50dp"/>
+
+        <ImageView
+            android:id="@+id/sortByTime"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/time"
+            app:layout_constraintBottom_toBottomOf="@+id/filterButton"
+            app:layout_constraintStart_toEndOf="@id/sortByType"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="50dp"
+            android:visibility="gone"
+            app:tint="@color/app_color_statusbar" />
+
+        <ImageView
+            android:id="@+id/filterButton"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/filter_out"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="5dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/goal_recycler"
         android:layout_width="match_parent"
@@ -29,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/filterPanel"
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/note_item" />
 
@@ -39,20 +103,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/add"
+        android:backgroundTint="@color/app_color_statusbar"
+        android:background="@color/app_color_statusbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/sorting_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/prioritize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

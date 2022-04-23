@@ -9,24 +9,16 @@ import android.widget.TextView;
 import ru.tanec.sdaily.R;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
-import ru.tanec.sdaily.adapters.items.RangeItem;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
-import ru.tanec.sdaily.database.NoteEntity;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
 
@@ -75,11 +67,16 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull GoalViewHolder holder, int position) {
+        holder.bind(list.get(position));
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public List<NoteDataItem> getList() {
+        return list;
     }
 
     static class GoalViewHolder extends RecyclerView.ViewHolder {
@@ -110,11 +107,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             description.setText(obj.getDescriptionSmall());
 
             if (it.type == 0) {
-                type.setImageResource(R.drawable.new_moon);
+                type.setImageResource(R.drawable.type0);
             } else if (it.type == 1) {
-                type.setImageResource(R.drawable.yellow_btn);
+                type.setImageResource(R.drawable.type1);
             } else {
-                type.setImageResource(R.drawable.red_btn);
+                type.setImageResource(R.drawable.type2);
             }
 
             type.setOnClickListener(l -> {
@@ -136,6 +133,19 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         }
 
+        public void bind(NoteDataItem a) {
+            description.setText(a.description);
+            if (a.type == 0) {
+                type.setImageResource(R.drawable.type0);
+            } else if (a.type == 1) {
+                type.setImageResource(R.drawable.type1);
+            } else {
+                type.setImageResource(R.drawable.type2);
+            }
+            title.setText(a.title);
+            time.setText(a.getTime());
+
+        }
 
     }
 }
