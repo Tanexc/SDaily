@@ -4,455 +4,430 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/d"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/description_layout" />
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/d2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/calendar" />
-
-
-    <View
-        android:id="@+id/d3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="70dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/textView_d" />
-
-    <EditText
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/En_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/circle_red"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="32dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/type2dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"/>
-
-    <ImageButton
-        android:id="@+id/red"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="32dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/type2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"/>
-
-    <ImageButton
-        android:id="@+id/yellow_dark"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/type1dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <ImageButton
-        android:id="@+id/yellow"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="32dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/type1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"/>
-
-    <ImageButton
-        android:id="@+id/green_dark"
-        android:layout_width="29dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="32dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/type0dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"/>
-
-    <ImageButton
-        android:id="@+id/green"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="36dp"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/type0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
-
-    </ImageButton>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yellow">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/description"
-            android:hint="Описание"
+        <View
+            android:id="@+id/d"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:hint="Описание" />
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/description_layout" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <View
+            android:id="@+id/d2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/calendar" />
 
-    <TextView
-        android:id="@+id/text_complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/Ru_complete"
-        android:textColor="@color/app_color_dark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d" />
 
-    <TextView
-        android:id="@+id/text_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Ru_duration"
-        android:textColor="@color/app_color_dark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d2"
-        android:layout_marginTop="15dp"
-        tools:layout_editor_absoluteY="873dp" />
+        <View
+            android:id="@+id/d3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/textView_d" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/Ru_before"
-        android:textColor="@color/app_color_dark"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Название"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/Ru_at"
-        android:textColor="@color/app_color_dark"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <ImageButton
+            android:id="@+id/circle_red"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="9dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/type2dark"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.240"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
-        <RadioButton
-            android:id="@+id/todoin_do"
-            android:layout_width="29dp"
-            android:layout_height="35dp"
+        <ImageButton
+            android:id="@+id/red"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="32dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/type2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.236"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ImageButton
+            android:id="@+id/yellow_dark"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="-2.2dp"
+            android:layout_marginTop="30dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/type1dark"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/yellow"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ImageButton
+            android:id="@+id/yellow"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="32dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/type1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ImageButton
+            android:id="@+id/green_dark"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="30dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/type0dark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/yellow"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ImageButton
+            android:id="@+id/green"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="32dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/type0"
+            app:layout_constraintStart_toEndOf="@+id/yellow"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+        </ImageButton>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yellow"
+            tools:ignore="DuplicateIds">
+
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="Описание" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yellow"
+            tools:ignore="DuplicateIds">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/text_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/Ru_complete"
+            android:textColor="@color/app_color_dark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d" />
+
+        <TextView
+            android:id="@+id/text_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/Ru_duration"
+            android:textColor="@color/app_color_dark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d2"
+            tools:layout_editor_absoluteY="873dp" />
+
+        <ru.tanec.sdaily.custom.HTimePicker
+            android:id="@+id/start_hour"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:text="12"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:text=":"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+
+        <Button
+            android:id="@+id/plus_s_hour"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/start_hour"
+            app:layout_constraintEnd_toStartOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/minus_s_hour"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/start_hour" />
+
+
+        <ru.tanec.sdaily.custom.MTimePicker
+            android:id="@+id/start_minute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.657" />
+
+        <Button
+            android:id="@+id/plus_s_minute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="2dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/start_minute"
+            app:layout_constraintStart_toEndOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/minus_s_minute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/start_minute" />
+
+        <ru.tanec.sdaily.custom.CollapsibleCalendar
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_complete" />
+
+        <ru.tanec.sdaily.custom.HTimePicker
+            android:id="@+id/hour_d"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:text="00"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_d"
+            app:layout_constraintEnd_toStartOf="@+id/textView_d"
+            app:layout_constraintTop_toTopOf="@+id/textView_d" />
+
+        <TextView
+            android:id="@+id/textView_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:text=":"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_duration" />
+
+        <Button
+            android:id="@+id/plus_hour"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/hour_d"
+            app:layout_constraintEnd_toStartOf="@+id/textView_d" />
+
+        <Button
+            android:id="@+id/minus_hour"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView_d"
+            app:layout_constraintTop_toBottomOf="@+id/hour_d" />
+
+
+        <ru.tanec.sdaily.custom.MTimePicker
+            android:id="@+id/minute_d"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_d"
+            app:layout_constraintStart_toEndOf="@+id/textView_d"
+            app:layout_constraintTop_toTopOf="@+id/textView_d"
+            app:layout_constraintVertical_bias="0.657" />
+
+        <Button
+            android:id="@+id/plus_minute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="2dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/minute_d"
+            app:layout_constraintStart_toEndOf="@+id/textView_d" />
+
+        <Button
+            android:id="@+id/minus_minute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:backgroundTint="@color/range_button"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/textView_d"
+            app:layout_constraintTop_toBottomOf="@+id/minute_d" />
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="110dp"
+            android:layout_height="70dp"
             android:layout_marginStart="30dp"
-            android:layout_marginBottom="-10dp"
-            android:checked="false"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintStart_toEndOf="@+id/textView4" />
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/red"
+            android:text="@string/ru_cancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d3" />
 
+        <Button
+            android:id="@+id/apply"
+            android:layout_width="110dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/green"
+            android:text="@string/Ru_apply"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d3" />
 
-
-    <ru.tanec.sdaily.custom.HTimePicker
-        android:id="@+id/start_hour"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="4dp"
-        android:text="12"
-        android:textAlignment="textEnd"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:text=":"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
-
-    <Button
-        android:id="@+id/plus_s_hour"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/start_hour"
-        app:layout_constraintEnd_toStartOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/minus_s_hour"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="-"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/start_hour" />
-
-
-    <ru.tanec.sdaily.custom.MTimePicker
-        android:id="@+id/start_minute"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:text="00"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.657" />
-
-    <Button
-        android:id="@+id/plus_s_minute"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/start_minute"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/minus_s_minute"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="-"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/start_minute" />
-
-    <ru.tanec.sdaily.custom.CollapsibleCalendar
-        android:id="@+id/calendar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_complete" />
-
-    <ru.tanec.sdaily.custom.HTimePicker
-        android:id="@+id/hour_d"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="4dp"
-        android:text="00"
-        android:textAlignment="textEnd"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_d"
-        app:layout_constraintEnd_toStartOf="@+id/textView_d"
-        app:layout_constraintTop_toTopOf="@+id/textView_d" />
-
-    <TextView
-        android:id="@+id/textView_d"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:text=":"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_duration" />
-
-    <Button
-        android:id="@+id/plus_hour"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/hour_d"
-        app:layout_constraintEnd_toStartOf="@+id/textView_d" />
-
-    <Button
-        android:id="@+id/minus_hour"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="-"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView_d"
-        app:layout_constraintTop_toBottomOf="@+id/hour_d" />
-
-
-    <ru.tanec.sdaily.custom.MTimePicker
-        android:id="@+id/minute_d"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:text="00"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_d"
-        app:layout_constraintStart_toEndOf="@+id/textView_d"
-        app:layout_constraintTop_toTopOf="@+id/textView_d"
-        app:layout_constraintVertical_bias="0.657" />
-
-    <Button
-        android:id="@+id/plus_minute"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/minute_d"
-        app:layout_constraintStart_toEndOf="@+id/textView_d" />
-
-    <Button
-        android:id="@+id/minus_minute"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
-        android:backgroundTint="@color/range_button"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="0dp"
-        android:text="-"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/textView_d"
-        app:layout_constraintTop_toBottomOf="@+id/minute_d" />
-
-    <Button
-        android:id="@+id/close"
-        android:layout_width="110dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/ru_cancel"
-        android:backgroundTint="@color/red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d3" />
-
-    <Button
-        android:id="@+id/apply"
-        android:layout_width="110dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/Ru_apply"
-        android:backgroundTint="@color/green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d3" />
-
-    <RadioButton
-        android:id="@+id/todoin_v"
-        android:layout_width="29dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="-10dp"
-        android:checked="false"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

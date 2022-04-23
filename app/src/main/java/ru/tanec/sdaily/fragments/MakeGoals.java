@@ -58,7 +58,7 @@ public class MakeGoals extends DialogFragment {
 
     NoteEntity newNote;
 
-    public Button  btnplsthour;
+    public Button btnplsthour;
     public Button btnplsminute;
     public Button btnminusminute;
     public Button btnminushour;
@@ -67,11 +67,14 @@ public class MakeGoals extends DialogFragment {
     public Button minusDurationhours;
     public Button minusDurationminuts;
     public Button plusDurationminuts;
-//    public RadioButton dotodoin;
+    //    public RadioButton dotodoin;
 //    public RadioButton vtodoin;
     public ImageButton redTypeBtn;
     public ImageButton greenTypeBtn;
     public ImageButton yellowTypeBtn;
+    public ImageButton darkRedButton;
+    public ImageButton darkYellowButton;
+    public ImageButton darkGreenButton;
 
 
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
@@ -86,11 +89,33 @@ public class MakeGoals extends DialogFragment {
 
 
         redTypeBtn = view.findViewById(R.id.red);
-        redTypeBtn.setOnClickListener(v -> type = 2);
-        yellowTypeBtn = view.findViewById(R.id.yellow);
-        yellowTypeBtn.setOnClickListener(v -> type = 1);
         greenTypeBtn = view.findViewById(R.id.green);
-        greenTypeBtn.setOnClickListener(v -> type = 0);
+        yellowTypeBtn = view.findViewById(R.id.yellow);
+        darkRedButton = view.findViewById(R.id.circle_red);
+        darkYellowButton = view.findViewById(R.id.yellow_dark);
+        darkGreenButton = view.findViewById(R.id.green_dark);
+
+        redTypeBtn.setOnClickListener(v -> {
+            type = 2;
+            darkYellowButton.setVisibility(View.GONE);
+            darkRedButton.setVisibility(View.VISIBLE);
+            darkGreenButton.setVisibility(View.GONE);
+        });
+
+
+        yellowTypeBtn.setOnClickListener(view1 -> {
+            type = 1;
+            darkYellowButton.setVisibility(View.VISIBLE);
+            darkGreenButton.setVisibility(View.GONE);
+            darkRedButton.setVisibility(View.GONE);
+        });
+
+        greenTypeBtn.setOnClickListener(v -> {
+            type = 0;
+            darkYellowButton.setVisibility(View.GONE);
+            darkRedButton.setVisibility(View.GONE);
+            darkGreenButton.setVisibility(View.VISIBLE);
+        });
 
 //        dotodoin= view.findViewById(R.id.todoin_do);
 //        dotodoin.setOnClickListener(view1 -> {
@@ -128,16 +153,16 @@ public class MakeGoals extends DialogFragment {
         startMinuteD = view.findViewById(R.id.minute_d);
 
         btnplsminute = view.findViewById(R.id.plus_s_minute);
-        btnplsminute.setOnClickListener(view1 -> startMinute.plusMinute() );
+        btnplsminute.setOnClickListener(view1 -> startMinute.plusMinute());
 
         btnplsthour = view.findViewById(R.id.plus_s_hour);
         btnplsthour.setOnClickListener(view1 -> startHour.plusHour());
 
         btnminusminute = view.findViewById(R.id.minus_s_minute);
-        btnminusminute.setOnClickListener(view1 -> startMinute.minusMinute() );
+        btnminusminute.setOnClickListener(view1 -> startMinute.minusMinute());
 
         btnminushour = view.findViewById(R.id.minus_s_hour);
-        btnminushour.setOnClickListener(view1 -> startHour.minusHour() );
+        btnminushour.setOnClickListener(view1 -> startHour.minusHour());
 
         plusDurationhours = view.findViewById(R.id.plus_hour);
         plusDurationhours.setOnClickListener(view1 -> startHourD.plusHour());
@@ -173,7 +198,7 @@ public class MakeGoals extends DialogFragment {
         duration = startHourD.getHour() * 3600000L + startMinuteD.getMinute() * 60000L;
         long startTime = startHour.getHour() * 3600000L + startMinute.getMinute() * 60000L;
         beginDateMls = beginDayMls + startTime;
-        time  = timeFormat.format(new Date(beginDateMls));
+        time = timeFormat.format(new Date(beginDateMls));
 
         nd = db.noteDao();
         String date = StaticValues.getStringDate();
@@ -205,8 +230,8 @@ public class MakeGoals extends DialogFragment {
 
     private int setEndHour(int i) {
         if (i > 23) {
-           return i - 24;
-       } else {
+            return i - 24;
+        } else {
             return i;
         }
     }

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, NotificationService.class);
         startService(serviceIntent);
 
-        String[] id_title = new String[]{"Дүшәмбе", "Сишәмбе", "Чәршәмбе", "Пәнҗешәмбе", "Җомга", "Шимбә", "Якшәмбе"};
+        String[] id_title = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         new Thread(() -> {
             DataBase db = DataBaseApl.instance.getDatabase();
             TimeTableDao td = db.timeTableDao();
@@ -53,15 +53,16 @@ public class MainActivity extends AppCompatActivity {
             cal.set(Calendar.HOUR, 0);
             cal.set(Calendar.MILLISECOND, 0);
 
-                for (int i = 0; i < 7; i++) {
-                    if (td.getById(i) == null) {
-                        TimeTableEntity te = new TimeTableEntity();
-                        te.timerange = new RangeItem[0];
-                        te.title = id_title[i];
-                        te.id = i;
-                        td.insert(te);
-                    }
+            for (int i = 0; i < 7; i++) {
+                if (td.getById(i) == null) {
+                    TimeTableEntity te = new TimeTableEntity();
+                    te.timerange = new RangeItem[0];
+                    te.title = id_title[i];
+                    te.id = i;
+                    td.insert(te);
+                }
             }
+
         }).start();
 
 //        class LocaleManager {
