@@ -3,16 +3,24 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_title_column">Исеме</string>
+    <string name="dialog_description" > Тасвирлама</string>
     <string name="dialog_item_begin">Башлана</string>
     <string name="dialog_item_finish">Бетә </string>
     <string name="Ru_before">Кадәр</string>
     <string name="Ru_at">Төгәл</string>,
     <string name="Ru_complete">Башкарырга</string>
-    <string name="test_description">Тасвиры </string>
     <string name="En_timetable">timetable</string>
     <string name="En_task">task</string>
     <string name="En_goal">goal</string>
     <string name="Ru_duration">Дәвамы</string>
     <string name="ru_cancel">Ябырга</string>
     <string name="Ru_apply">Әзер</string>
+    <string name="Monday">Дүш</string>
+    <string name="Tuesday">Сиш</string>
+    <string name="Wednesday">Чәр</string>
+    <string name="Thursday">Пән</string>
+    <string name="Friday">Җом</string>
+    <string name="Saturday">Шим</string>
+    <string name="Sunday">Якш</string>
+    <string name="January">Гыйнвар</string>
 </resources>

@@ -2,12 +2,14 @@ package ru.tanec.sdaily.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.util.LocaleData;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.yariksoffice.lingver.Lingver;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -42,6 +45,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Goal extends Fragment {
 
@@ -55,6 +59,8 @@ public class Goal extends Fragment {
     ImageView sortByTime;
     ImageView sortByTitle;
     ImageView sortByType;
+//    Button Language;
+//    Integer lcnt =0;
 
     int state = View.VISIBLE;
 
@@ -81,6 +87,26 @@ public class Goal extends Fragment {
         sortByTime = view.findViewById(R.id.sortByTime);
         sortByTitle = view.findViewById(R.id.sortByTitle);
         sortByType = view.findViewById(R.id.sortByType);
+
+//        Language = view.findViewById(R.id.language);
+//        Language.setOnClickListener(view1 -> {
+//            lcnt++;
+//            if (lcnt==1){
+//                Lingver.getInstance().setLocale(view1.getContext(),"tt");
+//                Intent intent = activity.getIntent();
+//                activity.finish();
+//                startActivity(intent);
+//            }
+//            else{
+//                Lingver.getInstance().setLocale(view1.getContext(),"ru");
+//                lcnt=0;
+//                Intent intent = activity.getIntent();
+//                activity.finish();
+//                startActivity(intent);
+//            }
+//        });
+
+
 
         new Thread(() -> {
             NoteEntity[] f = db.noteDao().getByDate(StaticValues.getDayMls());

@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="Название"
+            android:hint="@string/dialog_title_column"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="top"
-                android:hint="Описание" />
+                android:hint="@string/dialog_description" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -422,8 +422,8 @@
             android:id="@+id/apply"
             android:layout_width="110dp"
             android:layout_height="70dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
             android:backgroundTint="@color/green"
             android:text="@string/Ru_apply"
             app:layout_constraintEnd_toEndOf="parent"

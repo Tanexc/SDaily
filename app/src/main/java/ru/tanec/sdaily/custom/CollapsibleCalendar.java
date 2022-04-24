@@ -39,6 +39,7 @@ public class CollapsibleCalendar extends LinearLayout {
     GridView gridView;
     ImageView collapseButton;
     ConstraintLayout container;
+    String a = "@string/January";
 
     String dayOfMonth;
     Date today;
@@ -46,7 +47,7 @@ public class CollapsibleCalendar extends LinearLayout {
     Calendar selectedDate = Calendar.getInstance();
     int DAY_COUNT = 35;
     int DIVIDER = Calendar.MONTH;
-    String[] month_name = new String[] {"", "Гыйнвар", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
+    String[] month_name = new String[] {"", a, "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
 
     HashMap<Float, Float> heightCollapse = new HashMap<Float, Float>();
     Float HEIGHT_VISIBLE = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 192,  getResources().getDisplayMetrics());
