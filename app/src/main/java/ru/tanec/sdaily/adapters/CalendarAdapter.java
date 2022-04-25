@@ -105,7 +105,7 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
                 selectedDay.findViewById(R.id.date).setBackgroundResource(0);
             }
             selectedDay = view1;
-            StaticValues.setViewDate(date);
+            StaticValues.setViewDate(calendar.getTime());
             selectedDate.setTime(StaticValues.getViewDate());
         });
 
