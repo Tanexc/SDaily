@@ -72,14 +72,24 @@ public class Goal extends Fragment {
 
         StaticValues.liveDate.observe(getViewLifecycleOwner(), date -> {
             new Thread(() -> {
-                NoteDao nd = db.noteDao();
-                NoteEntity[] primaryData = nd.getByDate(StaticValues.viewDate.getTime());
-                StaticValues.data = new ArrayList<>(primaryData.length);
-                for (int i = 0; i < primaryData.length; i++) {
-                    StaticValues.data.add(new NoteDataItem());
-                    StaticValues.data.get(i).setFromEntity(primaryData[i]);
+                List<NoteDataItem> nd = new ArrayList<NoteDataItem>();
+                NoteEntity[] noteEntities = db.noteDao().getByDate(date.getTime());
+                for (NoteEntity note: noteEntities) {
+                    NoteDataItem n = new NoteDataItem();
+                    n.setFromEntity(note);
+                    nd.add(n);
                 }
-            });
+                Collections.sort(nd, (t1, t2) -> {
+                    return Boolean.compare(t1.finished, t2.finished);
+                });
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    synchronized (adapter) {
+                        adapter.setList(nd);
+                    }
+
+                });
+            }).start();
+
         });
 
         new Thread(() -> {
@@ -93,7 +103,6 @@ public class Goal extends Fragment {
             new Handler(Looper.getMainLooper()).post(() -> {
                 synchronized (adapter) {
                     adapter.setList(nd);
-                    adapter.notifyDataSetChanged();
                 }
 
             });
@@ -139,6 +148,9 @@ public class Goal extends Fragment {
             Collections.sort(list, (t1, t2) -> {
                 return Integer.compare(t2.type, t1.type);
             });
+            Collections.sort(list, (t1, t2) -> {
+                return Boolean.compare(t1.finished, t2.finished);
+            });
             adapter.setList(list);
         });
 
@@ -150,6 +162,9 @@ public class Goal extends Fragment {
             Collections.sort(list, (t1, t2) -> {
                 return Long.compare(t2.beginDateMls, t1.beginDateMls);
             });
+            Collections.sort(list, (t1, t2) -> {
+                return Boolean.compare(t1.finished, t2.finished);
+            });
             adapter.setList(list);
         });
 
@@ -160,6 +175,9 @@ public class Goal extends Fragment {
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
                 return (t1.title.compareTo(t2.title));
+            });
+            Collections.sort(list, (t1, t2) -> {
+                return Boolean.compare(t1.finished, t2.finished);
             });
             adapter.setList(list);
         });

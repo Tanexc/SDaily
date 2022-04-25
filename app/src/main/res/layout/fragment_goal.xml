@@ -98,10 +98,11 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:foreground="@drawable/sort_ascending"
+            android:background="@drawable/square"
             app:layout_constraintEnd_toStartOf="@+id/sortByTime"
             app:layout_constraintStart_toEndOf="@+id/sortByTitle"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/app_color_statusbar"
+            android:foregroundTint="@color/app_color_statusbar"
             android:visibility="gone"/>
 
         <ImageButton
@@ -109,11 +110,12 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/square"
             android:foreground="@drawable/time"
             app:layout_constraintEnd_toStartOf="@+id/filterButton"
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"
-            app:tint="@color/app_color_statusbar" />
+            android:foregroundTint="@color/app_color_statusbar" />
 
         <ImageView
             android:id="@+id/filterButton"

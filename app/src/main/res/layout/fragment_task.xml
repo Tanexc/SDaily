@@ -7,19 +7,142 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Task">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/goal_recycler"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filterPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/goal_recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        tools:listitem="@layout/note_item"
-        tools:ignore="InvalidId" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/language"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tt_lng"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:visibility="gone"
+            android:text="TT"
+            android:textColor="@color/app_color_statusbar"
+            app:layout_constraintStart_toEndOf="@+id/language"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ru_lng"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="RU"
+            android:visibility="gone"
+            android:textColor="@color/app_color_statusbar"
+            app:layout_constraintEnd_toStartOf="@+id/en_lng"
+            app:layout_constraintStart_toEndOf="@+id/tt_lng"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/en_lng"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:text="EN"
+            android:textColor="@color/app_color_statusbar"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/sortByTitle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:foreground="@drawable/sortaz"
+            android:foregroundTint="@color/app_color_statusbar"
+            android:background="@drawable/square"
+            android:padding="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/sortByType"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:foreground="@drawable/sort_ascending"
+            android:background="@drawable/square"
+            app:layout_constraintEnd_toStartOf="@+id/sortByTime"
+            app:layout_constraintStart_toEndOf="@+id/sortByTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            android:foregroundTint="@color/app_color_statusbar"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/sortByTime"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/square"
+            android:foreground="@drawable/time"
+            app:layout_constraintEnd_toStartOf="@+id/filterButton"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            android:foregroundTint="@color/app_color_statusbar" />
+
+        <ImageView
+            android:id="@+id/filterButton"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/filter_out"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/goal_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterPanel"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/note_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/add"
+        android:backgroundTint="@color/app_color_statusbar"
+        android:background="@color/app_color_statusbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </FrameLayout>

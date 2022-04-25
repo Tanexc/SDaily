@@ -196,7 +196,7 @@ public class MakeGoals extends DialogFragment {
         beginDayMls = StaticValues.getDayMls();
         duration = startHourD.getHour() * 3600000L + startMinuteD.getMinute() * 60000L;
         long startTime = startHour.getHour() * 3600000L + startMinute.getMinute() * 60000L;
-        beginDateMls = beginDayMls + startTime - 12 * 3600000L;
+        beginDateMls = beginDayMls + startTime;
         time = timeFormat.format(new Date(beginDateMls));
 
         nd = db.noteDao();

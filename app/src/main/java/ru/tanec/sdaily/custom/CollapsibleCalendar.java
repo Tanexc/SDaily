@@ -44,14 +44,14 @@ public class CollapsibleCalendar extends LinearLayout {
     Date today;
     Calendar currentDate = Calendar.getInstance();
     Calendar selectedDate = Calendar.getInstance();
-    int DAY_COUNT = 35;
-    int DIVIDER = Calendar.MONTH;
+    int DAY_COUNT = 7;
+    int DIVIDER = Calendar.WEEK_OF_YEAR;
     String[] month_name = new String[] {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     HashMap<Float, Float> heightCollapse = new HashMap<Float, Float>();
     Float HEIGHT_VISIBLE = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 192,  getResources().getDisplayMetrics());
     Float HEIGHT_HIDDEN = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48,  getResources().getDisplayMetrics());
-    Float currentHeight = HEIGHT_VISIBLE;
+    Float currentHeight = HEIGHT_HIDDEN;
 
     DataBase db = DataBaseApl.instance.getDatabase();
 
@@ -95,6 +95,8 @@ public class CollapsibleCalendar extends LinearLayout {
         collapseButton = findViewById(R.id.collapse_button);
         gridView = findViewById(R.id.calendar_grid);
         container = findViewById(R.id.calendar_container);
+
+        container.setMaxHeight((int) (float) currentHeight);
 
         collapseButton.animate().scaleX(1.2f);
 

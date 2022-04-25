@@ -1,37 +1,28 @@
 package ru.tanec.sdaily.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.yariksoffice.lingver.Lingver;
 
-import org.intellij.lang.annotations.Language;
-
 import java.util.Calendar;
-import java.util.Locale;
 
-import ru.tanec.sdaily.services.NotificationService;
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.items.RangeItem;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.TimeTableDao;
 import ru.tanec.sdaily.database.TimeTableEntity;
+import ru.tanec.sdaily.services.NotificationService;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton language;
@@ -47,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Lingver.getInstance().setLocale(this, "tt");
-        //Lingver.getInstance().setLocale(view1.getContext(),"ru");
-
 
         language = findViewById(R.id.language);
         tatarLan = findViewById(R.id.tt_lng);

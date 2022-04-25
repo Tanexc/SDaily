@@ -34,6 +34,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     public void setData(ArrayList<TimeTableItem> data) {
         list = data;
+        cnt = -1;
         notifyDataSetChanged();
     }
 
