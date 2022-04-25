@@ -2,51 +2,34 @@ package ru.tanec.sdaily.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.icu.util.LocaleData;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ru.tanec.sdaily.adapters.items.NoteDataItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.GoalAdapter;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.custom.StaticValues;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.yariksoffice.lingver.Lingver;
-
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 public class Goal extends Fragment {
 
@@ -86,6 +69,18 @@ public class Goal extends Fragment {
         sortByTime = view.findViewById(R.id.sortByTime);
         sortByTitle = view.findViewById(R.id.sortByTitle);
         sortByType = view.findViewById(R.id.sortByType);
+
+        StaticValues.liveDate.observe(getViewLifecycleOwner(), date -> {
+            new Thread(() -> {
+                NoteDao nd = db.noteDao();
+                NoteEntity[] primaryData = nd.getByDate(StaticValues.viewDate.getTime());
+                StaticValues.data = new ArrayList<>(primaryData.length);
+                for (int i = 0; i < primaryData.length; i++) {
+                    StaticValues.data.add(new NoteDataItem());
+                    StaticValues.data.get(i).setFromEntity(primaryData[i]);
+                }
+            });
+        });
 
         new Thread(() -> {
             NoteEntity[] f = db.noteDao().getByDate(StaticValues.getDayMls());
