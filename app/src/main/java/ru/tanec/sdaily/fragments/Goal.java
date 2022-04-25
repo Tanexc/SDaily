@@ -2,12 +2,14 @@ package ru.tanec.sdaily.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.util.LocaleData;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.yariksoffice.lingver.Lingver;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -43,6 +46,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Goal extends Fragment {
 
@@ -116,8 +120,6 @@ public class Goal extends Fragment {
                 adapter.setList(nd);
             }
         });
-
-
 
 
         filterButton.setOnClickListener(l -> {

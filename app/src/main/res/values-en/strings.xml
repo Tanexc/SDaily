@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SDaily</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_title_column">Name</string>
+    <string name="dialog_description" > Description</string>
+    <string name="dialog_item_begin">Start</string>
+    <string name="dialog_item_finish">End</string>
+    <string name="Ru_before">До</string>
+    <string name="Ru_at">В</string>
+    <string name="Ru_complete">Perform</string>
+    <string name="En_timetable">Timetable</string>
+    <string name="En_task">Task</string>
+    <string name="En_goal">Goal</string>
+    <string name="Ru_duration">Duration</string>
+    <string name="ru_cancel">Close</string>
+    <string name="Ru_apply">Ready</string>
+    <string name="Monday">Mon</string>
+    <string name="Tuesday">Tue</string>
+    <string name="Wednesday">Wed</string>
+    <string name="Thursday">Th</string>
+    <string name="Friday">Fri</string>
+    <string name="Saturday">Sat</string>
+    <string name="Sunday">Sun</string>
+    <string name="January">Январь</string>
+</resources>

@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Mon"
+            android:text="@string/Monday"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Tue"
+            android:text="@string/Tuesday"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Wed"
+            android:text="@string/Wednesday"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Thu"
+            android:text="@string/Thursday"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Fri"
+            android:text="@string/Friday"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Sat"
+            android:text="@string/Saturday"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Sun"
+            android:text="@string/Sunday"
             android:textColor="@color/app_color_gray" />
 
     </LinearLayout>
