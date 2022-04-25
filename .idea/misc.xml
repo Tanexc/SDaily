@@ -75,6 +75,8 @@
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/open.xml" value="0.315" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/plus.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/selected_date.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/settings.xml" value="0.2975" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/settings_b.xml" value="0.3675" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/time.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/triangle.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/up_arrow.xml" value="0.246" />
@@ -83,7 +85,7 @@
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/custom_calendar_day.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/day_item.xml" value="1.25" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.5" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.75" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.67" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.25" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.6419047619047619" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_task.xml" value="0.1" />

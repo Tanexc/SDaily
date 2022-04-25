@@ -20,67 +20,104 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/filterPanel"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/goal_recycler"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp">
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/goal_recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/language"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tt_lng"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:text="TT"
+            android:textColor="@color/app_color_statusbar"
+            app:layout_constraintStart_toEndOf="@+id/language"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ru_lng"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="RU"
+            android:textColor="@color/app_color_statusbar"
+            app:layout_constraintEnd_toStartOf="@+id/en_lng"
+            app:layout_constraintStart_toEndOf="@+id/tt_lng"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/en_lng"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="EN"
+            android:textColor="@color/app_color_statusbar"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/sortByTitle"
             android:layout_width="20dp"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
             android:src="@drawable/sortaz"
-            app:layout_constraintBottom_toBottomOf="@+id/filterButton"
-            app:layout_constraintEnd_toStartOf="@id/sortByType"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/app_color_statusbar"
-            android:visibility="gone"
-            android:layout_marginStart="5dp"/>
+            app:tint="@color/app_color_statusbar" />
 
         <ImageView
             android:id="@+id/sortByType"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:src="@drawable/sort_ascending"
-            app:layout_constraintBottom_toBottomOf="@+id/filterButton"
-            app:layout_constraintEnd_toStartOf="@id/sortByTime"
-            app:layout_constraintStart_toEndOf="@id/sortByTitle"
+            app:layout_constraintEnd_toStartOf="@+id/sortByTime"
+            app:layout_constraintStart_toEndOf="@+id/sortByTitle"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/app_color_statusbar"
-            android:visibility="gone"
-            android:layout_marginStart="50dp"/>
+            app:tint="@color/app_color_statusbar" />
 
         <ImageView
             android:id="@+id/sortByTime"
             android:layout_width="20dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/time"
-            app:layout_constraintBottom_toBottomOf="@+id/filterButton"
-            app:layout_constraintStart_toEndOf="@id/sortByType"
+            app:layout_constraintEnd_toStartOf="@+id/filterButton"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="50dp"
-            android:visibility="gone"
             app:tint="@color/app_color_statusbar" />
 
         <ImageView
             android:id="@+id/filterButton"
             android:layout_width="20dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
             android:src="@drawable/filter_out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="5dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/goal_recycler"
@@ -108,15 +145,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="544dp"
-        android:layout_marginEnd="276dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!---->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
