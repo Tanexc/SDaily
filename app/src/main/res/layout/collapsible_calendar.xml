@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Дүш"
+            android:text="Mon"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Сиш"
+            android:text="Tue"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Чәр"
+            android:text="Wed"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Пән"
+            android:text="Thu"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Җом"
+            android:text="Fri"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Шим"
+            android:text="Sat"
             android:textColor="@color/app_color_gray" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Якш"
+            android:text="Sun"
             android:textColor="@color/app_color_gray" />
 
     </LinearLayout>

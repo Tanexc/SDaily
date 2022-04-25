@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="Название"
+            android:hint="@string/En_name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -51,42 +51,39 @@
             android:id="@+id/circle_red"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="9dp"
             android:padding="0dp"
             android:scaleType="fitXY"
-            android:src="@drawable/type2dark"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.240"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            android:src="@drawable/type2dark"
+            app:layout_constraintBottom_toBottomOf="@+id/red"
+            app:layout_constraintEnd_toEndOf="@+id/red"
+            app:layout_constraintStart_toStartOf="@+id/red"
+            app:layout_constraintTop_toTopOf="@+id/red" />
 
         <ImageButton
             android:id="@+id/red"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="80dp"
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/type2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.236"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/yellow"
             app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <ImageButton
             android:id="@+id/yellow_dark"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="-2.2dp"
-            android:layout_marginTop="30dp"
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/type1dark"
+            app:layout_constraintBottom_toBottomOf="@+id/yellow"
+            app:layout_constraintEnd_toEndOf="@+id/yellow"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/yellow"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toTopOf="@+id/yellow" />
 
         <ImageButton
             android:id="@+id/yellow"
@@ -105,20 +102,20 @@
             android:id="@+id/green_dark"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="30dp"
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/type0dark"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/yellow"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintBottom_toBottomOf="@+id/green"
+            app:layout_constraintEnd_toEndOf="@+id/green"
+            app:layout_constraintStart_toStartOf="@+id/green"
+            app:layout_constraintTop_toTopOf="@+id/green" />
 
         <ImageButton
             android:id="@+id/green"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="74dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="32dp"
             android:padding="0dp"
             android:scaleType="fitXY"
@@ -128,29 +125,27 @@
 
         </ImageButton>
 
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/description_layout"
+        android:id="@+id/description_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yellow">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/yellow"
-            tools:ignore="DuplicateIds">
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:hint="Описание" />
 
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:hint="Описание" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/description_layout"

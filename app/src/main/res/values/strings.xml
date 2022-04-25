@@ -11,6 +11,7 @@
     <string name="En_timetable">Timetable</string>
     <string name="En_task">Task</string>
     <string name="En_goal">Goal</string>
+    <string name="En_name">Name</string>
     <string name="Ru_duration">Продолжительность</string>
     <string name="ru_cancel">закрыть</string>
     <string name="Ru_apply">готово</string>

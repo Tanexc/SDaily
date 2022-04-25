@@ -46,7 +46,7 @@ public class CollapsibleCalendar extends LinearLayout {
     Calendar selectedDate = Calendar.getInstance();
     int DAY_COUNT = 35;
     int DIVIDER = Calendar.MONTH;
-    String[] month_name = new String[] {"", "Гыйнвар", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
+    String[] month_name = new String[] {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     HashMap<Float, Float> heightCollapse = new HashMap<Float, Float>();
     Float HEIGHT_VISIBLE = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 192,  getResources().getDisplayMetrics());
@@ -59,6 +59,8 @@ public class CollapsibleCalendar extends LinearLayout {
     public CollapsibleCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+
+        // Linking support of gestures
         GestureHelper gestureHelper = new GestureHelper(context) {
             @Override
             public void onSwipeLeft() {
@@ -79,6 +81,7 @@ public class CollapsibleCalendar extends LinearLayout {
         StaticValues.setViewDate(today);
         currentDate.setTime(today);
         initControl(context, attrs);
+
         gridView.setOnTouchListener(gestureHelper);
     }
 
@@ -106,9 +109,6 @@ public class CollapsibleCalendar extends LinearLayout {
                 DAY_COUNT = 7;
                 DIVIDER = Calendar.WEEK_OF_YEAR;
                 collapseButton.animate().scaleY(-1f);
-                if (selectedDate.getTime() != currentDate.getTime()) {
-                selectedDate.set(Calendar.DAY_OF_MONTH, 1);
-                }
             }
             container.setMaxHeight(h);
 
@@ -117,16 +117,19 @@ public class CollapsibleCalendar extends LinearLayout {
 
         btnNext.setOnClickListener(l -> {
             selectedDate.add(DIVIDER, 1);
+            StaticValues.setViewDate(selectedDate.getTime());
             updateCalendar(new HashSet<>());
         });
 
         btnPrev.setOnClickListener( l-> {
             selectedDate.add(DIVIDER, -1);
+            StaticValues.setViewDate(selectedDate.getTime());
             updateCalendar(new HashSet<>());
         });
 
         btnToday.setOnClickListener(l-> {
             selectedDate.setTime(today);
+            StaticValues.setViewDate(selectedDate.getTime());
             updateCalendar(new HashSet<>());
         });
     }
@@ -142,6 +145,8 @@ public class CollapsibleCalendar extends LinearLayout {
     }
 
     public void updateCalendar(HashSet<Date> events) {
+        selectedDate.setTime(StaticValues.getViewDate());
+
         ArrayList<Boolean> notes = new ArrayList<>();
         ArrayList<Date> cells = new ArrayList<>();
 
@@ -153,7 +158,8 @@ public class CollapsibleCalendar extends LinearLayout {
             divider = Calendar.DAY_OF_WEEK;
         }
 
-        Calendar calendar = (Calendar) selectedDate.clone();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(StaticValues.getViewDate());
 
         if (selectedDate.get(Calendar.WEEK_OF_YEAR) != currentDate.get(Calendar.WEEK_OF_YEAR)) {
             btnToday.setImageResource(R.drawable.calendar2);

@@ -118,6 +118,8 @@ public class Goal extends Fragment {
         });
 
 
+
+
         filterButton.setOnClickListener(l -> {
             sortByTime.setVisibility(state);
             sortByType.setVisibility(state);
