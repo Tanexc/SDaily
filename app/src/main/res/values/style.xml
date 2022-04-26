@@ -5,4 +5,10 @@
         <item name="colorControlActivated">@color/app_color_2</item>
         <item name="backgroundColor">@color/white</item>
     </style>
+
+    <style name="SplashTheme">
+        <item name="android:background">@mipmap/icon5</item>
+        <item name="height">100dp</item>
+        <item name="android:width">100dp</item>
+    </style>
 </resources>

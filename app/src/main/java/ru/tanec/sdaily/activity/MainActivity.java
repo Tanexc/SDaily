@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TextView englishLan;
 
 
+
     BottomNavigationView navigation;
 
     @SuppressLint("ResourceAsColor")
@@ -39,53 +40,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        language = findViewById(R.id.language);
-        tatarLan = findViewById(R.id.tt_lng);
-        russianLan = findViewById(R.id.ru_lng);
-        englishLan = findViewById(R.id.en_lng);
-
-        tatarLan.setOnClickListener(l -> {
-            tatarLan.setBackgroundResource(R.color.day_fill);
-            russianLan.setBackgroundResource(R.color.fragment_background);
-            englishLan.setBackgroundResource(R.color.fragment_background);
-            Lingver.getInstance().setLocale(l.getContext(),"tt");
-            ReloadActivity();
-            tatarLan.setBackgroundResource(R.color.day_fill);
-        });
-
-        russianLan.setOnClickListener(l -> {
-            russianLan.setBackgroundResource(R.color.day_fill);
-            tatarLan.setBackgroundResource(R.color.fragment_background);
-            englishLan.setBackgroundResource(R.color.fragment_background);
-            Lingver.getInstance().setLocale(l.getContext(),"ru");
-            ReloadActivity();
-            russianLan.setBackgroundResource(R.color.day_fill);
-        });
-
-        englishLan.setOnClickListener(l -> {
-            englishLan.setBackgroundResource(R.color.day_fill);
-            russianLan.setBackgroundResource(R.color.fragment_background);
-            tatarLan.setBackgroundResource(R.color.fragment_background);
-            Lingver.getInstance().setLocale(l.getContext(),"en");
-            ReloadActivity();
-            englishLan.setBackgroundResource(R.color.day_fill);
-        });
-
-        language.setOnClickListener(view1 -> {
-
-            if (tatarLan.getVisibility() == View.GONE) {
-                language.setBackgroundResource(R.drawable.settings_b);
-                tatarLan.setVisibility(View.VISIBLE);
-                russianLan.setVisibility(View.VISIBLE);
-                englishLan.setVisibility(View.VISIBLE);
-
-            } else {
-                language.setBackgroundResource(R.drawable.settings);
-                tatarLan.setVisibility(View.GONE);
-                russianLan.setVisibility(View.GONE);
-                englishLan.setVisibility(View.GONE);
-            }
-        });
         navigation = findViewById(R.id.bottomNavigationView);
         navigation.setSelectedItemId(R.id.goal);
         NavController navController = Navigation.findNavController(this, R.id.nav_host);
@@ -94,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
             navController.navigate(item.getItemId());
             return true;
         });
+
+        navController.navigate(R.id.task);
+        navigation.setSelectedItemId(R.id.task);
+
         Intent serviceIntent = new Intent(this, NotificationService.class);
         startService(serviceIntent);
 

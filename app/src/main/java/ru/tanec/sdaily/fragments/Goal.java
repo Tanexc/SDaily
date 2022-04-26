@@ -8,15 +8,19 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.yariksoffice.lingver.Lingver;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +34,8 @@ import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
+import ru.tanec.sdaily.helpers.NoteDiffUtil;
+import ru.tanec.sdaily.helpers.SimpleItemTouchHelperCallback;
 
 public class Goal extends Fragment {
 
@@ -43,6 +49,11 @@ public class Goal extends Fragment {
     ImageButton sortByTime;
     ImageButton sortByTitle;
     ImageButton sortByType;
+
+    ImageButton language;
+    TextView tatarLan;
+    TextView russianLan;
+    TextView englishLan;
 
     int state = View.VISIBLE;
 
@@ -69,6 +80,10 @@ public class Goal extends Fragment {
         sortByTime = view.findViewById(R.id.sortByTime);
         sortByTitle = view.findViewById(R.id.sortByTitle);
         sortByType = view.findViewById(R.id.sortByType);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(goalrecycler);
 
         StaticValues.liveDate.observe(getViewLifecycleOwner(), date -> {
             new Thread(() -> {
@@ -120,8 +135,59 @@ public class Goal extends Fragment {
             Collections.sort(nd, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);
             });
+            NoteDiffUtil dif = new NoteDiffUtil(adapter.getList(), nd);
+            DiffUtil.DiffResult d = DiffUtil.calculateDiff(dif);
             synchronized (adapter) {
                 adapter.setList(nd);
+                d.dispatchUpdatesTo(adapter);
+            }
+        });
+
+        language = view.findViewById(R.id.language);
+        tatarLan = view.findViewById(R.id.tt_lng);
+        russianLan = view.findViewById(R.id.ru_lng);
+        englishLan = view.findViewById(R.id.en_lng);
+
+        tatarLan.setOnClickListener(l -> {
+            tatarLan.setBackgroundResource(R.color.day_fill);
+            russianLan.setBackgroundResource(R.color.fragment_background);
+            englishLan.setBackgroundResource(R.color.fragment_background);
+            Lingver.getInstance().setLocale(l.getContext(),"tt");
+            requireActivity().recreate();
+            tatarLan.setBackgroundResource(R.color.day_fill);
+        });
+
+        russianLan.setOnClickListener(l -> {
+            russianLan.setBackgroundResource(R.color.day_fill);
+            tatarLan.setBackgroundResource(R.color.fragment_background);
+            englishLan.setBackgroundResource(R.color.fragment_background);
+            Lingver.getInstance().setLocale(l.getContext(),"ru");
+            requireActivity().recreate();
+            russianLan.setBackgroundResource(R.color.day_fill);
+        });
+
+        englishLan.setOnClickListener(l -> {
+            englishLan.setBackgroundResource(R.color.day_fill);
+            russianLan.setBackgroundResource(R.color.fragment_background);
+            tatarLan.setBackgroundResource(R.color.fragment_background);
+            Lingver.getInstance().setLocale(l.getContext(),"en");
+            requireActivity().recreate();
+            englishLan.setBackgroundResource(R.color.day_fill);
+        });
+
+        language.setOnClickListener(view1 -> {
+            language.setBackgroundResource(R.drawable.settings_b);
+            if (tatarLan.getVisibility() == View.GONE) {
+                language.setBackgroundResource(R.drawable.settings_b);
+                tatarLan.setVisibility(View.VISIBLE);
+                russianLan.setVisibility(View.VISIBLE);
+                englishLan.setVisibility(View.VISIBLE);
+
+            } else {
+                language.setBackgroundResource(R.drawable.settings);
+                tatarLan.setVisibility(View.GONE);
+                russianLan.setVisibility(View.GONE);
+                englishLan.setVisibility(View.GONE);
             }
         });
 

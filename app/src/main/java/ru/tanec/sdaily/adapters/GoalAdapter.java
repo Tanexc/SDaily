@@ -3,6 +3,8 @@ package ru.tanec.sdaily.adapters;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Vibrator;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,9 @@ import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
+import ru.tanec.sdaily.interfaces.ItemTouchHelperAdapter;
 
-public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> {
+public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder> implements ItemTouchHelperAdapter {
 
     List<NoteDataItem> list;
     public Context context;
@@ -83,7 +86,20 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         return list;
     }
 
-    static class GoalViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onItemDismiss(int position) {
+        NoteDataItem c = list.get(position);
+        int id = (int) c.id;
+        DataBase db = DataBaseApl.instance.getDatabase();
+        new Thread(() -> {
+            db.noteDao().delete(db.noteDao().getById(c.id));
+        }).start();
+        list.remove(c);
+        setList(list);
+        notifyItemChanged(id - 1);
+    }
+
+    static public class GoalViewHolder extends RecyclerView.ViewHolder {
 
         boolean opened;
         NoteDataItem obj;
@@ -91,7 +107,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         TextView description;
         ImageView type;
         TextView time;
-        ConstraintLayout layout;
+        public ConstraintLayout layout;
 
         DataBase db = DataBaseApl.instance.getDatabase();
 
@@ -139,7 +155,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
                     noteEntity.finished = obj.finished;
                     nd.update(noteEntity);
                 }).start();
-
 
             });
 

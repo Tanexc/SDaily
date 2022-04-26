@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,6 +35,8 @@ import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
+import ru.tanec.sdaily.helpers.NoteDiffUtil;
+import ru.tanec.sdaily.helpers.SimpleItemTouchHelperCallback;
 
 public class Task extends Fragment {
 
@@ -70,6 +74,12 @@ public class Task extends Fragment {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.HOUR, 0);
         cal.set(Calendar.MILLISECOND, 0);
+
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(goalrecycler);
+
 
         // повесить обсервер на лайв дату зранящую сегодняшнюю дату
         /*StaticValues.liveDate.observe(getViewLifecycleOwner(), date -> {
@@ -122,8 +132,11 @@ public class Task extends Fragment {
             Collections.sort(nd, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);
             });
+            NoteDiffUtil dif = new NoteDiffUtil(adapter.getList(), nd);
+            DiffUtil.DiffResult d = DiffUtil.calculateDiff(dif);
             synchronized (adapter) {
                 adapter.setList(nd);
+                d.dispatchUpdatesTo(adapter);
             }
         });
 
