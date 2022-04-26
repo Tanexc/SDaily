@@ -25,14 +25,8 @@ import ru.tanec.sdaily.database.TimeTableEntity;
 import ru.tanec.sdaily.services.NotificationService;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton language;
-    TextView tatarLan;
-    TextView russianLan;
-    TextView englishLan;
-
-
-
-    BottomNavigationView navigation;
+    public BottomNavigationView navigation;
+    public NavController navController;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -41,16 +35,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         navigation = findViewById(R.id.bottomNavigationView);
-        navigation.setSelectedItemId(R.id.goal);
-        NavController navController = Navigation.findNavController(this, R.id.nav_host);
+        navigation.setSelectedItemId(R.id.task);
+        navController = Navigation.findNavController(this, R.id.nav_host);
         navigation.setOnItemSelectedListener(item -> {
             navController.popBackStack();
             navController.navigate(item.getItemId());
             return true;
         });
 
-        navController.navigate(R.id.task);
         navigation.setSelectedItemId(R.id.task);
+        navController.navigate(R.id.task);
+
 
         Intent serviceIntent = new Intent(this, NotificationService.class);
         startService(serviceIntent);

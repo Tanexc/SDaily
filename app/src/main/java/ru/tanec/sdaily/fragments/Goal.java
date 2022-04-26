@@ -27,6 +27,7 @@ import java.util.Collections;
 import java.util.List;
 
 import ru.tanec.sdaily.R;
+import ru.tanec.sdaily.activity.MainActivity;
 import ru.tanec.sdaily.adapters.GoalAdapter;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.custom.StaticValues;
@@ -153,6 +154,8 @@ public class Goal extends Fragment {
             russianLan.setBackgroundResource(R.color.fragment_background);
             englishLan.setBackgroundResource(R.color.fragment_background);
             Lingver.getInstance().setLocale(l.getContext(),"tt");
+            MainActivity m = (MainActivity) requireActivity();
+            m.navigation.setSelectedItemId(R.id.task);
             requireActivity().recreate();
             tatarLan.setBackgroundResource(R.color.day_fill);
         });
@@ -162,6 +165,8 @@ public class Goal extends Fragment {
             tatarLan.setBackgroundResource(R.color.fragment_background);
             englishLan.setBackgroundResource(R.color.fragment_background);
             Lingver.getInstance().setLocale(l.getContext(),"ru");
+            MainActivity m = (MainActivity) requireActivity();
+            m.navigation.setSelectedItemId(R.id.task);
             requireActivity().recreate();
             russianLan.setBackgroundResource(R.color.day_fill);
         });
@@ -171,6 +176,8 @@ public class Goal extends Fragment {
             russianLan.setBackgroundResource(R.color.fragment_background);
             tatarLan.setBackgroundResource(R.color.fragment_background);
             Lingver.getInstance().setLocale(l.getContext(),"en");
+           MainActivity m = (MainActivity) requireActivity();
+           m.navigation.setSelectedItemId(R.id.task);
             requireActivity().recreate();
             englishLan.setBackgroundResource(R.color.day_fill);
         });

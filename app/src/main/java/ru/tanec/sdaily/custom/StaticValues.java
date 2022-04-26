@@ -47,5 +47,14 @@ public class StaticValues {
         dayOfWeek = day;
     }
 
-    public static long getDayMls() { return viewDate.getTime(); }
+    public static long getDayMls() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(viewDate);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        StaticValues.viewDate = cal.getTime();
+        return viewDate.getTime();
+    }
 }

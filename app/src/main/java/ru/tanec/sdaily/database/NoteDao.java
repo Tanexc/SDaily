@@ -31,7 +31,6 @@ public interface NoteDao {
     @Query("SELECT * FROM noteentity WHERE beginDayMls = :date")
     LiveData<List<NoteEntity>> getLiveByDate(long date);
 
-
     @Insert
     void insert(NoteEntity note);
 

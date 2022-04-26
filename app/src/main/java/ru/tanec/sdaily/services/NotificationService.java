@@ -27,11 +27,13 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.DiffUtil;
 
 import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -44,12 +46,14 @@ import ru.tanec.sdaily.adapters.TimeAdapter;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.adapters.items.RangeItem;
 import ru.tanec.sdaily.adapters.items.TimeTableItem;
+import ru.tanec.sdaily.custom.StaticValues;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
 import ru.tanec.sdaily.database.TimeTableDao;
 import ru.tanec.sdaily.database.TimeTableEntity;
+import ru.tanec.sdaily.helpers.NoteDiffUtil;
 import ru.tanec.sdaily.services.recivers.NotificationReceiver;
 
 
@@ -98,67 +102,44 @@ public class NotificationService extends LifecycleService {
 
         startForeground(101, mainNotification.build());
 
-        lifeDataNotes();
+        LiveData<List<NoteEntity>> nt = db.noteDao().getLiveByDate(StaticValues.getDayMls());
+        nt.observe(this, noteEntities -> {
+            new Thread(() -> {
+                Collections.sort(noteEntities, new Comparator<NoteEntity>() {
+                    @Override
+                    public int compare(NoteEntity noteEntity, NoteEntity t1) {
+                        return Long.compare(noteEntity.beginDateMls, t1.beginDateMls);
+                    }
+                });
 
-
-        /*new Thread(() -> {
-            Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            Calendar calendar = Calendar.getInstance();
-            long t;
-
-            while (true) {
-                if (notes != null) {
-                    for (NoteEntity note : notes) {
-                        t = calendar.getTime().getTime();
-                        if (note.beginDateMls >= t & note.beginDateMls - 600000 <= t & !note.notified) {
-                            note.notified = true;
-                            sendNotification(note.title, note.description, note.id, note.time, 0);
-                            vibrator.vibrate(VibrationEffect.createWaveform(new long[]{100, 200, 100, 200}, new int[]{VibrationEffect.EFFECT_TICK, 0, VibrationEffect.EFFECT_TICK, 0}, 1));
+                for (NoteEntity note: noteEntities) {
+                    if (!note.notified) {
+                        if (note.beginDateMls > Calendar.getInstance().getTime().getTime()) {
                             try {
-                                Thread.sleep(note.duration - 1000);
-                                vibrator.cancel();
+                                Thread.sleep(note.beginDateMls - Calendar.getInstance().getTime().getTime());
+                                sendNotification(note.title, note.description, note.id, 0, note.type, "" + note.startHour + "-" + note.startMinute);
+                                note.notified = true;
+                                db.noteDao().update(note);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+
                         }
-                        else if (note.beginDateMls + note.duration <= t & note.beginDateMls + note.duration >= t - 60000 & !note.postNotified) {
-                            note.postNotified = true;
-                            sendNotification(note.title, note.description, note.id, note.time, 1);
+                    } else if (!note.postNotified) {
+                        try {
+                            Thread.sleep(note.duration);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        if (t > note.beginDateMls + note.duration) {
-                            note.missed = true;
-                            nd.update(note);
-                        }
+                        sendNotification(note.title, note.description, note.id, 1, note.type, "" + note.startHour + "-" + note.startMinute);
+                        note.postNotified = true;
+                        db.noteDao().update(note);
                     }
                 }
-            }
-        }).start();
+            }).start();
 
-        new Thread(() -> {
+        });
 
-            SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
-            Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            while (true) {
-                RangeItem[] ranges = getRanges();
-                for (RangeItem range : ranges) {
-                    if (range != null) {
-                        Calendar calendar = Calendar.getInstance();
-                        String[] timeNow = sdf.format(calendar.getTime()).split("-");
-                        if (Integer.parseInt(timeNow[0]) >= range.start_hour) {
-                            long mls = range.getDuration();
-                            String duration = range.getStringDuration();
-                            startForeground(101, mainNotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).setContentTitle("Remember that").setContentText(range.title + " " + duration).build());
-                            vibrator.vibrate(VibrationEffect.createWaveform(new long[]{100, 200, 100, 200}, new int[]{VibrationEffect.EFFECT_TICK, 0, VibrationEffect.EFFECT_TICK, 0}, -1));
-                            try {
-                                Thread.sleep(mls);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-            }
-        }).start();*/
 
         return START_NOT_STICKY;
     }
@@ -198,6 +179,12 @@ public class NotificationService extends LifecycleService {
             text = "At " + startTime + ". " + text;
         }
         NotificationCompat.Builder builder;
+
+        // fun
+        // 0 - send first notification
+        // other - send post notification
+
+
         if (notificationFun == 0) {
             builder =
                     new NotificationCompat.Builder(this, "102")
@@ -206,7 +193,8 @@ public class NotificationService extends LifecycleService {
                             .setContentText(text)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Ok", okPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "Dismiss", dismissPendingIntent)
-                            .setPriority(NotificationCompat.PRIORITY_HIGH);
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setAutoCancel(false);
         } else {
             builder =
                     new NotificationCompat.Builder(this, "103")
