@@ -102,6 +102,8 @@ public class NotificationService extends LifecycleService {
 
         startForeground(101, mainNotification.build());
 
+        sendNotification(": dvv", "ote.description", 1, 0, 1, "" + 11 + "-" + 23);
+
         LiveData<List<NoteEntity>> nt = db.noteDao().getLiveByDate(StaticValues.getDayMls());
         nt.observe(this, noteEntities -> {
             new Thread(() -> {
@@ -185,14 +187,13 @@ public class NotificationService extends LifecycleService {
 
 
         Intent noIntent = new Intent(this, NotificationReceiver.class);
-        noIntent.putExtra("notify", "no");
+        noIntent.putExtra("notify", "hu");
         noIntent.putExtra("note", id);
 
-
-        PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, yesIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, noIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, noIntent, PendingIntent.FLAG_NO_CREATE);
+        PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_NO_CREATE);
+        PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_NO_CREATE);
+        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, yesIntent, PendingIntent.FLAG_NO_CREATE);
 
 
         if (notificationFun == 0) {

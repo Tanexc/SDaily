@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import ru.tanec.sdaily.activity.MainActivity;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.adapters.items.RangeItem;
 import ru.tanec.sdaily.database.DataBase;
@@ -39,11 +40,13 @@ public class NotificationReceiver extends BroadcastReceiver {
             noteExecute(id, 1);
         } else if (action.equals("no")) {
             noteExecute(id, 0);
+        } else if (action.equals("activity")) {
+            context.startActivity(new Intent(context, MainActivity.class));
         }
 
         NotificationManager n = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        n.cancel(id);
+        n.cancelAll();
 
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         vibrator.cancel();
@@ -134,7 +137,7 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void noteExecute(int id, int state) {
         new Thread(() -> {
             NoteDao nd = db.noteDao();
-            NoteEntity note = nd.getById(id);
+            NoteEntity note = nd.getById((long) id);
             if (state == 1) {
                 note.finished = true;
             }
