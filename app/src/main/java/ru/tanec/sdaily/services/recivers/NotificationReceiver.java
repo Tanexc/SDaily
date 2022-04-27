@@ -1,5 +1,6 @@
 package ru.tanec.sdaily.services.recivers;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,22 +24,27 @@ import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
 import ru.tanec.sdaily.database.TimeTableDao;
 import ru.tanec.sdaily.database.TimeTableEntity;
+import ru.tanec.sdaily.services.NotificationService;
 
 public class NotificationReceiver extends BroadcastReceiver {
     DataBase db = DataBaseApl.instance.getDatabase();
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        switch(intent.getIntExtra("action", 0)){
-            case 1:
-                break;
-            case 2:
-                noteReplace(intent.getIntExtra("notification", 0));
-                break;
-            case 3:
-                noteExecute(intent.getIntExtra("notification", 0),
-                            intent.getIntExtra("executed", 0));
+        String action = intent.getStringExtra("notify");
+        int id = intent.getIntExtra("note", 0);
+        if (action.equals("dismiss")) {
+            noteReplace(id);
+        } else if (action.equals("yes")) {
+            noteExecute(id, 1);
+        } else if (action.equals("no")) {
+            noteExecute(id, 0);
         }
+
+        NotificationManager n = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        n.cancel(id);
+
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         vibrator.cancel();
     }
@@ -57,7 +63,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         NoteEntity[] notesMedium = nd.getByType(1);
         NoteEntity[] notesHigh = nd.getByType(2);
 
-        ArrayList<Long> d = new ArrayList<Long>();
+        ArrayList<Long> d = new ArrayList<>();
         HashMap<Long, NoteEntity> typesTable = new HashMap<Long, NoteEntity>();
         for (NoteEntity note: notesLow) {
             d.add(note.beginDateMls);
@@ -126,10 +132,14 @@ public class NotificationReceiver extends BroadcastReceiver {
     }
 
     public void noteExecute(int id, int state) {
-        NoteDao nd = db.noteDao();
-        NoteEntity note = nd.getById(id);
-         if (state == 1) {
-             note.finished = true;
-         }
+        new Thread(() -> {
+            NoteDao nd = db.noteDao();
+            NoteEntity note = nd.getById(id);
+            if (state == 1) {
+                note.finished = true;
+            }
+            nd.update(note);
+        }).start();
+
     }
 }

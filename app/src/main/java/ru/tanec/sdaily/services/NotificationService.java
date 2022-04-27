@@ -112,7 +112,7 @@ public class NotificationService extends LifecycleService {
                     }
                 });
 
-                for (NoteEntity note: noteEntities) {
+                for (NoteEntity note : noteEntities) {
                     if (!note.notified) {
                         if (note.beginDateMls > Calendar.getInstance().getTime().getTime()) {
                             try {
@@ -145,25 +145,6 @@ public class NotificationService extends LifecycleService {
     }
 
     void sendNotification(String title, String text, long id, Integer notificationFun, @Nullable Integer type, @Nullable String startTime) {
-        Intent okIntent = new Intent(this, NotificationReceiver.class);
-        okIntent.putExtra("action", 1);
-        okIntent.putExtra("notification", id);
-        Intent dismissIntent = new Intent(this, NotificationReceiver.class);
-        dismissIntent.putExtra("action", 2);
-        dismissIntent.putExtra("notification", id);
-        Intent yesIntent = new Intent(this, NotificationReceiver.class);
-        yesIntent.putExtra("executed", 1);
-        yesIntent.putExtra("action", 3);
-        yesIntent.putExtra("notification", id);
-        Intent noIntent = new Intent(this, NotificationReceiver.class);
-        noIntent.putExtra("executed", 0);
-        noIntent.putExtra("action", 3);
-        noIntent.putExtra("notification", id);
-
-        PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         int ic;
         if (type == 0) {
@@ -184,6 +165,35 @@ public class NotificationService extends LifecycleService {
         // 0 - send first notification
         // other - send post notification
 
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        intent.putExtra("notify", "activity");
+
+        PendingIntent ntfIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        Intent okIntent = new Intent(this, NotificationReceiver.class);
+        okIntent.putExtra("notify", "ok");
+        okIntent.putExtra("note", id);
+
+        Intent dismissIntent = new Intent(this, NotificationReceiver.class);
+        dismissIntent.putExtra("notify", "dismiss");
+        dismissIntent.putExtra("note", id);
+
+
+        Intent yesIntent = new Intent(this, NotificationReceiver.class);
+        yesIntent.putExtra("notify", "yes");
+        yesIntent.putExtra("note", id);
+
+
+        Intent noIntent = new Intent(this, NotificationReceiver.class);
+        noIntent.putExtra("notify", "no");
+        noIntent.putExtra("note", id);
+
+
+        PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, yesIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, noIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
 
         if (notificationFun == 0) {
             builder =
@@ -191,24 +201,27 @@ public class NotificationService extends LifecycleService {
                             .setContentTitle(title)
                             .setSmallIcon(ic)
                             .setContentText(text)
+                            .setContentIntent(ntfIntent)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Ok", okPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "Dismiss", dismissPendingIntent)
                             .setPriority(NotificationCompat.PRIORITY_HIGH)
-                            .setAutoCancel(false);
+                            .setAutoCancel(true);
         } else {
             builder =
                     new NotificationCompat.Builder(this, "103")
                             .setContentTitle(title)
                             .setSmallIcon(ic)
                             .setContentText(text)
+                            .setContentIntent(ntfIntent)
                             .addAction(R.drawable.ic_baseline_nights_stay_24, "Yes", yesPendingIntent)
                             .addAction(R.drawable.ic_baseline_wb_sunny_24, "No", noPendingIntent)
-                            .setPriority(NotificationCompat.PRIORITY_HIGH);
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setAutoCancel(true);
         }
         Notification notification = builder.build();
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, notification);
+        notificationManager.notify((int) id, notification);
 
     }
 
@@ -234,7 +247,7 @@ public class NotificationService extends LifecycleService {
         LiveData<List<NoteEntity>> ld = nd.getAll();
         notes = new ArrayList<>();
         ld.observe(this, noteEntities -> {
-           if (notes.size() != noteEntities.size() | noteEntities.size() != 0) {
+            if (notes.size() != noteEntities.size() | noteEntities.size() != 0) {
                 notesThread.interrupt();
                 cnt += 1;
                 notes = noteEntities;
