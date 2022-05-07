@@ -65,7 +65,7 @@
 
 # Download
 
-В [Releases](https://github.com/t8rin/FridgeXLight/releases) Вы можете установить последнее приложение
+В [Releases](https://github.com/tannec/SDaily/releases) Вы можете установить последнее приложение
 
 # More information
 
