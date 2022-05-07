@@ -52,6 +52,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
             list.add(id, item);
             notifyItemChanged(id);
         }
+        cnt = -1;
     }
 
     @NonNull

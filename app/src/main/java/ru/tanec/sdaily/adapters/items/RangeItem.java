@@ -7,7 +7,7 @@ public class RangeItem extends ItemList {
     public Integer end_hour = 0;
     public int id;
     public int deleted = 1;
-    public String title = "Исем";
+    public String title = null;
 
     public void setStartTime(int hour, int minute) {
         start_hour = hour;

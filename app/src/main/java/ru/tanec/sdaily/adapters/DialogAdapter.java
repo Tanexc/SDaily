@@ -215,7 +215,9 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
                 s_hm = new int[]{0, 0};
                 e_hm = new int[]{0, 0};
             }
-            title.setText((CharSequence)  item.title);
+            if (item.title != null) {
+                title.setText((CharSequence)  item.title);
+            }
             start_hour.setHour(s_hm[0]);
             end_hour.setHour(e_hm[0]);
             start_minute.setMinute(s_hm[1]);

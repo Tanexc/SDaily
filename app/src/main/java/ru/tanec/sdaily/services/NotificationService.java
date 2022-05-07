@@ -102,8 +102,6 @@ public class NotificationService extends LifecycleService {
 
         startForeground(101, mainNotification.build());
 
-        sendNotification(": dvv", "ote.description", 1, 0, 1, "" + 11 + "-" + 23);
-
         LiveData<List<NoteEntity>> nt = db.noteDao().getLiveByDate(StaticValues.getDayMls());
         nt.observe(this, noteEntities -> {
             new Thread(() -> {
@@ -142,10 +140,70 @@ public class NotificationService extends LifecycleService {
 
         });
 
+        LiveData<List<TimeTableEntity>> td = db.timeTableDao().getAll();
+        td.observe(
+                this,
+                timeTableEntities -> {
+                    new Thread(() -> {
+                        int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+                        cnt = 1;
+                        for (TimeTableEntity entity: timeTableEntities) {
+                            if (cnt == today) {
+                                RangeItem[] range = entity.timerange;
+                                for (RangeItem i: range) {
+                                    if (i != null) {
+                                        int[] startTime = i.getStartTime();
+                                        int[] endTime = i.getEndTime();
+                                        Calendar cl = Calendar.getInstance();
+                                        int[] nowTime = {cl.get(Calendar.HOUR), cl.get(Calendar.MINUTE)};
+                                        if (endTime[0] > nowTime[0] & nowTime[0] > startTime[0]) {
+                                            mainNotification =
+                                                    new NotificationCompat.Builder(this, "101")
+                                                            .setContentTitle("Remember")
+                                                            .setContentText(i.getStringDuration() + " " + i.title)
+                                                            .setContentIntent(pendingIntent)
+                                                            .setAutoCancel(false)
+                                                            .setSmallIcon(R.mipmap.icon5)
+                                                            .setPriority(NotificationCompat.PRIORITY_MIN);
+
+                                            startForeground(101, mainNotification.build());
+                                            try {
+                                                Thread.sleep(i.getDuration() + 100L);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        } else if (startTime[0] == nowTime[0] & startTime[1] < nowTime[1] | endTime[0] == nowTime[0] & endTime[1] > nowTime[1]) {
+                                            mainNotification =
+                                                    new NotificationCompat.Builder(this, "101")
+                                                            .setContentTitle("Remember")
+                                                            .setContentText(i.getStringDuration() + " " + i.title)
+                                                            .setContentIntent(pendingIntent)
+                                                            .setAutoCancel(false)
+                                                            .setSmallIcon(R.mipmap.icon5)
+                                                            .setPriority(NotificationCompat.PRIORITY_MIN);
+
+                                            startForeground(101, mainNotification.build());
+                                            try {
+                                                Thread.sleep(i.getDuration() + 100L);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                cnt += 1;
+                            }
+                        }
+
+                    }).start();
+                });
+
 
         return START_NOT_STICKY;
     }
 
+    @SuppressLint("NotificationTrampoline")
     void sendNotification(String title, String text, long id, Integer notificationFun, @Nullable Integer type, @Nullable String startTime) {
 
         int ic;

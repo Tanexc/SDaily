@@ -106,8 +106,18 @@ public class RangeFragment extends DialogFragment {
             db = DataBaseApl.instance.getDatabase();
             td = db.timeTableDao();
             TimeTableEntity ne = new TimeTableEntity();
+
+            for (int i = 0; i < data.length; i++) {
+                if (data[i].title == null) {
+                    data[i].title = "untitled";
+                }
+            }
             ne.timerange = data;
             ne.id = id;
+            String title = obj.title;
+            if (title == "") {
+                title = "null";
+            }
             ne.title = obj.title;
             td.update(ne);
         }).start();
