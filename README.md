@@ -79,7 +79,7 @@
 
 # License
 
-
+Вы можете ознакомиться с [лицензией](https://github.com/Tannec/SDaily/blob/master/LICENSE.md) проекта
 
 
 
