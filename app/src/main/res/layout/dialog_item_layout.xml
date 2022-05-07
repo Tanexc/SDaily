@@ -21,9 +21,10 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputLayout"
         android:layout_width="119dp"
-        android:layout_height="39dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="@string/dialog_title_column"
+        android:maxHeight="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

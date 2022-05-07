@@ -80,30 +80,6 @@ public class Task extends Fragment {
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(goalrecycler);
 
-
-        // повесить обсервер на лайв дату зранящую сегодняшнюю дату
-        /*StaticValues.liveDate.observe(getViewLifecycleOwner(), date -> {
-            new Thread(() -> {
-                List<NoteDataItem> nd = new ArrayList<NoteDataItem>();
-                NoteEntity[] noteEntities = db.noteDao().getByDate(date.getTime());
-                for (NoteEntity note: noteEntities) {
-                    NoteDataItem n = new NoteDataItem();
-                    n.setFromEntity(note);
-                    nd.add(n);
-                }
-                Collections.sort(nd, (t1, t2) -> {
-                    return Boolean.compare(t1.finished, t2.finished);
-                });
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    synchronized (adapter) {
-                        adapter.setList(nd);
-                    }
-
-                });
-            }).start();
-
-        });*/
-
         new Thread(() -> {
             NoteEntity[] f = db.noteDao().getByDate(cal.getTime().getTime());
             List<NoteDataItem> nd = new ArrayList<NoteDataItem>();
@@ -175,7 +151,7 @@ public class Task extends Fragment {
             sortByTitle.setBackgroundResource(R.drawable.square);
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
-                return Long.compare(t2.beginDateMls, t1.beginDateMls);
+                return Long.compare(t1.beginDateMls, t2.beginDateMls);
             });
             Collections.sort(list, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);

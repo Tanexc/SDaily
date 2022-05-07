@@ -175,7 +175,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         public void bind(NoteDataItem a) {
             obj = a;
-            description.setText(a.description);
+            description.setText(a.getDescriptionSmall());
             if (a.type == 0) {
                 type.setImageResource(R.drawable.type0);
             } else if (a.type == 1) {

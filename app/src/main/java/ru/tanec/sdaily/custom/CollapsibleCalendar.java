@@ -99,6 +99,7 @@ public class CollapsibleCalendar extends LinearLayout {
         container.setMaxHeight((int) (float) currentHeight);
 
         collapseButton.animate().scaleX(1.2f);
+        collapseButton.animate().scaleY(-1f);
 
         collapseButton.setOnClickListener(l -> {
             currentHeight = heightCollapse.get(currentHeight);

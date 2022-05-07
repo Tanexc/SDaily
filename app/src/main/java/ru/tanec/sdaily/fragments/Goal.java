@@ -95,7 +95,7 @@ public class Goal extends Fragment {
                     n.setFromEntity(note);
                     nd.add(n);
                 }
-                Collections.sort(nd, (t2, t1) -> {
+                Collections.sort(nd, (t1, t2) -> {
                     return Boolean.compare(t1.finished, t2.finished);
                 });
                 new Handler(Looper.getMainLooper()).post(() -> {
@@ -133,7 +133,7 @@ public class Goal extends Fragment {
                 n.setFromEntity(note);
                 nd.add(n);
             }
-            Collections.sort(nd, (t2, t1) -> {
+            Collections.sort(nd, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);
             });
             NoteDiffUtil dif = new NoteDiffUtil(adapter.getList(), nd);
@@ -221,7 +221,7 @@ public class Goal extends Fragment {
             Collections.sort(list, (t1, t2) -> {
                 return Integer.compare(t2.type, t1.type);
             });
-            Collections.sort(list, (t2, t1) -> {
+            Collections.sort(list, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);
             });
             adapter.setList(list);
@@ -232,10 +232,10 @@ public class Goal extends Fragment {
             sortByTime.setBackgroundResource(R.drawable.sort_square);
             sortByTitle.setBackgroundResource(R.drawable.square);
             List<NoteDataItem> list = adapter.getList();
-            Collections.sort(list, (t2, t1) -> {
-                return Long.compare(t2.beginDateMls, t1.beginDateMls);
+            Collections.sort(list, (t1, t2) -> {
+                return Long.compare(t1.beginDateMls, t2.beginDateMls);
             });
-            Collections.sort(list, (t2, t1) -> {
+            Collections.sort(list, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);
             });
             adapter.setList(list);
@@ -246,10 +246,10 @@ public class Goal extends Fragment {
             sortByTitle.setBackgroundResource(R.drawable.sort_square);
             sortByTime.setBackgroundResource(R.drawable.square);
             List<NoteDataItem> list = adapter.getList();
-            Collections.sort(list, (t2, t1) -> {
+            Collections.sort(list, (t1, t2) -> {
                 return (t1.title.compareTo(t2.title));
             });
-            Collections.sort(list, (t2, t1) -> {
+            Collections.sort(list, (t1, t2) -> {
                 return Boolean.compare(t1.finished, t2.finished);
             });
             adapter.setList(list);

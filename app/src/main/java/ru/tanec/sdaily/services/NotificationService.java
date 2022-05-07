@@ -146,6 +146,10 @@ public class NotificationService extends LifecycleService {
                 timeTableEntities -> {
                     new Thread(() -> {
                         int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+                        today -= 1;
+                        if (today == 0) {
+                            today = 7;
+                        }
                         cnt = 1;
                         for (TimeTableEntity entity: timeTableEntities) {
                             if (cnt == today) {
@@ -155,7 +159,7 @@ public class NotificationService extends LifecycleService {
                                         int[] startTime = i.getStartTime();
                                         int[] endTime = i.getEndTime();
                                         Calendar cl = Calendar.getInstance();
-                                        int[] nowTime = {cl.get(Calendar.HOUR), cl.get(Calendar.MINUTE)};
+                                        int[] nowTime = {cl.get(Calendar.HOUR_OF_DAY), cl.get(Calendar.MINUTE)};
                                         if (endTime[0] > nowTime[0] & nowTime[0] > startTime[0]) {
                                             mainNotification =
                                                     new NotificationCompat.Builder(this, "101")
