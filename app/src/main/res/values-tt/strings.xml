@@ -22,4 +22,7 @@
     <string name="Saturday">Шим</string>
     <string name="Sunday">Якш</string>
     <string name="January">Гыйнвар</string>
+    <string name="High">Югары</string>
+    <string name="Medium">Уртача</string>
+    <string name="Low">Түбән</string>
 </resources>

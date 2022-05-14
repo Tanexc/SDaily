@@ -22,4 +22,7 @@
     <string name="Saturday">Sat</string>
     <string name="Sunday">Sun</string>
     <string name="January">Январь</string>
+    <string name="High">High</string>
+    <string name="Medium">Medium</string>
+    <string name="Low">Low</string>
 </resources>

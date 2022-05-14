@@ -75,7 +75,9 @@ public class MakeGoals extends DialogFragment {
     public ImageButton darkRedButton;
     public ImageButton darkYellowButton;
     public ImageButton darkGreenButton;
-
+    public TextView highpriority;
+    public TextView mediumpriority;
+    public TextView lowpriority;
 
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
 
@@ -94,12 +96,19 @@ public class MakeGoals extends DialogFragment {
         darkRedButton = view.findViewById(R.id.circle_red);
         darkYellowButton = view.findViewById(R.id.yellow_dark);
         darkGreenButton = view.findViewById(R.id.green_dark);
+        highpriority = view.findViewById(R.id.high_priority);
+        mediumpriority = view.findViewById(R.id.medium_priority);
+        lowpriority = view.findViewById(R.id.low_priority);
+
 
         redTypeBtn.setOnClickListener(v -> {
             type = 2;
             darkYellowButton.setVisibility(View.GONE);
             darkRedButton.setVisibility(View.VISIBLE);
             darkGreenButton.setVisibility(View.GONE);
+            highpriority.setVisibility(View.VISIBLE);
+            mediumpriority.setVisibility(View.GONE);
+            lowpriority.setVisibility(View.GONE);
         });
 
 
@@ -108,6 +117,9 @@ public class MakeGoals extends DialogFragment {
             darkYellowButton.setVisibility(View.VISIBLE);
             darkGreenButton.setVisibility(View.GONE);
             darkRedButton.setVisibility(View.GONE);
+            highpriority.setVisibility(View.GONE);
+            mediumpriority.setVisibility(View.VISIBLE);
+            lowpriority.setVisibility(View.GONE);
         });
 
         greenTypeBtn.setOnClickListener(v -> {
@@ -115,6 +127,9 @@ public class MakeGoals extends DialogFragment {
             darkYellowButton.setVisibility(View.GONE);
             darkRedButton.setVisibility(View.GONE);
             darkGreenButton.setVisibility(View.VISIBLE);
+            highpriority.setVisibility(View.GONE);
+            mediumpriority.setVisibility(View.GONE);
+            lowpriority.setVisibility(View.VISIBLE);
         });
 
 //        dotodoin= view.findViewById(R.id.todoin_do);
