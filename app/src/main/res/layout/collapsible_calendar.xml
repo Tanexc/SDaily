@@ -22,6 +22,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Август"
+            android:textColor="@color/on_background"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:textColor="@color/on_background"
             android:text="2022"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +100,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Monday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
         <TextView
             android:layout_width="0dp"
@@ -106,7 +108,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Tuesday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
         <TextView
             android:layout_width="0dp"
@@ -114,7 +116,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Wednesday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
         <TextView
             android:layout_width="0dp"
@@ -122,7 +124,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Thursday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
         <TextView
             android:layout_width="0dp"
@@ -130,7 +132,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Friday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
         <TextView
             android:layout_width="0dp"
@@ -138,7 +140,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Saturday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
         <TextView
             android:layout_width="0dp"
@@ -146,7 +148,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/Sunday"
-            android:textColor="@color/app_color_gray" />
+            android:textColor="@color/on_background" />
 
     </LinearLayout>
 

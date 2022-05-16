@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="500dp"
-    tools:context=".fragments.RangeFragment">
+    tools:context=".fragments.RangeFragment"
+    android:background="@color/secondary_container">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -41,40 +42,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_dialog_recycler" />
 
-        <TextView
-            android:id="@+id/dialog_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/dialog_title_column"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/dialog_begin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="94dp"
-            android:text="@string/dialog_item_begin"
-            app:layout_constraintBottom_toTopOf="@+id/time_dialog_recycler"
-            app:layout_constraintStart_toEndOf="@+id/dialog_title" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:text="@string/dialog_item_finish"
-            app:layout_constraintBottom_toTopOf="@+id/time_dialog_recycler"
-            app:layout_constraintStart_toEndOf="@+id/dialog_begin" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/time_dialog_recycler"
             android:layout_width="wrap_content"
             android:layout_height="400dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_title"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/dialog_item_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

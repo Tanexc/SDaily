@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="rose">#F6DFEB</color>
     <color name="s_rose">#E4BAD4</color>
-    <color name="app_color_1">#90F2FF</color>
-    <color name="app_color_statusbar">#0a85ff</color>
-    <color name="app_color_statusbar_night">#063360</color>
-    <color name="fragment_background">#6EB6FF</color>
+    <color name="primary_dark">#6EB6FF</color>
+    <color name="on_primary">#ffffff</color>
+    <color name="on_primary_dark">#003258</color>
+    <color name="primary_container_dark">#00497c</color>
+    <color name="on_primary_container">#001d36</color>
+    <color name="on_primary_container_dark">#cfe4ff</color>
+    <color name="background">#fdfcff</color>
+    <color name="on_background">#1a1c1e</color>
+    <color name="background_dark">#1a1c1e</color>
+    <color name="on_background_dark">#e2e2e6</color>
+    <color name="surface_variant">#dfe3ec</color>
+    <color name="surface_variant_dark">#42474e</color>
+    <color name="secondary">#525f70</color>
+    <color name="secondary_dark">#bac7da</color>
+    <color name="on_secondary">#ffffff</color>
+    <color name="on_secondary_dark">#243140</color>
+    <color name="secondary_container">#d7e4f8</color>
+    <color name="on_secondary_container">#101c2a</color>
+    <color name="secondary_container_dark">#3b4857</color>
+    <color name="on_secondary_container_dark">#d7e4f8</color>
     <color name="filter_select">#813D9EFF</color>
     <color name="day_fill">#4099ed</color>
     <color name="day_fill_1">#bfccde</color>
     <color name="range_button">#a6ddf5</color>
     <color name="app_color_dark">#1A1A1B</color>
+    <color name="primary">#0061a2</color>
+    <color name="primary_container">#cfe4ff</color>
     <color name="app_color_3">#333F44</color>
     <color name="app_color_button">#7accf0</color>
     <color name="app_color_2">#B9D7EA</color>
@@ -22,5 +38,6 @@
     <color name="light_gray">#dadada</color>
     <color name="green">#98fb98</color>
     <color name="red">#ff6161</color>
+    <color name="tool_bar">#063360</color>
 
 </resources>

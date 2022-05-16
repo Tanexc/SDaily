@@ -37,6 +37,10 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+        Context ctx = viewHolder.itemView.getContext();
+
+        Vibrator v = (Vibrator) ctx.getSystemService(ctx.VIBRATOR_SERVICE);
+        v.vibrate(new long[]{0, 60}, -1);
         return false;
     }
 

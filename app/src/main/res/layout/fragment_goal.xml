@@ -7,6 +7,10 @@
     android:background="@color/fragment_background"
     tools:context=".fragments.Goal">
 
+    <include
+        android:id="@+id/qwe"
+        layout="@layout/toolbar"/>
+
     <ru.tanec.sdaily.custom.CollapsibleCalendar
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
@@ -14,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/qwe"
         tools:ignore="MissingClass" />
 
 
@@ -39,46 +43,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/language"
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/settings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <TextView
-            android:id="@+id/tt_lng"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:visibility="gone"
-            android:text="TT"
-            android:textColor="@color/app_color_statusbar"
-            app:layout_constraintStart_toEndOf="@+id/language"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/ru_lng"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:text="RU"
-            android:visibility="gone"
-            android:textColor="@color/app_color_statusbar"
-            app:layout_constraintEnd_toStartOf="@+id/en_lng"
-            app:layout_constraintStart_toEndOf="@+id/tt_lng"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/en_lng"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:visibility="gone"
-            android:text="EN"
-            android:textColor="@color/app_color_statusbar"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton

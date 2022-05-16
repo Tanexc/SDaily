@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_title_column">Название</string>
+    <string name="delete_label">Удалить</string>
     <string name="dialog_description" > Описание</string>
     <string name="dialog_item_begin">Начало</string>
     <string name="dialog_item_finish">Конец</string>

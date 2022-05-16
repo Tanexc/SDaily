@@ -52,9 +52,9 @@ public class Goal extends Fragment {
     ImageButton sortByType;
 
     ImageButton language;
-    TextView tatarLan;
-    TextView russianLan;
-    TextView englishLan;
+    ImageView tatarLan;
+    ImageView russianLan;
+    ImageView englishLan;
 
     int state = View.VISIBLE;
 
@@ -150,9 +150,6 @@ public class Goal extends Fragment {
         englishLan = view.findViewById(R.id.en_lng);
 
         tatarLan.setOnClickListener(l -> {
-            tatarLan.setBackgroundResource(R.color.day_fill);
-            russianLan.setBackgroundResource(R.color.fragment_background);
-            englishLan.setBackgroundResource(R.color.fragment_background);
             Lingver.getInstance().setLocale(l.getContext(),"tt");
             MainActivity m = (MainActivity) requireActivity();
             m.navigation.setSelectedItemId(R.id.task);
@@ -161,9 +158,6 @@ public class Goal extends Fragment {
         });
 
         russianLan.setOnClickListener(l -> {
-            russianLan.setBackgroundResource(R.color.day_fill);
-            tatarLan.setBackgroundResource(R.color.fragment_background);
-            englishLan.setBackgroundResource(R.color.fragment_background);
             Lingver.getInstance().setLocale(l.getContext(),"ru");
             MainActivity m = (MainActivity) requireActivity();
             m.navigation.setSelectedItemId(R.id.task);
@@ -172,9 +166,6 @@ public class Goal extends Fragment {
         });
 
         englishLan.setOnClickListener(l -> {
-            englishLan.setBackgroundResource(R.color.day_fill);
-            russianLan.setBackgroundResource(R.color.fragment_background);
-            tatarLan.setBackgroundResource(R.color.fragment_background);
             Lingver.getInstance().setLocale(l.getContext(),"en");
            MainActivity m = (MainActivity) requireActivity();
            m.navigation.setSelectedItemId(R.id.task);

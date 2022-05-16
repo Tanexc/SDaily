@@ -90,13 +90,19 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
     public void onItemDismiss(int position) {
         NoteDataItem c = list.get(position);
         int id = (int) c.id;
-        DataBase db = DataBaseApl.instance.getDatabase();
-        new Thread(() -> {
-            db.noteDao().delete(db.noteDao().getById(c.id));
-        }).start();
-        list.remove(c);
-        setList(list);
-        notifyItemChanged(id - 1);
+        if (c.moved) {
+            DataBase db = DataBaseApl.instance.getDatabase();
+            new Thread(() -> {
+                db.noteDao().delete(db.noteDao().getById(c.id));
+            }).start();
+            list.remove(c);
+            setList(list);
+            notifyItemChanged(id - 1);
+        } else {
+            c.moved = true;
+            list.set(position, c);
+            notifyDataSetChanged();
+        }
     }
 
     static public class GoalViewHolder extends RecyclerView.ViewHolder {
@@ -107,7 +113,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         TextView description;
         ImageView type;
         TextView time;
+        CardView cardView;
         public ConstraintLayout layout;
+        TextView deleteLabel;
 
         DataBase db = DataBaseApl.instance.getDatabase();
 
@@ -121,10 +129,12 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             description = itemView.findViewById(R.id.description);
             time = itemView.findViewById(R.id.time);
             obj = it;
+            cardView = itemView.findViewById(R.id.noteCard);
             title = itemView.findViewById(R.id.title);
             title.setText(obj.title);
             type = itemView.findViewById(R.id.type);
             layout = itemView.findViewById(R.id.cardLayout);
+            deleteLabel = itemView.findViewById(R.id.deleteLabel);
 
             if (obj.finished) {
                 layout.setBackgroundResource(R.color.light_gray);

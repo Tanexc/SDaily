@@ -6,7 +6,8 @@
     <string name="dialog_item_begin">Башлана</string>
     <string name="dialog_item_finish">Бетә </string>
     <string name="Ru_before">Кадәр</string>
-    <string name="Ru_at">Төгәл</string>,
+    <string name="Ru_at">Төгәл</string>
+    <string name="delete_label">Бетерергә</string>
     <string name="Ru_complete">Башкарырга</string>
     <string name="En_timetable">Timetable</string>
     <string name="En_task">Task</string>

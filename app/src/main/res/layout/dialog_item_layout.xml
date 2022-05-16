@@ -49,18 +49,29 @@
         android:layout_marginStart="50dp"
         android:text="12"
         android:textAlignment="textEnd"
-        android:textColor="@color/black"
+        android:textColor="@color/on_secondary_container"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/minus_s_hour"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/plus_s_hour" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:src="@drawable/chevron_right"
+        android:scaleType="centerCrop"
+        app:tint="@color/on_secondary_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/end_hour"
+        app:layout_constraintStart_toEndOf="@+id/start_minute"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=":"
-        android:textColor="@color/black"
+        android:textColor="@color/on_secondary_container"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/start_hour"
@@ -70,7 +81,7 @@
         android:id="@+id/plus_s_hour"
         android:layout_width="20dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/start_hour"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +90,7 @@
         android:id="@+id/minus_s_hour"
         android:layout_width="20dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView" />
 
@@ -98,7 +109,7 @@
         android:id="@+id/plus_s_minute"
         android:layout_width="20dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         android:layout_margin="0dp"
         android:layout_marginStart="11dp"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -108,7 +119,7 @@
         android:id="@+id/minus_s_minute"
         android:layout_width="20dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView" />
 
@@ -142,7 +153,7 @@
     <Button
         android:id="@+id/plus_e_minute"
         android:layout_width="20dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         android:layout_height="30dp"
         app:layout_constraintBottom_toTopOf="@+id/end_hour"
         app:layout_constraintStart_toEndOf="@+id/del2"
@@ -153,7 +164,7 @@
         android:id="@+id/minus_e_hour"
         android:layout_width="20dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/end_hour"
@@ -171,7 +182,7 @@
     <Button
         android:id="@+id/plus_e_hour"
         android:layout_width="20dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         android:layout_height="30dp"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -180,7 +191,7 @@
         android:id="@+id/minus_e_minute"
         android:layout_width="20dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/range_button"
+        android:backgroundTint="@color/primary"
         app:layout_constraintStart_toEndOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/end_minute" />
 

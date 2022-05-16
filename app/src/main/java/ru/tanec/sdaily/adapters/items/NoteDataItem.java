@@ -34,6 +34,7 @@ public class NoteDataItem extends ItemList {
     public boolean missed;
     public boolean notified;
     public boolean postNotified;
+    public boolean moved = false;
 
     public NoteDataItem(){}
 
