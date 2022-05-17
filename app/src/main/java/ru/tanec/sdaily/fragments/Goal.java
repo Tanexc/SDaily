@@ -258,7 +258,7 @@ public class Goal extends Fragment {
 
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(v -> {
-            MakeGoals fragment = new MakeGoals();
+            MakeGoals fragment = new MakeGoals(adapter.getList());
             fragment.show(requireActivity().getSupportFragmentManager(), "makeGoal");
         });
 

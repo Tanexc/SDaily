@@ -1,5 +1,8 @@
 package ru.tanec.sdaily.adapters.items;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RangeItem extends ItemList {
     public Integer start_hour = 0;
     public Integer start_minute = 0;
@@ -8,6 +11,9 @@ public class RangeItem extends ItemList {
     public int id;
     public int deleted = 1;
     public String title = null;
+    Map<String,String> dictionary = new HashMap<String,String>();
+
+
 
     public void setStartTime(int hour, int minute) {
         start_hour = hour;
@@ -28,6 +34,7 @@ public class RangeItem extends ItemList {
 
     public int[] getEndTime() {
         return new int[]{end_hour, end_minute};
+
     }
 
     public long getDuration() {

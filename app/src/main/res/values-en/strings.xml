@@ -25,4 +25,5 @@
     <string name="High">High</string>
     <string name="Medium">Medium</string>
     <string name="Low">Low</string>
+    <string name="Error">Нou have a task for this time</string>
 </resources>

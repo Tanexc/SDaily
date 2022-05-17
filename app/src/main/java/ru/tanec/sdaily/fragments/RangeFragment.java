@@ -74,6 +74,7 @@ public class RangeFragment extends DialogFragment {
             } catch (Exception e) {
                 a = new TimeTableEntity();
                 a.title = obj.title;
+
                 a.id = obj.id;
                 a.timerange = new RangeItem[1];
                 a.timerange[0].id = 0;

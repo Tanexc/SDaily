@@ -171,9 +171,9 @@
             android:textColor="@color/app_color_dark"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/plus_s_minute"
             app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/plus_s_hour"
             app:layout_constraintTop_toBottomOf="@+id/d" />
 
         <TextView
@@ -432,10 +432,10 @@
             android:layout_marginTop="4dp"
             android:text="@string/High"
             android:textColor="#8A1F1F"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/red"
             app:layout_constraintStart_toStartOf="@+id/red"
-            app:layout_constraintTop_toBottomOf="@+id/red"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/red" />
 
         <TextView
             android:id="@+id/medium_priority"
@@ -444,10 +444,10 @@
             android:layout_marginTop="4dp"
             android:text="@string/Medium"
             android:textColor="#9E9B39"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/yellow"
             app:layout_constraintStart_toStartOf="@+id/yellow"
-            app:layout_constraintTop_toBottomOf="@+id/yellow"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/yellow" />
 
         <TextView
             android:id="@+id/low_priority"
@@ -456,9 +456,25 @@
             android:layout_marginTop="4dp"
             android:text="@string/Low"
             android:textColor="#6BA15F"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/green"
             app:layout_constraintStart_toStartOf="@+id/green"
-            app:layout_constraintTop_toBottomOf="@+id/green"
+            app:layout_constraintTop_toBottomOf="@+id/green" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="124dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/Error"
+            android:textAlignment="center"
+            android:textColor="#8A1F1F"
+            app:layout_constraintBottom_toBottomOf="@+id/minus_s_minute"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/plus_s_minute"
+            app:layout_constraintTop_toTopOf="@+id/plus_s_minute"
             android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

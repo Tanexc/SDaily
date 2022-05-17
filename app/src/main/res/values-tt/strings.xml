@@ -7,7 +7,7 @@
     <string name="dialog_item_finish">Бетә </string>
     <string name="Ru_before">Кадәр</string>
     <string name="Ru_at">Төгәл</string>,
-    <string name="Ru_complete">Башкарырга</string>
+    <string name="Ru_complete">Башлану вакыты</string>
     <string name="En_timetable">Timetable</string>
     <string name="En_task">Task</string>
     <string name="En_goal">Goal</string>
@@ -25,4 +25,5 @@
     <string name="High">Югары</string>
     <string name="Medium">Уртача</string>
     <string name="Low">Түбән</string>
+    <string name="Error">Сезнең бу вакытта эшегез бар</string>
 </resources>

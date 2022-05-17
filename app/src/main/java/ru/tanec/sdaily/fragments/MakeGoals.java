@@ -4,13 +4,15 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ru.tanec.sdaily.R;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.custom.CollapsibleCalendar;
 import ru.tanec.sdaily.custom.HTimePicker;
 import ru.tanec.sdaily.custom.MTimePicker;
@@ -27,8 +29,8 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class MakeGoals extends DialogFragment {
 
@@ -78,11 +80,16 @@ public class MakeGoals extends DialogFragment {
     public TextView highpriority;
     public TextView mediumpriority;
     public TextView lowpriority;
+    private TextView errorText;
+    Integer errorcnt = 0;
 
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
 
-    public MakeGoals() {
+    private List<NoteDataItem> list;
+
+    public MakeGoals(List<NoteDataItem> list) {
         super(R.layout.fragment_makegoal);
+        this.list = list;
     }
 
     @Override
@@ -99,6 +106,7 @@ public class MakeGoals extends DialogFragment {
         highpriority = view.findViewById(R.id.high_priority);
         mediumpriority = view.findViewById(R.id.medium_priority);
         lowpriority = view.findViewById(R.id.low_priority);
+        errorText = view.findViewById(R.id.error_text);
 
 
         redTypeBtn.setOnClickListener(v -> {
@@ -144,11 +152,8 @@ public class MakeGoals extends DialogFragment {
         calendar = view.findViewById(R.id.calendar);
 
         apply = view.findViewById(R.id.apply);
+        apply.setOnClickListener(v -> saveNote());
 
-        apply.setOnClickListener(view1 -> {
-            saveNote();
-            dismiss();
-        });
 
         close = view.findViewById(R.id.close);
         close.setOnClickListener(view1 -> {
@@ -237,9 +242,15 @@ public class MakeGoals extends DialogFragment {
         newNote.endHour = setEndHour(startHour.getHour() + startHourD.getHour());
         newNote.endMinute = setEndMinute(startMinute.getMinute() + startMinuteD.getMinute());
 
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).beginDateMls == beginDateMls) {
+                errorText.setVisibility(View.VISIBLE);
+                return;
+            }
+        }
 
         new Thread(() -> nd.insert(newNote)).start();
-
+        dismiss();
     }
 
     private int setEndHour(int i) {

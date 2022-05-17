@@ -8,7 +8,7 @@
     <string name="dialog_item_finish">Конец</string>
     <string name="Ru_before">До</string>
     <string name="Ru_at">В</string>
-    <string name="Ru_complete">Выполнить</string>
+    <string name="Ru_complete">Начало в</string>
     <string name="En_timetable">Timetable</string>
     <string name="En_task">Task</string>
     <string name="En_goal">Goal</string>
@@ -26,4 +26,5 @@
     <string name="High">Высокий</string>
     <string name="Medium">Средний</string>
     <string name="Low">Низкий</string>
+    <string name="Error">У Вас уже есть задача на это время</string>
 </resources>
