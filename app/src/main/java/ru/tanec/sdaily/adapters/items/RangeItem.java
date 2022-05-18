@@ -1,5 +1,7 @@
 package ru.tanec.sdaily.adapters.items;
 
+import androidx.annotation.NonNull;
+
 public class RangeItem extends ItemList {
     public Integer start_hour = 0;
     public Integer start_minute = 0;
@@ -70,5 +72,9 @@ public class RangeItem extends ItemList {
 
     public void delete() {
         this.deleted *= -1;
+    }
+
+    public String[] toData() {
+        return new String[]{title, getStringDuration()};
     }
 }

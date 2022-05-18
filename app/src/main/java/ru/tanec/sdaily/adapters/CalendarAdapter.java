@@ -1,5 +1,7 @@
 package ru.tanec.sdaily.adapters;
 
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,11 +12,17 @@ import android.graphics.Color;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.TextViewCompat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import ru.tanec.sdaily.R;
+import ru.tanec.sdaily.custom.CollapsibleCalendar;
 import ru.tanec.sdaily.custom.StaticValues;
 
 public class CalendarAdapter extends ArrayAdapter<Date> {
@@ -23,13 +31,15 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
     Calendar selectedDate;
     View selectedDay;
     ArrayList<Boolean> notes;
+    CollapsibleCalendar collapsibleCalendar;
 
-    public CalendarAdapter(Context context, ArrayList<Date> days, Calendar selectedDate, ArrayList<Boolean> notes)
+    public CalendarAdapter(Context context, ArrayList<Date> days, Calendar selectedDate, ArrayList<Boolean> notes, CollapsibleCalendar collapsibleCalendar)
     {
         super(context, R.layout.custom_calendar_day, days);
         this.selectedDate = selectedDate;
         inflater = LayoutInflater.from(context);
         this.notes = notes;
+        this.collapsibleCalendar = collapsibleCalendar;
     }
 
     @Override
@@ -56,12 +66,13 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
 
 
         if (month == selectedDate.get(Calendar.MONTH) &
-            year == selectedDate.get(Calendar.YEAR) & month == calendarToday.get(Calendar.MONTH)) {
+            year == selectedDate.get(Calendar.YEAR)) {
             ((TextView) view.findViewById(R.id.date)).setTextColor(Color.parseColor("#000000"));
             ((TextView) view.findViewById(R.id.date)).setGravity(Gravity.CENTER);
             if (day == selectedDate.get(Calendar.DATE)) {
                 view.findViewById(R.id.date).setBackgroundResource(R.drawable.current_date);
-                selectedDay= view;
+                TextViewCompat.setCompoundDrawableTintList(view.findViewById(R.id.date), ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_dark_primaryContainer)));
+                selectedDay = view;
             }
         }
         else if (month != calendarToday.get(Calendar.MONTH) & month != selectedDate.get(Calendar.MONTH)) {
@@ -77,36 +88,21 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
             ((TextView)view.findViewById(R.id.date)).setTextColor(Color.parseColor("#ebebeb"));
         }
 
-
-            // Checking if date of cell is today
-       /* if (month != calendarToday.get(Calendar.MONTH) || year != calendarToday.get(Calendar.YEAR)) {
-            if(month != selectedDate.get(Calendar.MONTH)) {
-                ((TextView) view.findViewById(R.id.date)).setTextColor(Color.parseColor("#813D9EFF"));
-            } else {
-                ((TextView) view.findViewById(R.id.date)).setTextColor(Color.parseColor("#0a85ff"));
-            }
-
-        } else if (day == calendarToday.get(Calendar.DATE)) {
-            ((TextView)view.findViewById(R.id.date)).setTextColor(Color.parseColor("#ebebeb"));
-            ((TextView) view.findViewById(R.id.date)).setGravity(Gravity.CENTER);
-        } if (day == selectedDate.get(Calendar.DATE)) {
-            ((TextView) view.findViewById(R.id.date)).setGravity(Gravity.CENTER);
-            view.findViewById(R.id.date).setBackgroundResource(R.drawable.current_date);
-            selectedDay = view;
-        }*/
-
         ((TextView)view.findViewById(R.id.date)).setText(String.valueOf(day));
 
 
         // onClickListener. Setting selectedDay into StaticValues
         view.findViewById(R.id.date).setOnClickListener(view1 -> {
             view1.findViewById(R.id.date).setBackgroundResource(R.drawable.current_date);
+            TextViewCompat.setCompoundDrawableTintList(view1.findViewById(R.id.date), ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_dark_primaryContainer)));
+
             if (null != selectedDay & selectedDay != view1) {
                 selectedDay.findViewById(R.id.date).setBackgroundResource(0);
             }
             selectedDay = view1;
             StaticValues.setViewDate(calendar.getTime());
             selectedDate.setTime(StaticValues.getViewDate());
+            collapsibleCalendar.updateCalendar(new HashSet<>());
         });
 
         if (!notes.get(position)) {

@@ -4,19 +4,19 @@
         android:id="@+id/goal"
         android:enabled="true"
         android:icon="@drawable/calendar"
-        android:iconTint="@color/on_primary_container"
+        android:iconTint="@color/md_theme_light_onPrimaryContainer"
         android:title="@string/En_goal"/>
     <item
         android:id="@+id/task"
         android:enabled="true"
         android:icon="@drawable/check"
-        android:iconTint="@color/on_primary_container"
+        android:iconTint="@color/md_theme_light_onPrimaryContainer"
         android:title="@string/En_task"/>
     <item
         android:id="@+id/timetable"
         android:enabled="true"
         android:icon="@drawable/time"
-        android:iconTint="@color/on_primary_container"
+        android:iconTint="@color/md_theme_light_onPrimaryContainer"
         android:title="@string/En_timetable"
         android:visible="true"
         />

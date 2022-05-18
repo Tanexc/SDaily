@@ -30,11 +30,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/delete_btn"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:background="@color/white"
         android:scaleType="centerCrop"
         android:src="@drawable/close"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +48,6 @@
         android:layout_marginStart="50dp"
         android:text="12"
         android:textAlignment="textEnd"
-        android:textColor="@color/on_secondary_container"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/minus_s_hour"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout"
@@ -60,7 +58,6 @@
         android:layout_height="25dp"
         android:src="@drawable/chevron_right"
         android:scaleType="centerCrop"
-        app:tint="@color/on_secondary_container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/end_hour"
         app:layout_constraintStart_toEndOf="@+id/start_minute"
@@ -71,7 +68,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=":"
-        android:textColor="@color/on_secondary_container"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/start_hour"
@@ -79,18 +75,20 @@
 
     <Button
         android:id="@+id/plus_s_hour"
-        android:layout_width="20dp"
+        android:foreground="@drawable/plus"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/start_hour"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/minus_s_hour"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
+        android:foreground="@drawable/minus"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
         android:layout_height="30dp"
-        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView" />
 
@@ -99,7 +97,6 @@
         android:id="@+id/start_minute"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:textColor="@color/black"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/minus_s_minute"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -107,9 +104,10 @@
 
     <Button
         android:id="@+id/plus_s_minute"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/primary"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
+        android:foreground="@drawable/plus"
         android:layout_margin="0dp"
         android:layout_marginStart="11dp"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -117,9 +115,10 @@
 
     <Button
         android:id="@+id/minus_s_minute"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/primary"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
+        android:foreground="@drawable/minus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView" />
 
@@ -129,7 +128,6 @@
         android:layout_height="20dp"
         android:text="12"
         android:textAlignment="textEnd"
-        android:textColor="@color/black"
         android:textSize="17sp"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/plus_e_minute" />
@@ -142,7 +140,6 @@
         android:layout_marginStart="70dp"
         android:layout_marginEnd="30dp"
         android:text=":"
-        android:textColor="@color/black"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,8 +149,9 @@
 
     <Button
         android:id="@+id/plus_e_minute"
-        android:layout_width="20dp"
-        android:backgroundTint="@color/primary"
+        android:foreground="@drawable/plus"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toTopOf="@+id/end_hour"
         app:layout_constraintStart_toEndOf="@+id/del2"
@@ -162,9 +160,10 @@
 
     <Button
         android:id="@+id/minus_e_hour"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/primary"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
+        android:foreground="@drawable/minus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/end_hour"
@@ -174,24 +173,25 @@
         android:id="@+id/end_minute"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:textColor="@color/black"
         android:textSize="17sp"
         app:layout_constraintStart_toEndOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/plus_e_minute" />
 
     <Button
         android:id="@+id/plus_e_hour"
-        android:layout_width="20dp"
-        android:backgroundTint="@color/primary"
+        android:layout_width="30dp"
+        android:foreground="@drawable/plus"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
         android:layout_height="30dp"
         app:layout_constraintEnd_toStartOf="@+id/del2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/minus_e_minute"
-        android:layout_width="20dp"
+        android:foreground="@drawable/minus"
+        android:foregroundTint="@color/md_theme_light_onPrimary"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/primary"
         app:layout_constraintStart_toEndOf="@+id/del2"
         app:layout_constraintTop_toBottomOf="@+id/end_minute" />
 

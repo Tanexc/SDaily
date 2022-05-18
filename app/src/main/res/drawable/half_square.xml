@@ -14,15 +14,15 @@
   <path
       android:pathData="M232,0L419,0A93,93 0,0 1,512 93L512,419A93,93 0,0 1,419 512L232,512A93,93 0,0 1,139 419L139,93A93,93 0,0 1,232 0z"
       android:strokeWidth="0"
-      android:fillColor="@color/day_fill"/>
+      android:fillColor="#000000"/>
   <path
       android:pathData="M20,512h187v512h-187z"
       android:strokeWidth="0"
-      android:fillColor="@color/day_fill"/>
+      android:fillColor="#000000"/>
   <path
       android:pathData="M174.5,459h0v71h-0z"
       android:strokeWidth="0"
-      android:fillColor="@color/day_fill"/>
+      android:fillColor="#000000"/>
   <path
       android:pathData="M137,0h118v512h-118z"
       android:strokeWidth="0"

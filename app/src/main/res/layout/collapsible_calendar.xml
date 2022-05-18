@@ -22,7 +22,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Август"
-            android:textColor="@color/on_background"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textColor="@color/on_background"
             android:text="2022"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,13 +46,15 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/calendar_prev_button"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="20dp"
                 android:src="@drawable/chevron_left" />
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/collapse_button"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -63,10 +63,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/calendar_next_button"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="20dp"
                 android:src="@drawable/chevron_right" />
 
 
@@ -99,56 +100,49 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Monday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Monday" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Tuesday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Tuesday" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Wednesday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Wednesday" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Thursday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Thursday" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Friday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Friday" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Saturday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Saturday" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/Sunday"
-            android:textColor="@color/on_background" />
+            android:text="@string/Sunday" />
 
     </LinearLayout>
 
@@ -172,5 +166,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageView
+        android:id="@+id/fullsize_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/up_arrow"
+        app:layout_constraintEnd_toEndOf="@id/calendar_container"
+        app:layout_constraintStart_toStartOf="@id/calendar_container"
+        app:layout_constraintTop_toBottomOf="@id/calendar_container" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

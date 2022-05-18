@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/accept.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/add.xml" value="0.156" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/day_with_notes.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/new_moon.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/red_btn.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/selected_calendar_day.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/sort_square.xml" value="0.156" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/square.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable-v24/type0.xml" value="0.169" />
@@ -25,32 +28,42 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/chevron_left.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/chevron_right.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/close.xml" value="0.1375" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/complete.xml" value="0.1295" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/current_date.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/filter.xml" value="0.156" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/filter_out.xml" value="0.156" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/half_square.xml" value="0.1375" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/ic_baseline_wb_sunny_24.xml" value="0.1295" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/minus.xml" value="0.156" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/open.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/plus.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/selected_date.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/settings.xml" value="0.1295" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/settings_b.xml" value="0.1295" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/sort_ascending.xml" value="0.1295" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/sortaz.xml" value="0.1295" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/time.xml" value="0.1375" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/triangle.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/type2dark.xml" value="0.169" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/drawable/up_arrow.xml" value="0.1" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/activity_main.xml" value="0.19208087615838249" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout-v23/fragment_range.xml" value="0.10104166666666667" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/collapsible_calendar.xml" value="0.33" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/custom_calendar_day.xml" value="0.67" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/day_item.xml" value="0.12708333333333333" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dayitem.xml" value="0.1" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.67" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoals.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.4" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_task.xml" value="0.34499514091350825" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_timetable.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/note_item.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/range_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/task_item.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/test.xml" value="0.25" />
-        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.5398230088495575" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/toolbar.xml" value="0.9" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu-v26/bottom_nav.xml" value="0.10885416666666667" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.20416666666666666" />

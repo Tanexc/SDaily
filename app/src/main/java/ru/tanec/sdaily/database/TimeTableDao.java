@@ -18,6 +18,9 @@ public interface TimeTableDao {
     @Query("SELECT * FROM timetableentity WHERE id = :id")
     TimeTableEntity getById(long id);
 
+    @Query("SELECT * FROM timetableentity WHERE title = :title")
+    TimeTableEntity getByTitle(String title);
+
     @Insert
     void insert(TimeTableEntity tdi);
 

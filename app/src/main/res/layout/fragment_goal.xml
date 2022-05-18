@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragment_background"
     tools:context=".fragments.Goal">
-
-    <include
-        android:id="@+id/qwe"
-        layout="@layout/toolbar"/>
 
     <ru.tanec.sdaily.custom.CollapsibleCalendar
         android:id="@+id/calendarView"
@@ -18,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/qwe"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingClass" />
 
 
@@ -50,8 +45,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:foreground="@drawable/sortaz"
-            android:foregroundTint="@color/app_color_statusbar"
             android:background="@drawable/square"
+            android:backgroundTint="@color/md_theme_light_primaryInverse"
             android:padding="0dp"
             android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -66,7 +61,6 @@
             app:layout_constraintEnd_toStartOf="@+id/sortByTime"
             app:layout_constraintStart_toEndOf="@+id/sortByTitle"
             app:layout_constraintTop_toTopOf="parent"
-            android:foregroundTint="@color/app_color_statusbar"
             android:visibility="gone"/>
 
         <ImageButton
@@ -78,8 +72,7 @@
             android:foreground="@drawable/time"
             app:layout_constraintEnd_toStartOf="@+id/filterButton"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"
-            android:foregroundTint="@color/app_color_statusbar" />
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/filterButton"
@@ -115,8 +108,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/add"
-        android:backgroundTint="@color/app_color_statusbar"
-        android:background="@color/app_color_statusbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

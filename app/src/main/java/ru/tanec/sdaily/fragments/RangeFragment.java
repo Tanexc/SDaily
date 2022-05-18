@@ -1,10 +1,14 @@
 package ru.tanec.sdaily.fragments;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
@@ -58,6 +62,13 @@ public class RangeFragment extends DialogFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = requireDialog();
+        dialog.getWindow().setLayout(MATCH_PARENT, MATCH_PARENT);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -108,8 +119,8 @@ public class RangeFragment extends DialogFragment {
             TimeTableEntity ne = new TimeTableEntity();
 
             for (int i = 0; i < data.length; i++) {
-                if (data[i].title == null) {
-                    data[i].title = "untitled";
+                if (data[i].title == null | data[i].title == "") {
+                    data[i].title = "u$n$t$i$t$l$e$d";
                 }
             }
             ne.timerange = data;

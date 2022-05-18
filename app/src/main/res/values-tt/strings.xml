@@ -6,6 +6,7 @@
     <string name="dialog_item_begin">Башлана</string>
     <string name="dialog_item_finish">Бетә </string>
     <string name="Ru_before">Кадәр</string>
+    <string name="untitled">атамасыз</string>
     <string name="Ru_at">Төгәл</string>
     <string name="delete_label">Бетерергә</string>
     <string name="Ru_complete">Башкарырга</string>
@@ -23,4 +24,11 @@
     <string name="Saturday">Шим</string>
     <string name="Sunday">Якш</string>
     <string name="January">Гыйнвар</string>
+    <string name="monday">дүшәмбе</string>
+    <string name="tuesday">сишәмбе</string>
+    <string name="wednesday">тирәлек</string>
+    <string name="thursday">пәнҗешәмбе</string>
+    <string name="friday">җомга</string>
+    <string name="saturday">шимбә</string>
+    <string name="sunday">якшәмбе</string>
 </resources>

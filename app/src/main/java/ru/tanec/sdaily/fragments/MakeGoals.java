@@ -117,14 +117,6 @@ public class MakeGoals extends DialogFragment {
             darkGreenButton.setVisibility(View.VISIBLE);
         });
 
-//        dotodoin= view.findViewById(R.id.todoin_do);
-//        dotodoin.setOnClickListener(view1 -> {
-//            vtodoin.setChecked(false);
-//            todoin = vtodoin.isChecked();
-//        });
-//
-//        vtodoin= view.findViewById(R.id.todoin_v);
-//        vtodoin.setOnClickListener(view1 -> dotodoin.setChecked(false));
 
         calendar = view.findViewById(R.id.calendar);
 
@@ -189,7 +181,6 @@ public class MakeGoals extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_FRAME, R.style.Theme_SDaily);
     }
 
     public void saveNote() {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -81,7 +82,7 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
 
     static class DialogViewHolder extends RecyclerView.ViewHolder {
 
-        ImageButton delete_btn;
+        ImageView delete_btn;
         DialogAdapter adpt;
         TextInputEditText title;
         HTimePicker start_hour;
@@ -138,9 +139,9 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
                     delete_btn.setImageResource(R.drawable.open);
                 } else {
                     delete_btn.setImageResource(R.drawable.close);
-                    k = -1;
+                    k = 0;
                 }
-
+                delete_btn.animate().rotation(0f).start();
                 delete_btn.animate().rotation((float) (k * 45)).start();
             });
 
@@ -216,7 +217,9 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
                 e_hm = new int[]{0, 0};
             }
             if (item.title != null) {
-                title.setText((CharSequence)  item.title);
+                if(!item.title.equals("u$n$t$i$t$l$e$d")) {
+                    title.setText((CharSequence)  item.title);
+                }
             }
             start_hour.setHour(s_hm[0]);
             end_hour.setHour(e_hm[0]);

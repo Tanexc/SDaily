@@ -1,12 +1,16 @@
 package ru.tanec.sdaily.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ru.tanec.sdaily.R;
@@ -33,7 +37,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
 
         cnt++;
 
-        return new DayViewHolder(view, list, cnt);
+        return new DayViewHolder(view, list, cnt, context);
 
     }
 
@@ -51,18 +55,17 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
 
         ImageView dayimage;
 
-        public DayViewHolder(@NonNull View itemView, Boolean[] dl, int id) {
+        @SuppressLint("ResourceAsColor")
+        public DayViewHolder(@NonNull View itemView, Boolean[] dl, int id, Context context) {
             super(itemView);
             this.dayimage = itemView.findViewById(R.id.day_image_rec);
             if (dl[id] == null) {
                 dl[id] = false;
             }
             if (dl[id] == true) {
-                this.dayimage.setBackgroundResource(R.drawable.white_square);
-            } else if (dl[id] == false) {
-                this.dayimage.setBackgroundResource(R.drawable.square);
+                ImageViewCompat.setImageTintList(dayimage, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_onSurface)));
             } else {
-                this.dayimage.setBackgroundResource(R.drawable.half_square);
+                ImageViewCompat.setImageTintList(dayimage, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_onSurfaceVariant)));
             }
         }
     }

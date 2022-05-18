@@ -134,10 +134,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             title.setText(obj.title);
             type = itemView.findViewById(R.id.type);
             layout = itemView.findViewById(R.id.cardLayout);
-            deleteLabel = itemView.findViewById(R.id.deleteLabel);
 
             if (obj.finished) {
-                layout.setBackgroundResource(R.color.light_gray);
+                layout.setBackgroundResource(R.color.md_theme_light_outline);
             }
 
             description.setText(obj.getDescriptionSmall());
@@ -152,10 +151,10 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
             type.setOnClickListener(l -> {
                 if (!obj.finished) {
-                    layout.setBackgroundResource(R.color.light_gray);
+                    layout.setBackgroundResource(R.color.md_theme_light_outline);
                     obj.finished = true;
                 } else {
-                    layout.setBackgroundResource(R.color.white);
+                    layout.setBackgroundResource(R.color.md_theme_light_surface);
                     obj.finished = false;
                 }
                 NoteDao nd = db.noteDao();
@@ -196,9 +195,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             title.setText(a.title);
             time.setText(a.getTime());
             if (obj.finished) {
-                layout.setBackgroundResource(R.color.light_gray);
+                layout.setBackgroundResource(R.color.md_theme_light_outline);
             } else {
-                layout.setBackgroundResource(R.color.white);
+                layout.setBackgroundResource(R.color.md_theme_light_surface);
             }
 
         }

@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_title_column">Название</string>
+    <string name="untitled">без названия</string>
     <string name="delete_label">Удалить</string>
     <string name="dialog_description" > Описание</string>
     <string name="dialog_item_begin">Начало</string>
@@ -25,4 +26,11 @@
     <string name="Saturday">СБ</string>
     <string name="Sunday">ВС</string>
     <string name="January">Январь</string>
+    <string name="monday">понедельник</string>
+    <string name="tuesday">вторник</string>
+    <string name="wednesday">среда</string>
+    <string name="thursday">четверг</string>
+    <string name="friday">пятница</string>
+    <string name="saturday">суббота</string>
+    <string name="sunday">воскресенье</string>
 </resources>

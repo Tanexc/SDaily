@@ -9,6 +9,8 @@
         android:id="@+id/day_image_rec"
         android:layout_width="12dp"
         android:layout_height="12dp"
+        android:src="@drawable/square"
+        app:tint="@color/md_theme_light_onSurfaceVariant"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

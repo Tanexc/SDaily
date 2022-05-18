@@ -30,7 +30,6 @@ public class TimeTable extends Fragment {
     RecyclerView timetableRecycler;
     TimeTableDao td;
     DataBase db;
-    String[] id_title = new String[]{"Дүшәмбе", "Сишәмбе", "Чәршәмбе", "Пәнҗешәмбе", "Җомга", "Шимбә", "Якшәмбе"};
 
     public TimeTable() {
         super(R.layout.fragment_timetable);
@@ -47,7 +46,7 @@ public class TimeTable extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ArrayList<TimeTableItem> data = new ArrayList<TimeTableItem>();
         timetableRecycler = view.findViewById(R.id.timetable_recycler);
-        TimeAdapter adapter = new TimeAdapter(requireContext(), requireActivity(), data, id_title);
+        TimeAdapter adapter = new TimeAdapter(requireContext(), requireActivity(), data);
         timetableRecycler.setAdapter(adapter);
         adapter.setData(data);
         db = DataBaseApl.instance.getDatabase();

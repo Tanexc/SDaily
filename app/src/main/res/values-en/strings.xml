@@ -4,6 +4,7 @@
     <string name="dialog_title_column">Title</string>
     <string name="dialog_description" > Description</string>
     <string name="dialog_item_begin">Start</string>
+    <string name="untitled">untitled</string>
     <string name="dialog_item_finish">End</string>
     <string name="Ru_complete">Perform</string>
     <string name="En_timetable">Timetable</string>
@@ -21,4 +22,11 @@
     <string name="Saturday">Sat</string>
     <string name="Sunday">Sun</string>
     <string name="January">Jan</string>
+    <string name="monday">monday</string>
+    <string name="tuesday">tuesday</string>
+    <string name="wednesday">wednesday</string>
+    <string name="thursday">thursday</string>
+    <string name="friday">friday</string>
+    <string name="saturday">saturday</string>
+    <string name="sunday">sunday</string>
 </resources>

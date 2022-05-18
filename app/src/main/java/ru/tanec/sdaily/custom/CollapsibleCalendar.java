@@ -2,17 +2,23 @@ package ru.tanec.sdaily.custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
+import androidx.lifecycle.LifecycleOwner;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,6 +44,7 @@ public class CollapsibleCalendar extends LinearLayout {
     TextView year;
     GridView gridView;
     ImageView collapseButton;
+    ImageView fullsizeButton;
     ConstraintLayout container;
 
     String dayOfMonth;
@@ -59,18 +66,51 @@ public class CollapsibleCalendar extends LinearLayout {
     public CollapsibleCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-
-        // Linking support of gestures
         GestureHelper gestureHelper = new GestureHelper(context) {
             @Override
             public void onSwipeLeft() {
                 selectedDate.add(DIVIDER, 1);
+                StaticValues.setViewDate(selectedDate.getTime());
                 updateCalendar(new HashSet<>());
             }
 
             @Override
             public void onSwipeRight() {
                 selectedDate.add(DIVIDER, -1);
+                StaticValues.setViewDate(selectedDate.getTime());
+                updateCalendar(new HashSet<>());
+            }
+
+            @Override
+            public void onSwipeBottom() {
+                currentHeight = heightCollapse.get(currentHeight);
+                if (currentHeight.equals(HEIGHT_HIDDEN)) {
+                    currentHeight = HEIGHT_VISIBLE;
+                }
+                int h = (int) (float) currentHeight;
+                btnNext.setVisibility(VISIBLE);
+                btnPrev.setVisibility(VISIBLE);
+                fullsizeButton.setScaleY(1f);
+                DAY_COUNT = 35;
+                DIVIDER = Calendar.MONTH;
+                container.setMaxHeight(h);
+                updateCalendar(new HashSet<>());
+            }
+
+            @Override
+            public void onSwipeTop() {
+                currentHeight = heightCollapse.get(currentHeight);
+                if (currentHeight.equals(HEIGHT_VISIBLE)) {
+                    currentHeight = HEIGHT_HIDDEN;
+                }
+                int h = (int) (float) currentHeight;
+                btnNext.setVisibility(GONE);
+                btnPrev.setVisibility(GONE);
+                fullsizeButton.setScaleY(-1f);
+                DAY_COUNT = 7;
+                DIVIDER = Calendar.WEEK_OF_YEAR;
+
+                container.setMaxHeight(h);
                 updateCalendar(new HashSet<>());
             }
         };
@@ -93,28 +133,33 @@ public class CollapsibleCalendar extends LinearLayout {
         month = findViewById(R.id.calendar_month);
         btnToday = findViewById(R.id.calendar_today);
         collapseButton = findViewById(R.id.collapse_button);
+        fullsizeButton = findViewById(R.id.fullsize_button);
         gridView = findViewById(R.id.calendar_grid);
         container = findViewById(R.id.calendar_container);
 
         container.setMaxHeight((int) (float) currentHeight);
 
         collapseButton.animate().scaleX(1.2f);
-        collapseButton.animate().scaleY(-1f);
+        fullsizeButton.animate().scaleX(1.2f);
+        fullsizeButton.animate().scaleY(-1f);
 
-        collapseButton.setOnClickListener(l -> {
+        fullsizeButton.setOnClickListener(l -> {
             currentHeight = heightCollapse.get(currentHeight);
             int h = (int) (float) currentHeight;
-            if (DAY_COUNT != 35) {
+            if (h != HEIGHT_HIDDEN) {
+                btnNext.setVisibility(VISIBLE);
+                btnPrev.setVisibility(VISIBLE);
+                fullsizeButton.setScaleY(1f);
                 DAY_COUNT = 35;
                 DIVIDER = Calendar.MONTH;
-                collapseButton.animate().scaleY(1f);
             } else {
+                btnNext.setVisibility(GONE);
+                btnPrev.setVisibility(GONE);
+                fullsizeButton.setScaleY(-1f);
                 DAY_COUNT = 7;
                 DIVIDER = Calendar.WEEK_OF_YEAR;
-                collapseButton.animate().scaleY(-1f);
             }
             container.setMaxHeight(h);
-
             updateCalendar(new HashSet<>());
         });
 
@@ -164,10 +209,10 @@ public class CollapsibleCalendar extends LinearLayout {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(StaticValues.getViewDate());
 
-        if (selectedDate.get(Calendar.WEEK_OF_YEAR) != currentDate.get(Calendar.WEEK_OF_YEAR)) {
-            btnToday.setImageResource(R.drawable.calendar2);
+        if (selectedDate.get(Calendar.DAY_OF_YEAR) != currentDate.get(Calendar.DAY_OF_YEAR)) {
+            ImageViewCompat.setImageTintList(btnToday, ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_light_primary)));
         } else {
-            btnToday.setImageResource(R.drawable.calendar1);
+            ImageViewCompat.setImageTintList(btnToday, ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_light_shadow)));
         }
         if (divider == Calendar.DAY_OF_MONTH) {
         calendar.set(divider, 1);
@@ -192,7 +237,7 @@ public class CollapsibleCalendar extends LinearLayout {
                 calendar.add(finalDivider, 1);
             }
             new Handler(Looper.getMainLooper()).post(() -> {
-                gridView.setAdapter(new CalendarAdapter(getContext(), cells, selectedDate, notes));
+                gridView.setAdapter(new CalendarAdapter(getContext(), cells, selectedDate, notes, this));
             });
         }).start();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

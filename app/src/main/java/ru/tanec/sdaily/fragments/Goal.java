@@ -51,11 +51,6 @@ public class Goal extends Fragment {
     ImageButton sortByTitle;
     ImageButton sortByType;
 
-    ImageButton language;
-    ImageView tatarLan;
-    ImageView russianLan;
-    ImageView englishLan;
-
     int state = View.VISIBLE;
 
     public Goal() {
@@ -144,50 +139,6 @@ public class Goal extends Fragment {
             }
         });
 
-        language = view.findViewById(R.id.language);
-        tatarLan = view.findViewById(R.id.tt_lng);
-        russianLan = view.findViewById(R.id.ru_lng);
-        englishLan = view.findViewById(R.id.en_lng);
-
-        tatarLan.setOnClickListener(l -> {
-            Lingver.getInstance().setLocale(l.getContext(),"tt");
-            MainActivity m = (MainActivity) requireActivity();
-            m.navigation.setSelectedItemId(R.id.task);
-            requireActivity().recreate();
-            tatarLan.setBackgroundResource(R.color.day_fill);
-        });
-
-        russianLan.setOnClickListener(l -> {
-            Lingver.getInstance().setLocale(l.getContext(),"ru");
-            MainActivity m = (MainActivity) requireActivity();
-            m.navigation.setSelectedItemId(R.id.task);
-            requireActivity().recreate();
-            russianLan.setBackgroundResource(R.color.day_fill);
-        });
-
-        englishLan.setOnClickListener(l -> {
-            Lingver.getInstance().setLocale(l.getContext(),"en");
-           MainActivity m = (MainActivity) requireActivity();
-           m.navigation.setSelectedItemId(R.id.task);
-            requireActivity().recreate();
-            englishLan.setBackgroundResource(R.color.day_fill);
-        });
-
-        language.setOnClickListener(view1 -> {
-            language.setBackgroundResource(R.drawable.settings_b);
-            if (tatarLan.getVisibility() == View.GONE) {
-                language.setBackgroundResource(R.drawable.settings_b);
-                tatarLan.setVisibility(View.VISIBLE);
-                russianLan.setVisibility(View.VISIBLE);
-                englishLan.setVisibility(View.VISIBLE);
-
-            } else {
-                language.setBackgroundResource(R.drawable.settings);
-                tatarLan.setVisibility(View.GONE);
-                russianLan.setVisibility(View.GONE);
-                englishLan.setVisibility(View.GONE);
-            }
-        });
 
 
         filterButton.setOnClickListener(l -> {

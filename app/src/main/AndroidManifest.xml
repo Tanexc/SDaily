@@ -20,7 +20,7 @@
         android:name=".database.DataBaseApl"
         android:roundIcon="@mipmap/icon5"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SDaily">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
