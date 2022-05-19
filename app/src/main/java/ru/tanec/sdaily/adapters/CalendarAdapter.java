@@ -1,5 +1,6 @@
 package ru.tanec.sdaily.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -42,6 +43,7 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
         this.collapsibleCalendar = collapsibleCalendar;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
@@ -71,7 +73,8 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
             ((TextView) view.findViewById(R.id.date)).setGravity(Gravity.CENTER);
             if (day == selectedDate.get(Calendar.DATE)) {
                 view.findViewById(R.id.date).setBackgroundResource(R.drawable.current_date);
-                TextViewCompat.setCompoundDrawableTintList(view.findViewById(R.id.date), ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_dark_primaryContainer)));
+                ((TextView) view.findViewById(R.id.date)).setTextColor(Color.parseColor("#ffffff"));
+                TextViewCompat.setCompoundDrawableTintList((TextView) view.findViewById(R.id.date), ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_dark_primaryContainer)));
                 selectedDay = view;
             }
         }
@@ -92,10 +95,10 @@ public class CalendarAdapter extends ArrayAdapter<Date> {
 
 
         // onClickListener. Setting selectedDay into StaticValues
+        View finalView = view;
         view.findViewById(R.id.date).setOnClickListener(view1 -> {
             view1.findViewById(R.id.date).setBackgroundResource(R.drawable.current_date);
-            TextViewCompat.setCompoundDrawableTintList(view1.findViewById(R.id.date), ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.md_theme_dark_primaryContainer)));
-
+            ((TextView) view1.findViewById(R.id.date)).setTextColor(Color.parseColor("#ffffff"));
             if (null != selectedDay & selectedDay != view1) {
                 selectedDay.findViewById(R.id.date).setBackgroundResource(0);
             }
