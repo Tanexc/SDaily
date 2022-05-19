@@ -1,6 +1,7 @@
 package ru.tanec.sdaily.fragments;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
@@ -47,9 +50,9 @@ public class Task extends Fragment {
     GoalAdapter adapter;
 
     ImageView filterButton;
-    ImageButton sortByTime;
-    ImageButton sortByTitle;
-    ImageButton sortByType;
+    ImageView sortByTime;
+    ImageView sortByTitle;
+    ImageView sortByType;
 
     int state = View.VISIBLE;
 
@@ -125,16 +128,20 @@ public class Task extends Fragment {
             if (state == View.GONE) {
                 state = View.VISIBLE;
                 filterButton.setImageResource(R.drawable.filter_out);
+                ImageViewCompat.setImageTintList(filterButton, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+
             } else {
                 state = View.GONE;
                 filterButton.setImageResource(R.drawable.filter);
+                ImageViewCompat.setImageTintList(filterButton, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_primary)));
             }
         });
 
         sortByType.setOnClickListener(l -> {
-            sortByType.setBackgroundResource(R.drawable.sort_square);
-            sortByTime.setBackgroundResource(R.drawable.square);
-            sortByTitle.setBackgroundResource(R.drawable.square);
+            ImageViewCompat.setImageTintList(sortByType, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_primary)));
+            ImageViewCompat.setImageTintList(sortByTime, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+            ImageViewCompat.setImageTintList(sortByTitle, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
                 return Integer.compare(t2.type, t1.type);
@@ -146,9 +153,10 @@ public class Task extends Fragment {
         });
 
         sortByTime.setOnClickListener(l -> {
-            sortByType.setBackgroundResource(R.drawable.square);
-            sortByTime.setBackgroundResource(R.drawable.sort_square);
-            sortByTitle.setBackgroundResource(R.drawable.square);
+            ImageViewCompat.setImageTintList(sortByTime, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_primary)));
+            ImageViewCompat.setImageTintList(sortByType, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+            ImageViewCompat.setImageTintList(sortByTitle, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
                 return Long.compare(t1.beginDateMls, t2.beginDateMls);
@@ -160,9 +168,10 @@ public class Task extends Fragment {
         });
 
         sortByTitle.setOnClickListener(l -> {
-            sortByType.setBackgroundResource(R.drawable.square);
-            sortByTitle.setBackgroundResource(R.drawable.sort_square);
-            sortByTime.setBackgroundResource(R.drawable.square);
+            ImageViewCompat.setImageTintList(sortByTitle, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_primary)));
+            ImageViewCompat.setImageTintList(sortByTime, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+            ImageViewCompat.setImageTintList(sortByType, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),  R.color.md_theme_light_shadow)));
+
             List<NoteDataItem> list = adapter.getList();
             Collections.sort(list, (t1, t2) -> {
                 return (t1.title.compareTo(t2.title));

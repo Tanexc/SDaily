@@ -21,6 +21,8 @@ public interface TimeTableDao {
     @Query("SELECT * FROM timetableentity WHERE title = :title")
     TimeTableEntity getByTitle(String title);
 
+
+
     @Insert
     void insert(TimeTableEntity tdi);
 

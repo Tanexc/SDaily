@@ -31,4 +31,5 @@
     <string name="friday">җомга</string>
     <string name="saturday">шимбә</string>
     <string name="sunday">якшәмбе</string>
+    <string name="alarm_intersection">Игътибар! Көн тәртибендә кисешү бар</string>
 </resources>

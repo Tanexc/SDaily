@@ -29,4 +29,5 @@
     <string name="friday">friday</string>
     <string name="saturday">saturday</string>
     <string name="sunday">sunday</string>
+    <string name="alarm_intersection">Attention! An intersections in timesheet</string>
 </resources>

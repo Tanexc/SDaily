@@ -65,7 +65,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             if (dl[id] == true) {
                 ImageViewCompat.setImageTintList(dayimage, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_onSurface)));
             } else {
-                ImageViewCompat.setImageTintList(dayimage, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_onSurfaceVariant)));
+                ImageViewCompat.setImageTintList(dayimage, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_dark_onSurfaceVariant)));
             }
         }
     }

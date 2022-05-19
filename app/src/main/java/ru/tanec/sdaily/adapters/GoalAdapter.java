@@ -1,6 +1,7 @@
 package ru.tanec.sdaily.adapters;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
@@ -15,6 +16,7 @@ import ru.tanec.sdaily.R;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,7 +60,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         cnt++;
 
-        return new GoalViewHolder(view, list.get(cnt));
+        return new GoalViewHolder(view, list.get(cnt), parent.getContext());
 
     }
 
@@ -107,6 +109,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
     static public class GoalViewHolder extends RecyclerView.ViewHolder {
 
+        Context context;
+
         boolean opened;
         NoteDataItem obj;
         TextView title;
@@ -121,9 +125,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
 
 
-        public GoalViewHolder(@NonNull View itemView, NoteDataItem it) {
+        public GoalViewHolder(@NonNull View itemView, NoteDataItem it, Context context) {
             super(itemView);
-
+            this.context = context;
             opened = false;
 
             description = itemView.findViewById(R.id.description);
@@ -136,7 +140,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             layout = itemView.findViewById(R.id.cardLayout);
 
             if (obj.finished) {
-                layout.setBackgroundResource(R.color.md_theme_light_outline);
+                cardView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_dark_onSurfaceVariant)));
+            } else {
+                cardView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_surfaceVariant)));
             }
 
             description.setText(obj.getDescriptionSmall());
@@ -151,10 +157,10 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
             type.setOnClickListener(l -> {
                 if (!obj.finished) {
-                    layout.setBackgroundResource(R.color.md_theme_light_outline);
+                    cardView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_dark_onSurfaceVariant)));
                     obj.finished = true;
                 } else {
-                    layout.setBackgroundResource(R.color.md_theme_light_surface);
+                    cardView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_surfaceVariant)));
                     obj.finished = false;
                 }
                 NoteDao nd = db.noteDao();
@@ -195,12 +201,13 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
             title.setText(a.title);
             time.setText(a.getTime());
             if (obj.finished) {
-                layout.setBackgroundResource(R.color.md_theme_light_outline);
+                cardView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_dark_onSurfaceVariant)));
             } else {
-                layout.setBackgroundResource(R.color.md_theme_light_surface);
+                cardView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.md_theme_light_surfaceVariant)));
             }
 
         }
+
 
     }
 }

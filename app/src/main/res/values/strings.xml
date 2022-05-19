@@ -33,4 +33,5 @@
     <string name="friday">пятница</string>
     <string name="saturday">суббота</string>
     <string name="sunday">воскресенье</string>
+    <string name="alarm_intersection">Внимание! Распорядок дня пересекается</string>
 </resources>

@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
         cnt++;
 
-        return new TimeViewHolder(view, list.get(cnt), context);
+        return new TimeViewHolder(view, list.get(cnt), context, cnt);
 
 
     }
@@ -89,7 +90,9 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
         TimeTableItem obj;
         TextView title;
         RecyclerView recycler;
+        TextView alarmText;
         RecyclerView ranges_recycler;
+        int id;
         ImageView collapse_button;
         int HEIGHT_VISIBLE = 1;
         int HEIGHT_HIDDEN = -1;
@@ -98,12 +101,105 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
         RangesAdapter rAdapter = new RangesAdapter(list);
         HashMap<String, Integer> resourceDay = new HashMap<>();
 
-        public TimeViewHolder(@NonNull View itemView, TimeTableItem it, Context context) {
+        public TimeViewHolder(@NonNull View itemView, TimeTableItem it, Context context, int id) {
             super(itemView);
             this.title = itemView.findViewById(R.id.title);
             this.obj = it;
+            this.id = id;
             setResourceDay();
             this.title.setText(resourceDay.get(it.title));
+            ranges_recycler = itemView.findViewById(R.id.ranges_recycler);
+            ranges_recycler.setAdapter(rAdapter);
+            collapse_button = itemView.findViewById(R.id.collapse_button);
+            collapse_button.animate().scaleY(-1f);
+            alarmText = itemView.findViewById(R.id.alarm_text);
+            collapse_button.setOnClickListener(l -> {
+                if (height == HEIGHT_HIDDEN) {
+                    ranges_recycler.setVisibility(View.VISIBLE);
+                    new Thread(() -> {
+
+                        DataBase db = DataBaseApl.instance.getDatabase();
+                        TimeTableDao td = db.timeTableDao();
+                        RangeItem[] a;
+                        ArrayList<String[]> list = new ArrayList<>();
+                        a = td.getByTitle(obj.title).timerange;
+
+                        for (RangeItem rangeItem : a) {
+                            if (rangeItem != null) {
+                                list.add(rangeItem.toData());
+                            }
+                        }
+
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            rAdapter.setList(list);
+                        });
+                    }).start();
+                    height = HEIGHT_VISIBLE;
+                } else {
+                    ranges_recycler.setVisibility(View.GONE);
+                    height = HEIGHT_HIDDEN;
+                }
+                collapse_button.animate().scaleY(height);
+            });
+
+            if (checkForIntersections()) {
+                alarmText.setVisibility(View.VISIBLE);
+            } else {
+                alarmText.setVisibility(View.INVISIBLE);
+            }
+
+        }
+
+        private boolean checkForIntersections() {
+
+            DataBase db = DataBaseApl.instance.getDatabase();
+            TimeTableDao td = db.timeTableDao();
+            List<TimeTableEntity> a;
+
+            a = td.getAll().getValue();
+            RangeItem[] ranges;
+            ranges = a.get(id).timerange;
+            Collections.sort(ranges, (t1, t2) -> {
+                if (t1.start_hour > t2.start_hour) {
+                    return false;
+                } else if (t1.start_hour == t2.start_hour) {
+                    if (t1.start_minute < t2.start_minute) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            });
+            for (int i = 0; i < ranges.length; i++) {
+
+            }
+        }
+
+        private void setResourceDay() {
+            resourceDay.put("Monday", R.string.monday);
+            resourceDay.put("Tuesday", R.string.tuesday);
+            resourceDay.put("Wednesday", R.string.wednesday);
+            resourceDay.put("Thursday", R.string.thursday);
+            resourceDay.put("Friday", R.string.friday);
+            resourceDay.put("Saturday", R.string.saturday);
+            resourceDay.put("Sunday", R.string.sunday);
+        }
+
+        public void dayFill() {
+            recycler = itemView.findViewById(R.id.day_recycler);
+            recycler.setAdapter(new DayAdapter(itemView.getContext(), obj.fill));
+        }
+
+        void bind(TimeTableItem item, FragmentActivity activity, int position) {
+            title.setText(resourceDay.get(item.title));
+            obj = item;
+            dayFill();
+            itemView.setOnClickListener(v -> {
+                RangeFragment fragment = new RangeFragment(obj);
+                fragment.show(activity.getSupportFragmentManager(), "asd");
+            });
             ranges_recycler = itemView.findViewById(R.id.ranges_recycler);
             ranges_recycler.setAdapter(rAdapter);
             collapse_button = itemView.findViewById(R.id.collapse_button);
@@ -137,31 +233,6 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
                 collapse_button.animate().scaleY(height);
             });
 
-        }
-
-        private void setResourceDay() {
-            resourceDay.put("Monday", R.string.monday);
-            resourceDay.put("Tuesday", R.string.tuesday);
-            resourceDay.put("Wednesday", R.string.wednesday);
-            resourceDay.put("Thursday", R.string.thursday);
-            resourceDay.put("Friday", R.string.friday);
-            resourceDay.put("Saturday", R.string.saturday);
-            resourceDay.put("Sunday", R.string.sunday);
-        }
-
-        public void dayFill() {
-            recycler = itemView.findViewById(R.id.day_recycler);
-            recycler.setAdapter(new DayAdapter(itemView.getContext(), obj.fill));
-        }
-
-        void bind(TimeTableItem item, FragmentActivity activity, int position) {
-            title.setText(resourceDay.get(item.title));
-            obj = item;
-            dayFill();
-            itemView.setOnClickListener(v -> {
-                RangeFragment fragment = new RangeFragment(obj);
-                fragment.show(activity.getSupportFragmentManager(), "asd");
-            });
         }
     }
 

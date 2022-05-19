@@ -72,6 +72,11 @@ public class RangesAdapter extends RecyclerView.Adapter<RangesAdapter.RangesView
 
         public void bind(String[] info) {
             title.setText(info[0]);
+            if (!info[0].equals("u$n$t$i$t$l$e$d")) {
+                title.setText(info[0]);
+            } else {
+                title.setText(R.string.untitled);
+            }
             duration.setText(info[1]);
         }
 

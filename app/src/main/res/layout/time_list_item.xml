@@ -58,6 +58,11 @@
                 android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/day_recycler" />
+            <TextView
+                android:id="@+id/alarm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alarm_intersection"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

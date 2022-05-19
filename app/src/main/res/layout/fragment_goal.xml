@@ -40,36 +40,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/sortByTitle"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:foreground="@drawable/sortaz"
-            android:background="@drawable/square"
-            android:backgroundTint="@color/md_theme_light_primaryInverse"
+            android:src="@drawable/sortaz"
             android:padding="0dp"
             android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/sortByType"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:foreground="@drawable/sort_ascending"
-            android:background="@drawable/square"
+            android:src="@drawable/sort_ascending"
             app:layout_constraintEnd_toStartOf="@+id/sortByTime"
             app:layout_constraintStart_toEndOf="@+id/sortByTitle"
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/sortByTime"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/square"
-            android:foreground="@drawable/time"
+            android:src="@drawable/time"
             app:layout_constraintEnd_toStartOf="@+id/filterButton"
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone" />
