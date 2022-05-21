@@ -1,7 +1,7 @@
 package ru.tanec.sdaily.activity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,9 +25,10 @@ import ru.tanec.sdaily.database.TimeTableEntity;
 import ru.tanec.sdaily.services.NotificationService;
 
 public class MainActivity extends AppCompatActivity {
+//    Resources res = getResources();
+//    String[] id_title = res.getStringArray(R.array.week);
     public BottomNavigationView navigation;
     public NavController navController;
-
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
