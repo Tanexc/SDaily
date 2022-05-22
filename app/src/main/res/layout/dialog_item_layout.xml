@@ -5,26 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <!--    <com.google.android.material.textfield.TextInputEditText-->
-    <!--        android:layout_width="110dp"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:textSize="17sp"-->
-    <!--        android:maxLines="2"-->
-    <!--        android:maxLength="19"-->
-    <!--        style="@style/MInputLayoutStyle"-->
-    <!--        android:id="@+id/textInputLayout"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"/>-->
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputLayout"
         android:layout_width="119dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
         android:hint="@string/dialog_title_column"
         android:maxHeight="64dp"
+        android:maxLength="20"
+        android:maxEms="20"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,166 +24,47 @@
         android:id="@+id/delete_btn"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginEnd="5dp"
         android:scaleType="centerCrop"
         android:src="@drawable/close"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/start_hour"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ru.tanec.sdaily.custom.HTimePicker
-        android:id="@+id/start_hour"
-        android:layout_width="20dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="50dp"
-        android:text="12"
-        android:textAlignment="textEnd"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/minus_s_hour"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/plus_s_hour" />
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="25dp"
-        android:src="@drawable/chevron_right"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/end_hour"
-        app:layout_constraintStart_toEndOf="@+id/start_minute"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=":"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/start_hour"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/plus_s_hour"
-        android:foreground="@drawable/plus"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/start_hour"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/minus_s_hour"
-        android:layout_width="30dp"
-        android:foreground="@drawable/minus"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView" />
-
-
-    <ru.tanec.sdaily.custom.MTimePicker
-        android:id="@+id/start_minute"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/minus_s_minute"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/plus_s_minute" />
-
-    <Button
-        android:id="@+id/plus_s_minute"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:foreground="@drawable/plus"
-        android:layout_margin="0dp"
-        android:layout_marginStart="11dp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/minus_s_minute"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:foreground="@drawable/minus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
-
-    <ru.tanec.sdaily.custom.HTimePicker
-        android:id="@+id/end_hour"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:text="12"
-        android:textAlignment="textEnd"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toStartOf="@+id/del2"
-        app:layout_constraintTop_toBottomOf="@+id/plus_e_minute" />
-
-
-    <TextView
-        android:id="@+id/del2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="30dp"
-        android:text=":"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.48" />
 
-    <Button
-        android:id="@+id/plus_e_minute"
-        android:foreground="@drawable/plus"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/end_hour"
-        app:layout_constraintStart_toEndOf="@+id/del2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/minus_e_hour"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:foreground="@drawable/minus"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/del2"
-        app:layout_constraintTop_toBottomOf="@+id/end_hour"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toStartOf="@+id/delete_btn"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ru.tanec.sdaily.custom.MTimePicker
-        android:id="@+id/end_minute"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:textSize="17sp"
-        app:layout_constraintStart_toEndOf="@+id/del2"
-        app:layout_constraintTop_toBottomOf="@+id/plus_e_minute" />
+        <TextView
+            android:id="@+id/start_time"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="12:43"
+            android:textAlignment="center"
+            android:textSize="17sp" />
 
-    <Button
-        android:id="@+id/plus_e_hour"
-        android:layout_width="30dp"
-        android:foreground="@drawable/plus"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:layout_height="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/del2"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/chevron_right" />
 
-    <Button
-        android:id="@+id/minus_e_minute"
-        android:foreground="@drawable/minus"
-        android:foregroundTint="@color/md_theme_light_onPrimary"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintStart_toEndOf="@+id/del2"
-        app:layout_constraintTop_toBottomOf="@+id/end_minute" />
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="12:43"
+            android:textAlignment="center"
+            android:textSize="17sp" />
+    </LinearLayout>
+
 
     <View
         android:id="@+id/view1"

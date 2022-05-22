@@ -77,4 +77,5 @@ public class RangeItem extends ItemList {
     public String[] toData() {
         return new String[]{title, getStringDuration()};
     }
+
 }

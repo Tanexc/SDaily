@@ -35,8 +35,14 @@ public class ConverterForTTE {
     @TypeConverter
     public RangeItem[] toDialogItem(String dt) {
         RangeItem[] data;
-        String[] stringData = dt.split("]");
-       int sl;
+        String[] stringData;
+        try {
+            stringData = dt.split("]");
+        } catch (Exception e) {
+            stringData = new String[0];
+        }
+
+        int sl;
         try {
             sl = stringData.length;
         } catch (Exception e) {

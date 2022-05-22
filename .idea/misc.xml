@@ -53,6 +53,7 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/day_item.xml" value="0.12708333333333333" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dayitem.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_time_pick.xml" value="0.33" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoals.xml" value="0.20416666666666666" />
@@ -64,6 +65,7 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/task_item.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/test.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.5398230088495575" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/time_pick.xml" value="0.33" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/toolbar.xml" value="0.9" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu-v26/bottom_nav.xml" value="0.10885416666666667" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.20416666666666666" />

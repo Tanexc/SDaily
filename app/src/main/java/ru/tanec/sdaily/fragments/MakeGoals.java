@@ -5,6 +5,7 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -23,12 +24,15 @@ import ru.tanec.sdaily.database.NoteEntity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.crypto.Mac;
 
 public class MakeGoals extends DialogFragment {
 
@@ -86,7 +90,6 @@ public class MakeGoals extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         redTypeBtn = view.findViewById(R.id.red);
         greenTypeBtn = view.findViewById(R.id.green);

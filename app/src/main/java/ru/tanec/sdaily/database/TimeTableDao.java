@@ -15,13 +15,15 @@ public interface TimeTableDao {
 
     @Query("SELECT * FROM timetableentity")
     LiveData<List<TimeTableEntity>> getAll();
+
     @Query("SELECT * FROM timetableentity WHERE id = :id")
     TimeTableEntity getById(long id);
 
     @Query("SELECT * FROM timetableentity WHERE title = :title")
     TimeTableEntity getByTitle(String title);
 
-
+    @Query("SELECT * FROM timetableentity WHERE id = :id")
+    LiveData<TimeTableEntity> getLiveById(long id);
 
     @Insert
     void insert(TimeTableEntity tdi);

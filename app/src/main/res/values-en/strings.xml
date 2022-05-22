@@ -30,4 +30,6 @@
     <string name="saturday">saturday</string>
     <string name="sunday">sunday</string>
     <string name="alarm_intersection">Attention! An intersections in timesheet</string>
+    <string name="save">save</string>
+    <string name="cancel">cancel</string>
 </resources>

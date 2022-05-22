@@ -50,6 +50,16 @@ public class RangeFragment extends DialogFragment {
         this.obj = obj;
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+
+        dialog.getWindow().setLayout(MATCH_PARENT, MATCH_PARENT);
+
+        return dialog;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -56,9 +56,9 @@ public class TimeTable extends Fragment {
                 int id = Integer.parseInt("" + item.id);
                 TimeTableItem it = new TimeTableItem(item.title);
                 it.id = id;
+                it.setTimerange(item.timerange);
                 it.setFill(getFillFromTm(item.timerange));
                 adapter.changeDataItem(it, id);
-
             }
         });
     }

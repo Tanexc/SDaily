@@ -62,6 +62,8 @@
                 android:id="@+id/alarm_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/md_theme_light_error "
+                android:visibility="invisible"
                 android:text="@string/alarm_intersection"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
