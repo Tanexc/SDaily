@@ -23,6 +23,36 @@
     <string name="Friday">Fri</string>
     <string name="Saturday">Sat</string>
     <string name="Sunday">Sun</string>
+    <string name="High">High</string>
+    <string name="Medium">Medium</string>
+    <string name="Low">Low</string>
+    <string-array name="months">
+        <item></item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="week">
+        <item></item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string name="Error">You have a task for this time</string>
     <string name="January">Jan</string>
     <string name="monday">monday</string>
     <string name="tuesday">tuesday</string>

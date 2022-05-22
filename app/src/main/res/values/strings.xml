@@ -36,4 +36,33 @@
     <string name="save">сохранить</string>
     <string name="cancel">отмена</string>
     <string name="exit">выход</string>
+    <string name="High">Высокий</string>
+    <string name="Medium">Средний</string>
+    <string name="Low">Низкий</string>
+    <string-array name="months">
+        <item></item>
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+    <string-array name="week">
+        <item></item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
+    <string name="Error">У Вас уже есть задача на это время</string>
 </resources>

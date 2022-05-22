@@ -22,21 +22,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import ru.tanec.sdaily.R;
 import ru.tanec.sdaily.adapters.GoalAdapter;
 import ru.tanec.sdaily.adapters.items.NoteDataItem;
-import ru.tanec.sdaily.custom.StaticValues;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
-import ru.tanec.sdaily.database.NoteDao;
 import ru.tanec.sdaily.database.NoteEntity;
 import ru.tanec.sdaily.helpers.NoteDiffUtil;
 import ru.tanec.sdaily.helpers.SimpleItemTouchHelperCallback;
@@ -185,7 +180,7 @@ public class Task extends Fragment {
 
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(v -> {
-            MakeGoals fragment = new MakeGoals();
+            MakeGoals fragment = new MakeGoals(adapter.getList());
             fragment.show(requireActivity().getSupportFragmentManager(), "makeGoal");
         });
 

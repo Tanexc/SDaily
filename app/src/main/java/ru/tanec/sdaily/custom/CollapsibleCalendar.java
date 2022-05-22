@@ -2,6 +2,7 @@ package ru.tanec.sdaily.custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.ColorStateList;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,7 +27,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.database.DataBase;
 import ru.tanec.sdaily.database.DataBaseApl;
 import ru.tanec.sdaily.database.NoteDao;
@@ -53,7 +56,9 @@ public class CollapsibleCalendar extends LinearLayout {
     Calendar selectedDate = Calendar.getInstance();
     int DAY_COUNT = 7;
     int DIVIDER = Calendar.WEEK_OF_YEAR;
-    String[] month_name = new String[] {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+    Resources res = getResources();
+    String[] month_name = res.getStringArray(R.array.months);
 
     HashMap<Float, Float> heightCollapse = new HashMap<Float, Float>();
     Float HEIGHT_VISIBLE = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 192,  getResources().getDisplayMetrics());

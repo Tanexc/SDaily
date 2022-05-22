@@ -4,14 +4,16 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ru.tanec.sdaily.R;
+import ru.tanec.sdaily.adapters.items.NoteDataItem;
 import ru.tanec.sdaily.custom.CollapsibleCalendar;
 import ru.tanec.sdaily.custom.HTimePicker;
 import ru.tanec.sdaily.custom.MTimePicker;
@@ -29,8 +31,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.crypto.Mac;
 
@@ -79,12 +81,19 @@ public class MakeGoals extends DialogFragment {
     public ImageButton darkRedButton;
     public ImageButton darkYellowButton;
     public ImageButton darkGreenButton;
-
+    public TextView highpriority;
+    public TextView mediumpriority;
+    public TextView lowpriority;
+    private TextView errorText;
+    Integer errorcnt = 0;
 
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm");
 
-    public MakeGoals() {
+    private List<NoteDataItem> list;
+
+    public MakeGoals(List<NoteDataItem> list) {
         super(R.layout.fragment_makegoal);
+        this.list = list;
     }
 
     @Override
@@ -97,12 +106,20 @@ public class MakeGoals extends DialogFragment {
         darkRedButton = view.findViewById(R.id.circle_red);
         darkYellowButton = view.findViewById(R.id.yellow_dark);
         darkGreenButton = view.findViewById(R.id.green_dark);
+        highpriority = view.findViewById(R.id.high_priority);
+        mediumpriority = view.findViewById(R.id.medium_priority);
+        lowpriority = view.findViewById(R.id.low_priority);
+        errorText = view.findViewById(R.id.error_text);
+
 
         redTypeBtn.setOnClickListener(v -> {
             type = 2;
             darkYellowButton.setVisibility(View.GONE);
             darkRedButton.setVisibility(View.VISIBLE);
             darkGreenButton.setVisibility(View.GONE);
+            highpriority.setVisibility(View.VISIBLE);
+            mediumpriority.setVisibility(View.GONE);
+            lowpriority.setVisibility(View.GONE);
         });
 
 
@@ -111,6 +128,9 @@ public class MakeGoals extends DialogFragment {
             darkYellowButton.setVisibility(View.VISIBLE);
             darkGreenButton.setVisibility(View.GONE);
             darkRedButton.setVisibility(View.GONE);
+            highpriority.setVisibility(View.GONE);
+            mediumpriority.setVisibility(View.VISIBLE);
+            lowpriority.setVisibility(View.GONE);
         });
 
         greenTypeBtn.setOnClickListener(v -> {
@@ -118,17 +138,17 @@ public class MakeGoals extends DialogFragment {
             darkYellowButton.setVisibility(View.GONE);
             darkRedButton.setVisibility(View.GONE);
             darkGreenButton.setVisibility(View.VISIBLE);
+            highpriority.setVisibility(View.GONE);
+            mediumpriority.setVisibility(View.GONE);
+            lowpriority.setVisibility(View.VISIBLE);
         });
 
 
         calendar = view.findViewById(R.id.calendar);
 
         apply = view.findViewById(R.id.apply);
+        apply.setOnClickListener(v -> saveNote());
 
-        apply.setOnClickListener(view1 -> {
-            saveNote();
-            dismiss();
-        });
 
         close = view.findViewById(R.id.close);
         close.setOnClickListener(view1 -> {
@@ -217,9 +237,15 @@ public class MakeGoals extends DialogFragment {
         newNote.endHour = setEndHour(startHour.getHour() + startHourD.getHour());
         newNote.endMinute = setEndMinute(startMinute.getMinute() + startMinuteD.getMinute());
 
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).beginDateMls == beginDateMls) {
+                errorText.setVisibility(View.VISIBLE);
+                return;
+            }
+        }
 
         new Thread(() -> nd.insert(newNote)).start();
-
+        dismiss();
     }
 
     private int setEndHour(int i) {

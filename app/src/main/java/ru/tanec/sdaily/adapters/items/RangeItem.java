@@ -2,6 +2,9 @@ package ru.tanec.sdaily.adapters.items;
 
 import androidx.annotation.NonNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RangeItem extends ItemList {
     public Integer start_hour = 0;
     public Integer start_minute = 0;

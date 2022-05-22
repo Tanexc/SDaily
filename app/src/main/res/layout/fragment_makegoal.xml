@@ -53,8 +53,8 @@
             android:layout_height="30dp"
             android:padding="0dp"
             android:scaleType="fitXY"
-            android:visibility="gone"
             android:src="@drawable/type2dark"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/red"
             app:layout_constraintEnd_toEndOf="@+id/red"
             app:layout_constraintStart_toStartOf="@+id/red"
@@ -64,7 +64,7 @@
             android:id="@+id/red"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="80dp"
             android:padding="0dp"
             android:scaleType="fitXY"
@@ -79,9 +79,9 @@
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/type1dark"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/yellow"
             app:layout_constraintEnd_toEndOf="@+id/yellow"
-            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/yellow"
             app:layout_constraintTop_toTopOf="@+id/yellow" />
 
@@ -89,7 +89,7 @@
             android:id="@+id/yellow"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/type1"
@@ -116,7 +116,7 @@
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:padding="0dp"
             android:scaleType="fitXY"
             android:src="@drawable/type0"
@@ -127,25 +127,25 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yellow">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/description"
+            android:id="@+id/description_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:hint="@string/dialog_description" />
+            android:layout_height="240dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yellow">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="@string/dialog_description" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/description_layout"
@@ -153,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -170,9 +170,9 @@
             android:text="@string/Ru_complete"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/plus_s_minute"
             app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/plus_s_hour"
             app:layout_constraintTop_toBottomOf="@+id/d" />
 
         <TextView
@@ -405,6 +405,58 @@
             android:text="@string/Ru_apply"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/d3" />
+
+
+        <TextView
+            android:id="@+id/high_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/High"
+            android:textColor="#8A1F1F"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/red"
+            app:layout_constraintStart_toStartOf="@+id/red"
+            app:layout_constraintTop_toBottomOf="@+id/red" />
+
+        <TextView
+            android:id="@+id/medium_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/Medium"
+            android:textColor="#9E9B39"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/yellow"
+            app:layout_constraintStart_toStartOf="@+id/yellow"
+            app:layout_constraintTop_toBottomOf="@+id/yellow" />
+
+        <TextView
+            android:id="@+id/low_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/Low"
+            android:textColor="#6BA15F"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/green"
+            app:layout_constraintStart_toStartOf="@+id/green"
+            app:layout_constraintTop_toBottomOf="@+id/green" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="119dp"
+            android:layout_height="57dp"
+            android:text="@string/Error"
+            android:textAlignment="center"
+            android:textColor="#8A1F1F"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/minus_s_minute"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.928"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/plus_s_minute"
+            app:layout_constraintVertical_bias="0.55" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

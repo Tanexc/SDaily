@@ -35,4 +35,33 @@
     <string name="save">саклап</string>
     <string name="cancel">бетерү</string>
     <string name="exit">чыгу</string>
+    <string name="High">Югары</string>
+    <string name="Medium">Уртача</string>
+    <string name="Low">Түбән</string>
+    <string-array name="months">
+        <item></item>
+        <item>Гыйнвар</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+    <string-array name="week">
+        <item></item>
+        <item>Дүшәмбе</item>
+        <item>Сишәмбе</item>
+        <item>Чәршәмбе</item>
+        <item>Пәнҗешәмбе</item>
+        <item>Җомга</item>
+        <item>Шимбә</item>
+        <item>Якшәмбе</item>
+    </string-array>
+    <string name="Error">Сезнең бу вакытта эшегез бар</string>
 </resources>

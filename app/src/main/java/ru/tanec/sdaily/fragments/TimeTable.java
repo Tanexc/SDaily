@@ -1,6 +1,7 @@
 package ru.tanec.sdaily.fragments;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 

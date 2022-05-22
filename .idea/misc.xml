@@ -56,6 +56,8 @@
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_time_pick.xml" value="0.33" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.75" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.5" />
+        <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_makegoals.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.4" />
         <entry key="..\:/AndroidProjects/SDaily/app/src/main/res/layout/fragment_task.xml" value="0.34499514091350825" />
@@ -80,25 +82,54 @@
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/note_item.xml" value="0.36770833333333336" />
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.36770833333333336" />
         <entry key="..\:/ProjectsAndroid/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.36770833333333336" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/day_with_notes.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/new_moon.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/red_btn.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/selected_calendar_day.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/square.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/type0.xml" value="0.338" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/type0dark.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/type1dark.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/type2.xml" value="0.338" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/white_square.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable-v24/yellow_btn.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/calendar.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/calendar1.xml" value="0.315" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/calendar2.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/check.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/chevron_left.xml" value="0.315" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/chevron_right.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/complete.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/current_date.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/half_square.xml" value="0.315" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/ic_baseline_nights_stay_24.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/ic_baseline_wb_sunny_24.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/ic_launcher_background.xml" value="0.315" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/open.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/plus.xml" value="0.246" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/selected_date.xml" value="0.315" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/settings.xml" value="0.2975" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/settings_b.xml" value="0.3675" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/time.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/triangle.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/type2dark.xml" value="0.1" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/drawable/up_arrow.xml" value="0.246" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/activity_main.xml" value="0.1480978260869565" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/collapsible_calendar.xml" value="0.5" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/custom_calendar_day.xml" value="0.22327898550724637" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/day_item.xml" value="1.25" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.14722222222222223" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.22" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.22" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.25" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/day_item.xml" value="1.0" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/dialog_item_layout.xml" value="0.5" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_goal.xml" value="0.67" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_makegoal.xml" value="0.4486934353091141" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_range.xml" value="0.5844155844155844" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_task.xml" value="0.1" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/fragment_timetable.xml" value="0.25" />
         <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/note_item.xml" value="0.33" />
-        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.14166666666666666" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/layout/time_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/menu-v26/bottom_nav.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/menu/bottom_nav.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Samsung_Student.ITL/secret/SDaily/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
