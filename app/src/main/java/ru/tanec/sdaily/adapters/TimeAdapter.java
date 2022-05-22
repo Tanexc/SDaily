@@ -110,14 +110,12 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
             super(itemView);
             setResourceDay();
 
-
             this.title = itemView.findViewById(R.id.title);
             this.obj = it;
             this.context = context;
             this.title.setText(resourceDay.get(it.title));
-
             ArrayList<String[]> w = obj.getStringRanges();
-            
+
             rAdapter = new RangesAdapter(w);
 
             ranges_recycler = itemView.findViewById(R.id.ranges_recycler);

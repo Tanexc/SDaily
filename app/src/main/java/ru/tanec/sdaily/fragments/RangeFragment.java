@@ -16,7 +16,10 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageButton;
+
+import com.google.android.material.button.MaterialButton;
 
 import java.util.logging.Logger;
 
@@ -35,10 +38,11 @@ public class RangeFragment extends DialogFragment {
     TimeTableItem obj;
     RecyclerView dialog_recycler;
     DialogAdapter recycler_adapter;
-    ImageButton add_btn;
-    ImageButton accept_btn;
+    MaterialButton exitButton;
+    MaterialButton addButton;
     TimeTableDao td;
     DataBase db;
+    boolean destroyed;
     RangeItem[] data;
 
     public RangeFragment() {
@@ -57,12 +61,14 @@ public class RangeFragment extends DialogFragment {
 
         dialog.getWindow().setLayout(MATCH_PARENT, MATCH_PARENT);
 
+
         return dialog;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_FRAME, R.style.AppTheme);
     }
 
     @Override
@@ -81,11 +87,9 @@ public class RangeFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         dialog_recycler = view.findViewById(R.id.time_dialog_recycler);
-        add_btn = view.findViewById(R.id.dialog_add_btn);
-        accept_btn = view.findViewById(R.id.dialog_accept_btn);
-
+        addButton = view.findViewById(R.id.add_button);
+        exitButton = view.findViewById(R.id.exit);
         new Thread(() -> {
             db = DataBaseApl.instance.getDatabase();
             td = db.timeTableDao();
@@ -102,13 +106,13 @@ public class RangeFragment extends DialogFragment {
             }
             data = a.timerange;
             new Handler(Looper.getMainLooper()).post(() -> {
-                add_btn.setOnClickListener(v -> addRange());
+                addButton.setOnClickListener(v -> addRange());
                 recycler_adapter = new DialogAdapter(requireContext(), data);
                 dialog_recycler.setAdapter(recycler_adapter);
             });
         }).start();
 
-        accept_btn.setOnClickListener(e -> {
+        exitButton.setOnClickListener(e -> {
             this.getParentFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
         });
     }

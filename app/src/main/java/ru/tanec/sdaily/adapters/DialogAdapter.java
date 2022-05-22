@@ -97,8 +97,8 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
             this.delete_btn = itemView.findViewById(R.id.delete_btn);
             this.context = context;
 
-            startTime.setText(list[id].getStringDuration().split("-")[0]);
-            endTime.setText(list[id].getStringDuration().split("-")[1]);
+            startTime.setText(list[id].getStringDuration().split(" - ")[0]);
+            endTime.setText(list[id].getStringDuration().split(" - ")[1]);
 
             startTime.setOnClickListener(l -> {
                 TimePickDialog fragment = new TimePickDialog(R.string.dialog_item_begin, list[id].start_hour, list[id].start_minute, startTime);
@@ -187,7 +187,21 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.DialogView
         }
 
         void bind(RangeItem item) {
-            //TODO
+            startTime.setOnClickListener(l -> {
+                TimePickDialog fragment = new TimePickDialog(R.string.dialog_item_begin, item.start_hour, item.start_minute, startTime);
+                fragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "startDialog");
+
+            });
+
+            endTime.setOnClickListener(l -> {
+                TimePickDialog fragment = new TimePickDialog(R.string.dialog_item_finish, item.end_hour, item.end_minute, endTime);
+                fragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "endDialog");
+            });
+
+
+            startTime.setText(item.getStringDuration().split(" - ")[0]);
+            endTime.setText(item.getStringDuration().split(" - ")[1]);
+
             if (item.title != null) {
                 if(!item.title.equals("u$n$t$i$t$l$e$d")) {
                     title.setText((CharSequence)  item.title);

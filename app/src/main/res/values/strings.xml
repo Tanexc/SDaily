@@ -8,8 +8,7 @@
     <string name="dialog_description" > Описание</string>
     <string name="dialog_item_begin">Начало</string>
     <string name="dialog_item_finish">Конец</string>
-    <string name="Ru_before">До</string>
-    <string name="Ru_at">В</string>
+    <string name="add">добавить</string>
     <string name="Ru_complete">Выполнить</string>
     <string name="En_timetable">Timetable</string>
     <string name="En_task">Task</string>
@@ -36,4 +35,5 @@
     <string name="alarm_intersection">Внимание! Пересечения в расписании</string>
     <string name="save">сохранить</string>
     <string name="cancel">отмена</string>
+    <string name="exit">выход</string>
 </resources>
