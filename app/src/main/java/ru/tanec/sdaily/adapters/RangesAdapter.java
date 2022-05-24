@@ -62,6 +62,9 @@ public class RangesAdapter extends RecyclerView.Adapter<RangesAdapter.RangesView
             super(itemView);
             title = itemView.findViewById(R.id.title);
             duration = itemView.findViewById(R.id.duration);
+            if (info[0] == null) {
+                info[0] = "u$n$t$i$t$l$e$d";
+            }
             if (!info[0].equals("u$n$t$i$t$l$e$d")) {
                 title.setText(info[0]);
             } else {
@@ -71,6 +74,9 @@ public class RangesAdapter extends RecyclerView.Adapter<RangesAdapter.RangesView
         }
 
         public void bind(String[] info) {
+            if (info[0] == null) {
+                info[0] = "u$n$t$i$t$l$e$d";
+            }
             title.setText(info[0]);
             if (!info[0].equals("u$n$t$i$t$l$e$d")) {
                 title.setText(info[0]);
