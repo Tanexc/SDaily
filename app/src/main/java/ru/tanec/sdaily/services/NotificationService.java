@@ -90,7 +90,7 @@ public class NotificationService extends LifecycleService {
         }
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_MUTABLE);
 
         mainNotification =
                 new NotificationCompat.Builder(this, "101")
@@ -232,7 +232,7 @@ public class NotificationService extends LifecycleService {
         Intent intent = new Intent(this, NotificationReceiver.class);
         intent.putExtra("notify", "activity");
 
-        PendingIntent ntfIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent ntfIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
         Intent okIntent = new Intent(this, NotificationReceiver.class);
         okIntent.putExtra("notify", "ok");
@@ -252,10 +252,10 @@ public class NotificationService extends LifecycleService {
         noIntent.putExtra("notify", "hu");
         noIntent.putExtra("note", id);
 
-        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, noIntent, PendingIntent.FLAG_NO_CREATE);
-        PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_NO_CREATE);
-        PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_NO_CREATE);
-        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, yesIntent, PendingIntent.FLAG_NO_CREATE);
+        PendingIntent noPendingIntent = PendingIntent.getBroadcast(this, 0, noIntent, PendingIntent.FLAG_MUTABLE);
+        PendingIntent okPendingIntent = PendingIntent.getBroadcast(this, 0, okIntent, PendingIntent.FLAG_MUTABLE);
+        PendingIntent dismissPendingIntent = PendingIntent.getBroadcast(this, 0, dismissIntent, PendingIntent.FLAG_MUTABLE);
+        PendingIntent yesPendingIntent = PendingIntent.getBroadcast(this, 0, yesIntent, PendingIntent.FLAG_MUTABLE);
 
 
         if (notificationFun == 0) {
