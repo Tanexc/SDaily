@@ -21,9 +21,9 @@ In TimeTable you can manage your timesheet for each day of week and add items to
 
 <p align="center">
   
-
+<p width="200px">
 https://user-images.githubusercontent.com/74925839/170570958-fbf3b118-907f-4839-941a-4509e18f1ac5.mp4
-
+</p>
 
 https://user-images.githubusercontent.com/74925839/170570988-47e414f9-78e4-4b83-8ad2-2e19be87d846.mp4
 
