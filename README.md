@@ -14,68 +14,55 @@ An application that is designed to help people plan the day and make a schedule 
 # Functionality
 
 <p align="start">
-В Task Вы можете управлять задачами на сегодняшний день<br>
-В Goal Вы можете управлять задачами на разные даты, а сворачиваемый календарь не будет мешать просморту<br>
-В TimeTable Вы можете управлять рассписанием на каждый день недели, в котором яркие клетки обозначают свободый час
+In Task you can see tasks for the current day<br>
+In Goal you can manage your tasks for any date<br>
+In TimeTable you can manage your timesheet for each day of week and add items to it
 </p>
 
 <p align="center">
   
-![S20507-23591410](https://user-images.githubusercontent.com/74925839/167272771-3412904b-52db-462a-885a-8d0906950a36.jpg)
-![S20507-23585833](https://user-images.githubusercontent.com/74925839/167272091-baab1eba-c0e9-466a-ba82-87cda8f25c3e.jpg)
-![S20507-23583425](https://user-images.githubusercontent.com/74925839/167272092-b70cacef-85d8-45fa-a6c0-4854c8011514.jpg)
-![S20507-23594367](https://user-images.githubusercontent.com/74925839/167272096-a1f06874-792b-4673-b498-5a9944215be4.jpg)
+
+https://user-images.githubusercontent.com/74925839/170570958-fbf3b118-907f-4839-941a-4509e18f1ac5.mp4
+
+
+https://user-images.githubusercontent.com/74925839/170570988-47e414f9-78e4-4b83-8ad2-2e19be87d846.mp4
+
+
+https://user-images.githubusercontent.com/74925839/170571153-75e30bf3-400d-4e46-bb1d-1a0995153626.mp4
   
 </p>
 
 
 <p align="start">
-Создание задачи возможно по нажатию на кнопку '+' в Goal или Task<br>
-Изменение распорядка дня происходит по нажатию на соответствующий день недели
+If you want to create new task, then you can use floating action button in goal or task fragments<br>
 </p>
 
-<p>
-  
-![S20508-00000215](https://user-images.githubusercontent.com/74925839/167272095-64783962-86c5-4825-bbb9-142223ade4b8.jpg)
-![S20507-23594063](https://user-images.githubusercontent.com/74925839/167272097-6908fed0-61c9-44bd-826c-2fddbb01241c.jpg)
-  
-</p>
 
 <p align="start">
-Система уведомлений не даст забыть о выполнении задачи или путкте в распорядке дня. А алгоритм сервиса уведомлений самостоятельно перенесет задачу, если Вы не выполните ее.
-</p>
-
-<p align="center">
-  
- https://user-images.githubusercontent.com/74925839/167273818-6efdc31a-a0f8-462f-87fe-dcc5401e9a9e.mp4
-  
+Notification service will remind you to complete your tasks or remember about some item in your timetable
 </p>
 
 
 # Tech stack
 - Minimum SDK level 21
 
-- Язык программирования [Java](https://java.com/)
+- Programming language [Java](https://java.com/)
 
-- Библиотека [Room](https://developer.android.com/training/data-storage/room) позволяет удобно работать с базами данных SQLite 
+- Library [Room](https://developer.android.com/training/data-storage/room) allows to work with data conveniently
 
-- <b>SQLite database</b> для хранения данных приложения и пользователя
-
-- <b>NotificationService</b> позволяет отправлять уведомления пользователям
+- <b>SQLite database</b> for user's data storage
 
 # Download
 
-В [Releases](https://github.com/tannec/SDaily/releases) Вы можете установить последнее приложение
+In [Releases](https://github.com/tannec/SDaily/releases) you can find latest versions 
 
 # More information
 
-Вы можете ознакомиться с [презентацией](https://github.com/Tannec/SDaily/files/8646022/Presentation.pdf) проекта
+Also application includes:
 
-Помимо основных функций приложение реализует
+- different languages: Russian, English, Tatar
 
-- смену языка: Русский, Английский, Татарский
-
-- сортировку: по алфавиту, типу, времени
+- tasks sorting by alphabet, time and priority
 
 # License
 
