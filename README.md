@@ -1,7 +1,8 @@
-# SmartDaily
+# <img src="https://user-images.githubusercontent.com/74925839/170577877-f61de882-5588-4695-ad66-d07cc4ff9077.png" width="25px"> SmartDaily 
 
 
 <p align="center">
+  <a href="https://opensource.org/licenses/MPL-2.0"><img alt="License" src="https://img.shields.io/badge/License-MPL%202.0-blue.svg"/></a>
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://github.com/t8rin/FridgeXLight/actions"><img alt="Build Status" src="https://github.com/skydoves/Pokedex/workflows/Android%20CI/badge.svg"/></a> 
   <a href="https://github.com/tannec"><img alt="Profile" src="https://img.shields.io/badge/Github-tannec-blue?logo=github"/></a> 
