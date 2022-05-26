@@ -5,19 +5,19 @@
         android:enabled="true"
         android:icon="@drawable/calendar"
         android:iconTint="@color/md_theme_light_onPrimaryContainer"
-        android:title="@string/En_goal"/>
+        android:title="@string/goal"/>
     <item
         android:id="@+id/task"
         android:enabled="true"
         android:icon="@drawable/check"
         android:iconTint="@color/md_theme_light_onPrimaryContainer"
-        android:title="@string/En_task"/>
+        android:title="@string/task"/>
     <item
         android:id="@+id/timetable"
         android:enabled="true"
         android:icon="@drawable/time"
         android:iconTint="@color/md_theme_light_onPrimaryContainer"
-        android:title="@string/En_timetable"
+        android:title="@string/timetable"
         android:visible="true"
         />
 

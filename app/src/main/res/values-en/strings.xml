@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SDaily</string>
+    <string name="app_name">SmartDaily</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_title_column">Title</string>
     <string name="dialog_description" > Description</string>
@@ -7,11 +7,11 @@
     <string name="untitled">untitled</string>
     <string name="add">add</string>
     <string name="dialog_item_finish">End</string>
-    <string name="Ru_complete">Perform</string>
-    <string name="En_timetable">Timetable</string>
+    <string name="Ru_complete">Start in</string>
+    <string name="timetable">Timetable</string>
     <string name="delete_label">Delete</string>
-    <string name="En_task">Task</string>
-    <string name="En_goal">Goal</string>
+    <string name="task">Task</string>
+    <string name="goal">Goal</string>
     <string name="En_name">Name</string>
     <string name="Ru_duration">Duration</string>
     <string name="ru_cancel">Close</string>
@@ -65,4 +65,5 @@
     <string name="save">save</string>
     <string name="cancel">cancel</string>
     <string name="exit">exit</string>
+    <string name="app_title">SDaily</string>
 </resources>

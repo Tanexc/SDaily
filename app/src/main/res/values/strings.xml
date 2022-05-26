@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">SDaily</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">SmartDaily</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_title_column">Название</string>
     <string name="untitled">без названия</string>
@@ -9,10 +8,10 @@
     <string name="dialog_item_begin">Начало</string>
     <string name="dialog_item_finish">Конец</string>
     <string name="add">добавить</string>
-    <string name="Ru_complete">Выполнить</string>
-    <string name="En_timetable">Timetable</string>
-    <string name="En_task">Task</string>
-    <string name="En_goal">Goal</string>
+    <string name="Ru_complete">Начало в</string>
+    <string name="timetable">Расписание</string>
+    <string name="task">Задачи</string>
+    <string name="goal">Цели</string>
     <string name="En_name">Name</string>
     <string name="Ru_duration">Продолжительность</string>
     <string name="ru_cancel">закрыть</string>
@@ -65,4 +64,5 @@
         <item>Воскресенье</item>
     </string-array>
     <string name="Error">У Вас уже есть задача на это время</string>
+    <string name="app_title">SDaily</string>
 </resources>
