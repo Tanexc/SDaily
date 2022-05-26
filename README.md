@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-Приложение, которое призвано помогать людям планировать день и составлять расписание на неделю. Вы можете управлять своим распорядком создавая новые задачи или добавлять занятия в расписание кого-либо дня недели 
+An application that is designed to help people plan the day and make a schedule for the week. You can manage your daily routine by creating new tasks or adding items to the schedule of any day in the week
 </p>
 
 # Functionality
