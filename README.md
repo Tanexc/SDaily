@@ -14,25 +14,16 @@ An application that is designed to help people plan the day and make a schedule 
 # Functionality
 
 <p align="start">
-In Task you can see tasks for the current day<br>
 In Goal you can manage your tasks for any date<br>
+In Task you can see tasks for the current day<br>
 In TimeTable you can manage your timesheet for each day of week and add items to it
 </p>
 
-<p align="center">
+| Goal | Task | Timetable |
+|----------------|:---------:|:----------------:|
+| <video src="https://user-images.githubusercontent.com/74925839/170575483-2b41ee93-4946-4107-ad7c-80e0543ad104.mp4"> | <video src="https://user-images.githubusercontent.com/74925839/170576903-4ef3842f-d05f-46bb-a1cc-a1ee7f3aa009.mp4"> | <video src="https://user-images.githubusercontent.com/74925839/170577077-70f04d02-c272-4d37-8cbb-d76ddad0d653.mp4"> |
+
   
-<p width="200px">
-https://user-images.githubusercontent.com/74925839/170570958-fbf3b118-907f-4839-941a-4509e18f1ac5.mp4
-</p>
-
-https://user-images.githubusercontent.com/74925839/170570988-47e414f9-78e4-4b83-8ad2-2e19be87d846.mp4
-
-
-https://user-images.githubusercontent.com/74925839/170571153-75e30bf3-400d-4e46-bb1d-1a0995153626.mp4
-  
-</p>
-
-
 <p align="start">
 If you want to create new task, then you can use floating action button in goal or task fragments<br>
 </p>
@@ -66,7 +57,7 @@ Also application includes:
 
 # License
 
-Вы можете ознакомиться с [лицензией](https://github.com/Tannec/SDaily/blob/master/LICENSE.md) проекта
+ [licence](https://github.com/Tannec/SDaily/blob/master/LICENSE.md) of project
 
 
 
